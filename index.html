@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appPickly">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Editor web</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+	<!-- AngularJS -->
+	<script src="js/shared/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controladores/app-controller.js"></script>
+	<!-- Blockly Core Set -->
+	<script src="google-blockly/blockly_compressed.js"></script>
+	<script src="google-blockly/blocks_compressed.js"></script>
+	<!-- Blockly User's Language -->
+	<script src="google-blockly/msg/js/es.js"></script>
+</head>
+<body>
+
+	<!-- Barra de navegación -->
+	<div>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<!-- Barra para móviles -->
+				<div class="navbar-header">
+					<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#desplegable_inicio">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!---->
+					<a href="index.html" class="navbar-brand">Pickly</a>
+				</div>
+
+				<!-- Nav links -->
+				<div class="navbar-collapse collapse" id="desplegable_inicio">
+					<form class="navbar-form navbar-right">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Código" />
+						</div>
+						<button class="btn btn-primary" type="submit">Ingresar</button>
+					</form>
+				</div>
+
+			</div>
+		</nav>
+	</div>
+
+	<!-- Sección bienvenida -->
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Bienvenido</h1>
+			<p>Seleccione un microcontrolador PIC&reg; de la lista desplegable</p>
+			<div class="btn-group" ng-controller="PicSelectController">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Seleccione una opción <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li ng-repeat="pic in pics"><a href="{{pic.url}}">{{ pic.name }}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- Scripts Jquery-Bootstrap -->
+	<script src="js/shared/jquery-3.1.0.min.js" type="text/javascript"></script>
+	<script src="js/shared/bootstrap.min.js" type="text/javascript"></script>
+</body>
+</html>
