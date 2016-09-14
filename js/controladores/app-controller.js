@@ -10,5 +10,12 @@
 				url: '#p18f4550'
 			}
 		];
-	});	
+	});
+
+	app.controller('InjectBlocklyController', function($scope){
+		$scope.workspace = Blockly.inject('blocklyDiv',{
+			toolbox : document.getElementById('toolbox')
+		});
+	});
+	
 })();

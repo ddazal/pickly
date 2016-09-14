@@ -1,0 +1,64 @@
+<!-- Barra de navegación -->
+<div>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<!-- Barra para móviles -->
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#desplegable_inicio">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="index.html" class="navbar-brand">Pickly</a>
+			</div>
+
+			<!-- Nav links -->
+			<div class="navbar-collapse collapse" id="desplegable_inicio">
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Código" />
+					</div>
+					<button class="btn btn-primary" type="submit"><span class="fa fa-sign-in"></span></button>
+				</form>
+			</div>
+		</div>
+	</nav>
+</div>
+
+<!-- Sección bienvenida -->
+<div class="jumbotron">
+	<div class="container">
+		<h1>Bienvenido</h1>
+		<p>Seleccione un microcontrolador PIC&reg; de la lista desplegable</p>
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+			Seleccione una opción <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li ng-repeat="pic in pics"><a href="{{pic.url}}">{{ pic.name }}</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- Artículos -->
+<div class="row">
+	<div class="container">
+		<div class="col-md-4">
+			<h3 class="text-center">Paso 1</h3>
+			<p class="text-justify">Si eres estudiante de la UPN, ingresa con tu código institucional. Si eres visitante, (simplemente) selecciona un microcontrolador para empezar.</p>
+		</div>
+		<div class="col-md-4">
+			<h3 class="text-center">Paso 2</h3>
+			<p class="text-justify">Arrastra y une los bloques necesarios que describen tu programa.</p>
+		</div>
+		<div class="col-md-4">
+			<h3 class="text-center">Paso 3</h3>
+			<p class="text-justify">Descarga el código generado en lenguaje C y utiliza tu compilador de preferencia.</p>
+		</div>
+	</div>
+</div>
+
+<hr/>
+<footer>DDEG 2016&copy;</footer>
+<!-- 212a6f -->
