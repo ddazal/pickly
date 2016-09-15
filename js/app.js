@@ -14,7 +14,10 @@ app.config(['$routeProvider',function($routeProvider) {
 			templateUrl : 'partials/p18f4550.html',
 			controller : 'InjectBlocklyController'
 		})
+		.when('/error',{
+			templateUrl : 'partials/error.html'
+		})
 		.otherwise({
-			redirecTo : 'partials/error.html'
+			redirectTo : '/error'
 		});
 }]);

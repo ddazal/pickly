@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="appPickly">
+<html lang="es" ng-app="appPickly">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,6 +8,8 @@
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+	<link rel="stylesheet" href="css/styles.css" type="text/css">
 	
 	<!-- Blockly Core Set -->
 	<script src="google-blockly/blockly_compressed.js"></script>
@@ -15,12 +17,11 @@
 	<!-- Blockly User's Language -->
 	<script src="google-blockly/msg/js/es.js"></script>
 </head>
+
 <body>
 
 
-	<div>
-		<div id="blocklyDiv" ng-view></div>
-	</div>
+	<div id="blocklyDiv" ng-view></div>
 	
 
 	<!-- jQuery -->
