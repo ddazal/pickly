@@ -1,15 +1,15 @@
 <!-- Barra de navegación -->
 <div>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar nav-color">
 		<div class="container">
 			<!-- Barra para móviles -->
 			<div class="navbar-header">
-				<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#desplegable_inicio">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+				<button class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#desplegable_inicio">
+					<span class="icon-bar bar-color"></span>
+					<span class="icon-bar bar-color"></span>
+					<span class="icon-bar bar-color"></span>
 				</button>
-				<a href="#/" class="navbar-brand active">Pickly</a>
+				<!-- <a href="#/" class="navbar-brand active"><span class="brand-name">Pickly</span></a> -->
 			</div>
 
 			<!-- Nav links -->
@@ -18,7 +18,9 @@
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Código" />
 					</div>
-					<button class="btn btn-primary" type="submit"><span class="fa fa-sign-in"></span></button>
+					<div class="form-group">
+						<button class="btn btn-primary" type="submit"><span class="fa fa-sign-in"></span></button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -28,15 +30,18 @@
 <!-- Sección bienvenida -->
 <div class="jumbotron jumbo-home">
 	<div class="container">
-		<h1>Bienvenido</h1>
-		<p>Seleccione un microcontrolador PIC&reg; de la lista desplegable</p>
-		<div class="btn-group">
-			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-			Seleccione una opción <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li ng-repeat="pic in pics"><a href="{{pic.url}}">{{ pic.name }}</a></li>
-			</ul>
+		<div class="col-md-12">
+			<h1><span class="jumbo-header">Pickly</span></h1>
+			<p class="jumbo-text hidden-xs">Editor web de lenguaje de programación visual para microncontroladres PIC&reg;</p>
+			<hr>
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown">
+				Seleccione una opción <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li ng-repeat="pic in pics"><a href="{{pic.url}}">{{ pic.name }}</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
@@ -59,6 +64,8 @@
 	</div>
 </div>
 
-<hr/>
-<footer>DDEG 2016&copy;</footer>
-<!-- 212a6f -->
+<div class="container">
+	<hr/>
+	<footer>&copy;2016</footer>
+</div>
+<!-- 212a6f

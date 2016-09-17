@@ -1,5 +1,5 @@
 (function(){
-	app.controller('PicSelectController', function($scope) {
+	app.controller('HomeController', function($scope) {
 		$scope.pics = [
 			{
 				name: 'PIC16F877A',

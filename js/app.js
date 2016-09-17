@@ -4,7 +4,7 @@ app.config(['$routeProvider',function($routeProvider) {
 	$routeProvider
 		.when('/',{
 			templateUrl : 'partials/home.html',
-			controller : 'PicSelectController'
+			controller : 'HomeController'
 		})
 		.when('/p16f877a',{
 			templateUrl : 'partials/p16f877a.html',

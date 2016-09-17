@@ -1,16 +1,37 @@
 .error-page {
-	margin-bottom: 150px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 150px;
+	margin-bottom : 150px;
+	margin-left : auto;
+	margin-right : auto;
+	margin-top : 150px;
 }
 .error-sub {
-	font-size: 30px;
+	font-size : 30px;
 }
 .error-title {
-	font-size: 80px;
+	font-size : 80px;
 }
 .jumbo-home {
-	padding-bottom: 100px;
-	padding-top: 100px;
+	background-color : #212a6f;
+	padding-bottom : 120px;
+	padding-top : 100px;
+}
+.nav-color {
+	background-color : #212a6f;
+}
+.brand-name {
+	color : white;
+}
+.jumbo-header {
+	color : white;
+	font-size : 100px;
+}
+.jumbo-text {
+	color : white;
+}
+.bar-color {
+	background-color : #515ED7;
+}
+.navbar {
+	border-radius : 0px;
+	margin-bottom : 0px;
 }
