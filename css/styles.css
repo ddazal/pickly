@@ -35,3 +35,9 @@
 	border-radius : 0px;
 	margin-bottom : 0px;
 }
+.icon:hover {
+	text-decoration: none;
+}
+.thumbnail {
+	height: 180px;
+}
