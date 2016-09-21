@@ -8,11 +8,11 @@ app.config(['$routeProvider',function($routeProvider) {
 		})
 		.when('/p16f877a',{
 			templateUrl : 'partials/p16f877a.html',
-			controller : 'InjectBlocklyController'
+			controller : 'PicPageController'
 		})
 		.when('/p18f4550',{
 			templateUrl : 'partials/p18f4550.html',
-			controller : 'InjectBlocklyController'
+			controller : 'PicPageController'
 		})
 		.when('/error',{
 			templateUrl : 'partials/error.html'

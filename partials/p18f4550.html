@@ -1,13 +1,27 @@
+<!-- Barra de navegación -->
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<form class="navbar-form">
+			<div class="form-group btn-group">
+  				<a type="button" class="btn btn-primary" ng-click="click_back()"><span class="fa fa-arrow-left"></span></a>
+  				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+			  	<ul class="dropdown-menu">
+			    	<li><a href="#/">Accion</a></li>
+			  	</ul>
+				<p class="navbar-text">{{pic_selected}}</p>
+			</div>
+		</form>
+	</div>
+</nav>
+
+<!-- Bloques -->
 <xml id="toolbox" style="display:none;">
 	<block type="controls_repeat"></block>
 </xml>
 
-<!--
 <script>
 	var workspace = Blockly.inject('blocklyDiv',{
-		toolbox : document.getElementById('toolbox')
+		toolbox : document.getElementById('toolbox'),
+		trashcan : true
 	});
 </script>
--->
-
-{{workspace}}

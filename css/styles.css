@@ -41,3 +41,10 @@
 .thumbnail {
 	height: 180px;
 }
+#blocklyDiv {
+	height: 400px;
+}
+.navbar-text {
+	font-size: 20px;
+	margin-top: 5px;
+}

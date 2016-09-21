@@ -1,5 +1,42 @@
-<xml id="toolbox" style="display:none;">
-	<block type="controls_if"></block>
-</xml>
+<!-- Barra de navegación -->
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<form class="navbar-form">
+			<div class="btn-group">
+  				<a type="button" class="btn btn-primary" ng-click="click_back()"><span class="fa fa-arrow-left"></span></a>
+  				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+			  	<ul class="dropdown-menu">
+			    	<li><a href="#/">Accion</a></li>
+			  	</ul>
+			  	<p class="navbar-text">{{pic_selected}}</p>
+			</div>
+		</form>
+	</div>
+</nav>
 
-{{workspace}}
+<!-- Bloques -->
+<div class="row">
+	<div class="container">
+		<div class="col-md-12 col-sm-3">
+			<xml id="toolbox" style="display:none;">
+				<block type="controls_if"></block>	
+				<block type="logic_compare"></block>
+				<block type="logic_operation"></block>
+				<block type="logic_negate"></block>
+				<block type="logic_boolean"></block>
+				<block type="lists_create_empty"></block>
+				<block type="lists_repeat"></block>
+				<block type="lists_length"></block>
+				<block type="lists_getIndex"></block>
+				<block type="lists_setIndex"></block>	
+			</xml>
+		</div>
+	</div>
+</div>
+
+<script>
+	var workspace = Blockly.inject('blocklyDiv',{
+		toolbox : document.getElementById('toolbox'),
+		trashcan : true	
+	});
+</script>
