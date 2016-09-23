@@ -1,6 +1,11 @@
 (function(){
 
-	app.controller('HomeController', function($scope) {
+	angular
+		.module('appPickly')
+		.controller('HomeController', HomeController)
+		.controller('PicPageController', PicPageController);
+
+	function HomeController($scope) {
 		$scope.pics = [
 			{
 				name: 'PIC16F877A',
@@ -11,9 +16,9 @@
 				url: '#p18f4550'
 			}
 		];
-	});
+	};
 
-	app.controller('PicPageController',function($scope,$location){
+	function PicPageController($scope,$location){
 		$scope.pic_selected = "";
 
 		if ($location.url()==="/p16f877a") {
@@ -30,6 +35,6 @@
 				$location.path($location.url());
 			}
 		};
-	});
+	};
 	
 })();

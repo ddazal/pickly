@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Thu Sep 08 2016 20:16:21 GMT-0500 (Hora est. Pacífico, Sudamérica)
+// Generated on Thu Sep 22 2016 08:02:24 GMT-0500 (Hora est. Pacífico, Sudamérica)
 
 module.exports = function(config) {
   config.set({
@@ -16,7 +16,10 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'js/shared/angular.min.js',
+      'js/shared/angular-route.min.js',
       'js/shared/angular-mocks.js',
+      'js/app.js',
+      'js/controladores/app-controller.js',
       'tests/*.js'
     ],
 
