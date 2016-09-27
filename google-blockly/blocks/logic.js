@@ -41,7 +41,7 @@ Blockly.Blocks['controls_if'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(120);
     this.appendValueInput('IF0')
         .setCheck('Boolean')
         .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF);
@@ -225,7 +225,7 @@ Blockly.Blocks['controls_if_if'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_IF_TITLE_IF);
     this.setNextStatement(true);
@@ -256,7 +256,7 @@ Blockly.Blocks['controls_if_else'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_ELSE_TITLE_ELSE);
     this.setPreviousStatement(true);
@@ -289,7 +289,7 @@ Blockly.Blocks['logic_compare'] = {
     ];
     var OPERATORS = this.RTL ? rtlOperators : ltrOperators;
     this.setHelpUrl(Blockly.Msg.LOGIC_COMPARE_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(120);
     this.setOutput(true, 'Boolean');
     this.appendValueInput('A');
     this.appendValueInput('B')
@@ -350,7 +350,7 @@ Blockly.Blocks['logic_operation'] = {
         [[Blockly.Msg.LOGIC_OPERATION_AND, 'AND'],
          [Blockly.Msg.LOGIC_OPERATION_OR, 'OR']];
     this.setHelpUrl(Blockly.Msg.LOGIC_OPERATION_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(120);
     this.setOutput(true, 'Boolean');
     this.appendValueInput('A')
         .setCheck('Boolean');

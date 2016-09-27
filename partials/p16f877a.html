@@ -20,53 +20,77 @@
 	<div class="container">
 		<div class="col-md-12 col-sm-3">
 			<xml id="toolbox" style="display:none;">
-				<block type="controls_if"></block>	
-				<block type="logic_compare"></block>
-				<block type="logic_operation"></block>
-				<block type="logic_negate"></block>
-				<block type="logic_boolean"></block>
-				<block type="lists_create_empty"></block>
-				<block type="lists_repeat"></block>
-				<block type="lists_length"></block>
-				<block type="lists_getIndex"></block>
-				<block type="lists_setIndex"></block>
-				<block type="math_number"></block>	
-				<block type="math_arithmetic"></block>
-				<block type="math_single"></block>				<!-- Opcional -->
-				<block type="math_trig"></block>				<!-- Opcional -->
-				<block type="math_constant"></block>			<!-- Opcional -->
-				<block type="math_number_property"></block>
-				<block type="math_change"></block>				<!-- Opcional -->
-				<block type="math_round"></block>
-				<block type="math_on_list"></block>
-				<block type="math_modulo"></block>
-				<block type="math_random_int"></block>			<!-- Opcional -->
-				<block type="math_random_float"></block>		<!-- Opcional -->
-				<block type="procedures_defnoreturn"></block>   <!-- Subrutinas void() -->
-				<block type="procedures_defreturn"></block>	  <!-- Subrutina con valor retorno -->
-				<block type="procedures_ifreturn"></block>
-				<block type="text"></block>
-				<block type="text_join"></block>	
-				<block type="text_append"></block>
-				<block type="text_length"></block>
-				<block type="text_isEmpty"></block>
-				<!-- Opcionales -->
-				<block type="text_indexOf"></block>
-				<block type="text_charAt"></block>
-				<block type="text_getSubstring"></block>
-				<block type="text_print"></block>
-				<!-- ********* -->
-
-				<<!-- Loops-->
-
-				<block type="controls_repeat"></block>
-				<block type="controls_whileUntil"></block>
-				<block type="controls_for"></block>
-				<block type="controls_forEach"></block>
-				<block type="controls_flow_statements"></block>
-				<block type="variables_get"></block>
-				<block type="variables_set"></block>
-				
+				<category name="Control" colour="120">
+					<block type="controls_if"></block>
+					<block type="controls_repeat"></block>
+					<block type="controls_whileUntil"></block>
+					<block type="controls_for"></block>
+					<block type="controls_forEach"></block>
+					<block type="controls_flow_statements"></block>
+				</category>
+				<category name="Texto" colour="160">
+					<block type="text"></block>
+					<block type="text_join"></block>	
+					<block type="text_append"></block>
+					<block type="text_length"></block>
+					<block type="text_isEmpty"></block>
+					<!-- Opcionales -->
+					<!-- <block type="text_indexOf"></block>
+					<block type="text_charAt"></block>
+					<block type="text_getSubstring"></block>
+					<block type="text_print"></block> -->
+				</category>		
+				<category name="Listas" colour="260">
+					<block type="lists_create_empty"></block>
+					<block type="lists_repeat"></block>
+					<block type="lists_length"></block>
+					<block type="lists_getIndex"></block>
+					<block type="lists_setIndex"></block>
+				</category>
+				<category name="Matemáticas" colour="230">
+					<block type="math_number"></block>	
+					<block type="math_arithmetic"></block>
+					<block type="math_single"></block>						
+					<block type="math_constant"></block>			
+					<block type="math_number_property"></block>
+					<block type="math_change"></block>				
+					<block type="math_round"></block>
+					<block type="math_on_list"></block>
+					<block type="math_modulo"></block>
+					<block type="math_random_int"></block>
+					<block type="math_random_float"></block>
+				</category>
+				<category name="Lógica" colour="210">
+					<block type="logic_compare"></block>
+					<block type="logic_operation"></block>
+					<block type="logic_negate"></block>
+					<block type="logic_boolean"></block>	
+				</category>
+				<category name="Variables" colour="330">	
+					<block type="variables_get"></block>
+					<block type="variables_set"></block>	
+				</category>
+				<category name="Subrutinas" colour="290">
+					<block type="procedures_defnoreturn"></block> 
+					<block type="procedures_defreturn"></block>	
+					<block type="procedures_ifreturn"></block>
+				</category>
+				<sep></sep>
+				<category name="Análogico">
+					
+				</category>
+				<category name="Comunicaciones">
+					
+				</category>
+				<category name="Input/Output">
+					
+				</category>
+				<category name="Timers">
+					
+				</category>
+				<category name="Interrupciones">
+					
+				</category>
 			</xml>
 		</div>
 	</div>
@@ -75,6 +99,8 @@
 <script>
 	var workspace = Blockly.inject('blocklyDiv',{
 		toolbox : document.getElementById('toolbox'),
-		trashcan : true	
+		grid : {
+			spacing: 20
+		}
 	});
 </script>
