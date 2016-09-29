@@ -2,21 +2,7 @@
 
 	angular
 		.module('appPickly')
-		.controller('HomeController', HomeController)
 		.controller('PicPageController', PicPageController);
-
-	function HomeController($scope) {
-		$scope.pics = [
-			{
-				name: 'PIC16F877A',
-				url: '#p16f877a'
-			},
-			{
-				name: 'PIC18F4550',
-				url: '#p18f4550'
-			}
-		];
-	};
 
 	function PicPageController($scope,$location){
 		$scope.pic_selected = "";

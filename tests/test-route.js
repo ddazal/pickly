@@ -10,22 +10,46 @@ describe('Testing Routes', function() {
 		$location = _$location_;
 		$rootScope = _$rootScope_;
 		$httpBackend = _$httpBackend_;
-
-		$httpBackend.when('GET', 'partials/p16f877a.html').respond(200);
 	}));
 
 	it('verifica los parámetros de routeProvider',function(){
-		expect($route.routes['/'].controller).toBe('HomeController');
-		expect($route.routes['/'].templateUrl).toBe('partials/home.html');
+		expect($route.current).toBeUndefined();
 
-		expect($route.routes['/p16f877a'].controller).toBe('PicPageController');
-		expect($route.routes['/p16f877a'].templateUrl).toBe('partials/p16f877a.html');
+		$httpBackend.expectGET('partials/home.html').respond(200);
 
-		expect($route.routes['/p18f4550'].controller).toBe('PicPageController');
-		expect($route.routes['/p18f4550'].templateUrl).toBe('partials/p18f4550.html');
+		$location.path('/');
+		$rootScope.$digest();
 
-		expect($route.routes['/error'].templateUrl).toBe('partials/error.html');
+		expect($route.current.templateUrl).toBe('partials/home.html');
+		expect($route.current.controller).toBe('HomeController');
 
-		expect($route.routes[null].redirectTo).toBe('/error');
+		$httpBackend.expectGET('partials/p16f877a.html').respond(200);
+
+		$location.path('/p16f877a');
+		$rootScope.$digest();
+
+		expect($route.current.templateUrl).toBe('partials/p16f877a.html');
+		expect($route.current.controller).toBe('PicPageController');
+
+
+
+		$httpBackend.expectGET('partials/p18f4550.html').respond(200);
+
+		$location.path('/p18f4550');
+		$rootScope.$digest();
+
+		expect($route.current.templateUrl).toBe('partials/p18f4550.html');
+		expect($route.current.controller).toBe('PicPageController');
+
+
+
+		$httpBackend.expectGET('partials/error.html').respond(200);
+
+		$location.path('/error');
+		$rootScope.$digest();
+
+		expect($route.current.templateUrl).toBe('partials/error.html');
+
+
 	});
 });
