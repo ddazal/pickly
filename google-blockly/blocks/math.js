@@ -43,7 +43,7 @@ Blockly.Blocks['math_number'] = {
     this.setHelpUrl(Blockly.Msg.MATH_NUMBER_HELPURL);
     this.setColour(Blockly.Blocks.math.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldNumber('0'), 'NUM');
+        .appendField(new Blockly.FieldNumber(0,0,255), 'NUM');
     this.setOutput(true, 'Number');
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;

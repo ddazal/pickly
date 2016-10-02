@@ -3,13 +3,13 @@
 	<div class="container-fluid">
 		<form class="navbar-form">
 			<div class="btn-group">
-  				<a type="button" class="btn btn-primary" ng-click="click_home()"><span class="fa fa-home fa-lg"></span></a>
+  				<a type="button" class="btn btn-primary" ng-click="clickHome()"><span class="fa fa-home fa-lg fa-fw"></span></a>
   				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 			  	<ul class="dropdown-menu">
-			    	<li><a ng-href="http://ww1.microchip.com/downloads/en/DeviceDoc/39582C.pdf" target="blank">Ver datasheet</a></li>
-			    	<li><a ng-click="click_change_pic()">Cambiar a {{pic_not_selected}}</a></li>
+			    	<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank">Ver datasheet</a></li>
+			    	<li><a role="button" ng-click="changePic()">Cambiar a {{picNotChosen}}</a></li>
 			  	</ul>
-			  	<p class="navbar-text">{{pic_selected}}</p>
+			  	<p class="navbar-text">{{picChosen}}</p>
 			</div>
 		</form>
 	</div>
@@ -50,9 +50,7 @@
 				</category>
 				<category name="Matemáticas" colour="230">
 					<block type="math_number"></block>	
-					<block type="math_arithmetic"></block>
-					<block type="math_single"></block>						
-					<block type="math_constant"></block>			
+					<block type="math_arithmetic"></block>			
 					<block type="math_number_property"></block>
 					<block type="math_change"></block>				
 					<block type="math_round"></block>
@@ -82,9 +80,16 @@
 				</category>
 				<category name="Comunicaciones" colour="20">
 					<block type="comm_send"></block>
+					<block type="comm_receive"></block>
 				</category>
-				<category name="Input/Output">
-					
+				<category name="Input/Output" colour="65">
+					<block type="io_type"></block>
+					<block type="io_ports"></block>
+					<block type="io_get"></block>
+					<block type="io_set"></block>		
+					<block type="io_pins"></block>
+					<block type="io_pin_set"></block>
+					<block type="io_pin_get"></block>
 				</category>
 				<category name="Timers">
 					
