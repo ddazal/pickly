@@ -5,7 +5,7 @@
 		.controller('HomeController', HomeController);
 
 
-	function HomeController($scope) {
+	function HomeController($scope,$translate) {
 		$scope.pics = [
 			{
 				name: 'PIC16F877A',
@@ -15,7 +15,10 @@
 				name: 'PIC18F4550',
 				url: '#p18f4550'
 			}
-		];
+		]
+		$scope.changeLanguage = function(Lan_key){
+			$translate.use(Lan_key)
+		};
 	};
 
 })();

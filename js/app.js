@@ -1,10 +1,10 @@
 (function(){
 	
 	angular
-		.module('appPickly', ['ngRoute'])
+		.module('appPickly', ['ngRoute', 'pascalprecht.translate'])
 		.config(config);
 
-	function config($routeProvider) {
+	function config($routeProvider,$translateProvider) {
 		$routeProvider
 			.when('/',{
 				templateUrl : 'partials/home.html',
@@ -23,7 +23,14 @@
 			})
 			.otherwise({
 				redirectTo : '/error'
-			});
+			})
+		$translateProvider
+			.translations('es',translationsES)
+			.translations('en',translationsEN)
+			.preferredLanguage('es');
 	};
+
+	
 	
 })();
+
