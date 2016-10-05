@@ -6,10 +6,17 @@
   				<a type="button" class="btn btn-primary" ng-click="clickHome()"><span class="fa fa-home fa-lg fa-fw"></span></a>
   				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 			  	<ul class="dropdown-menu">
-			    	<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank">Ver datasheet</a></li>
-			    	<li><a role="button" ng-click="changePic()">Cambiar a {{picNotChosen}}</a></li>
+			    	<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank" translate="pic.option1"></a></li>
+			    	<li><a role="button" ng-click="changePic()" translate="pic.option2" translate-values="{otherPic: '{{picNotChosen}}'}"></a></li>
 			  	</ul>
 			  	<p class="navbar-text">{{picChosen}}</p>
+			</div>
+			<div class="btn-group pull-right">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="fa fa-globe fa-fw"></span></button>
+				<ul class="dropdown-menu">
+					<li><a role="button" translate="pic.BTN_es" ng-click="changeLanguage('es');"></a></li>
+					<li><a role="button" translate="pic.BTN_en" ng-click="changeLanguage('en');"></a></li>
+				</ul>
 			</div>
 		</form>
 	</div>

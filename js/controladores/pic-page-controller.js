@@ -4,7 +4,7 @@
 		.module('appPickly')
 		.controller('PicPageController', PicPageController);
 
-	function PicPageController($scope, $route, $location){
+	function PicPageController($scope, $route, $location, $translate){
 		// Pic seleccionado
 		$scope.picChosen = "";
 		$scope.picNotChosen = "";
@@ -33,29 +33,10 @@
 			if ($location.url() === "/p16f877a") { $location.path("/p18f4550"); }
 			else { $location.path("/p16f877a"); }
 		};
-
-
-		// $scope.click_home = function(){
-		// 	var regresar = confirm('Ha seleccionado volver a la página de inicio. Su trabajo no será guardado.');
-		// 	if (regresar == true) {
-		// 		$location.path("/");
-		// 	} else {
-		// 		$location.path($location.url());
-		// 	}
-		// };
-
-		// $scope.click_change_pic = function(){
-		// 	var cambiar = confirm('Ha seleccionado cambiar de microcontrolador. Su trabajo no será guardado.');
-		// 	if (cambiar === true) {
-		// 		if ($location.url() === "/p16f877a") {
-		// 			$location.path("/p18f4550");
-		// 		} else {
-		// 			$location.path("/p16f877a");
-		// 		};
-		// 	} else {
-		// 		$location.path($location.url());
-		// 	}
-		// };
+		// Traductor
+		$scope.changeLanguage = function(Lan_key){
+			$translate.use(Lan_key)
+		};
 	};
 	
 })();

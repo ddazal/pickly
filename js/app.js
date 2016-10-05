@@ -25,8 +25,8 @@
 				redirectTo : '/error'
 			})
 		$translateProvider
-			.translations('es',translationsES)
-			.translations('en',translationsEN)
+			.translations('es',translationES)
+			.translations('en',translationEN)
 			.preferredLanguage('es');
 	};
 
