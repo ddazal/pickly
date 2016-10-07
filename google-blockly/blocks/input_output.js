@@ -100,3 +100,38 @@ Blockly.Blocks['io_pin_get'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+// Prueba de mutador
+Blockly.Blocks['test_1'] = {
+    init: function(){
+      var PROPERTIES = [['Activar','ENABLED'],['Desactivar','DISABLED']];
+      var dropdown = new Blockly.FieldDropdown(PROPERTIES,function(option){
+        var whenDisabledInput = (option == 'DISABLED');
+        this.sourceBlock_.updateShape_(whenDisabledInput);
+      });
+      this.appendDummyInput()
+          .appendField("Opcion")
+          .appendField(dropdown,'PROPERTY');
+      this.setInputsInline(true);
+      this.setColour(45);
+    },
+    mutationToDom: function(){
+      var container = document.createElement('mutation');
+      var whenDisabledInput = (this.getFieldValue("PROPERTY") == "DISABLED");
+      container.setAttribute('when_disabled_input','whenDisabledInput');
+      return container;  
+    },
+    domToMutation: function(xmlElement){
+      var whenDisabledInput = (xmlElement.getAttribute('when_disabled_input') == 'true');
+      this.updateShape_(whenDisabledInput);
+    },
+    updateShape_: function(whenDisabledInput){
+        var inputExists = this.getInput('INPUT');
+        if(whenDisabledInput){
+            if(!inputExists){
+                this.appendValueInput('INPUT');
+            }
+        } else if (inputExists) {
+            this.removeInput("INPUT");
+        }
+    }
+};

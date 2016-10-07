@@ -17,9 +17,10 @@ module.exports = function(config) {
     files: [
       'js/shared/angular.min.js',
       'js/shared/angular-route.min.js',
+      'js/shared/angular-translate.min.js',
       'js/shared/angular-mocks.js',
       'js/app.js',
-      'js/controladores/app-controller.js',
+      'js/controladores/*.js',
       'tests/*.js'
     ],
 
