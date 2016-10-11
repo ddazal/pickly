@@ -27,10 +27,9 @@
 		$translateProvider
 			.translations('es',translationES)
 			.translations('en',translationEN)
-			.preferredLanguage('es');
+			.preferredLanguage('es')
+			.useSanitizeValueStrategy('escapeParameters');
 	};
 
-	
-	
 })();
 

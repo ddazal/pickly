@@ -11,12 +11,14 @@
 			  	</ul>
 			  	<p class="navbar-text">{{picChosen}}</p>
 			</div>
-			<div class="btn-group pull-right">
-				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="fa fa-globe fa-fw"></span></button>
-				<ul class="dropdown-menu">
-					<li><a role="button" translate="pic.BTN_es" ng-click="changeLanguage('es');"></a></li>
-					<li><a role="button" translate="pic.BTN_en" ng-click="changeLanguage('en');"></a></li>
-				</ul>
+			<div class="form-group pull-right">
+				<div class="btn-group">
+					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="fa fa-globe fa-fw"></span></button>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li><a role="button" translate="pic.BTN_es" ng-click="changeLanguage('es');"></a></li>
+						<li><a role="button" translate="pic.BTN_en" ng-click="changeLanguage('en');"></a></li>
+					</ul>
+				</div>
 			</div>
 		</form>
 	</div>

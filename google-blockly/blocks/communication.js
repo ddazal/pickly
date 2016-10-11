@@ -1,3 +1,10 @@
+/**
+ * Los bloques se encuentran basados en las siguientes funciones del software PICC
+ * The following blocks are based on the next PICC software functions
+ * getc();
+ * putc();
+ */
+
 Blockly.Blocks['comm_send'] = {
   init: function() {
     this.appendValueInput("set_data")
@@ -6,8 +13,6 @@ Blockly.Blocks['comm_send'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(20);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
   }
 };
 Blockly.Blocks['comm_receive'] = {
@@ -20,7 +25,5 @@ Blockly.Blocks['comm_receive'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(20);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
   }
 };

@@ -1,6 +1,6 @@
 var translationEN = {
 	"home" : {
-		"description" : "Web editor visual programming language for PIC&reg; controller",
+		"description" : "Web based visual programming editor for PIC&reg; controller",
 		"btn_msg" : "Choose an option <span class='caret'></span>",
 		"header_thumb1" : "Step 1",
 		"header_thumb2" : "Step 2",
