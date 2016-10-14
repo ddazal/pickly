@@ -57,7 +57,8 @@ Blockly.Blocks['adc_channel'] = {
     this.appendDummyInput()
         .appendField("Canal ADC")
         .appendField(new Blockly.FieldNumber(0, 0, 7), "channel");
-    this.setOutput(true, null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setColour(0);
   }
 };

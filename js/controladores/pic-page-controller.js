@@ -4,11 +4,20 @@
 		.module('appPickly')
 		.controller('PicPageController', PicPageController);
 
-	function PicPageController($scope, $route, $location, $translate){
+	function PicPageController($scope, $route, $location, $translate, $rootScope){
 		// Pic seleccionado
 		$scope.picChosen = "";
 		$scope.picNotChosen = "";
 		$scope.datasheet = "";
+		$scope.mensaje = $translate('evento.advertencia').then(function(translationId){
+			$scope.mensaje = translationId;
+		});
+
+		$rootScope.$on('$translateChangeSuccess', function() {
+			$translate('evento.advertencia').then(function(translationId){
+				$scope.mensaje = translationId;
+			});			
+		})
 
 		if ($location.url()==="/p16f877a") {
 			$scope.picChosen = "PIC16F877A";
@@ -21,7 +30,7 @@
 		}
 		// Evento de regresar utilizando el navegador
 		$scope.$on('$routeChangeStart', function(event){
-			var back = confirm("¿Salir de esta página? Su trabajo no será guardado");
+			var back = confirm($scope.mensaje);
 			if(!back) { event.preventDefault(); }
 		});
 		// Volver al home

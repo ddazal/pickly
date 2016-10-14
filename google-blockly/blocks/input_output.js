@@ -60,42 +60,136 @@ Blockly.Blocks['io_set'] = {
 };
 Blockly.Blocks['io_pins'] = {
   init: function() {
-    this.appendDummyInput()
+    var PROPERTIES = [["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]];
+    var dropdown = new Blockly.FieldDropdown(PROPERTIES, function(option) {
+            var whenPortA = (option == "PORT_A");
+            var whenPortE = (option == "PORT_E");
+            this.sourceBlock_.updateShapePort_(whenPortA, whenPortE);
+        });
+    this.appendDummyInput("PORTpins")
         .appendField("PIN")
-        .appendField(new Blockly.FieldDropdown([["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]]), "PORToptions")
-        .appendField(new Blockly.FieldNumber(0, 0, 7), "PINnumber");
+        .appendField(dropdown, "PORToptions");
+        //.appendField(new Blockly.FieldNumber(0, 0, 7), "PINnumber");
     this.appendValueInput("io_mode")
         .setCheck("io");
     this.setInputsInline(true);
     this.setPreviousStatement(false, null);
     this.setNextStatement(false, null);
     this.setColour(65);
+  },
+  mutationToDom: function() {
+    var container = document.createElement("mutation");
+    var whenPortA = (this.getFieldValue("PORToptions") == "PORT_A");
+    var whenPortE = (this.getFieldValue("PORToptions") == "PORT_E");
+    container.setAttribute("when_port_a", whenPortA);
+    container.setAttribute("when_port_e", whenPortE);
+    return container;
+  },
+  domToMutation: function(xmlElement) {
+    var whenPortA = (xmlElement.getAttribute("when_port_a") == "true");
+    var whenPortE = (xmlElement.getAttribute("when_port_e") == "true");
+    this.updateShapePort_(whenPortA, whenPortE);
+  },
+  updateShapePort_: function(whenPortA, whenPortE) {
+    var getBlock = this.getInput("PORTpins");
+    if (whenPortA) {
+        getBlock.removeField("PINnumber");
+        getBlock.appendField(new Blockly.FieldNumber(0, 0, 5), "PINnumber");
+    } else if (whenPortE) {
+        getBlock.removeField("PINnumber");
+        getBlock.appendField(new Blockly.FieldNumber(0, 0, 2), "PINnumber");
+    } else {
+        getBlock.removeField("PINnumber");
+        getBlock.appendField(new Blockly.FieldNumber(0, 0, 7), "PINnumber");
+    }
   }
 };
 Blockly.Blocks['io_pin_set'] = {
   init: function() {
-    this.appendDummyInput()
+    var PROPERTIES = [["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]];
+    var dropdown = new Blockly.FieldDropdown(PROPERTIES, function(option) {
+            var whenPortA = (option == "PORT_A");
+            var whenPortE = (option == "PORT_E");
+            this.sourceBlock_.updateShapePort_(whenPortA, whenPortE);
+        });
+    this.appendDummyInput("PORTpins")
         .appendField("Poner en ")
         .appendField(new Blockly.FieldDropdown([["alto", "HIGH"], ["bajo", "LOW"]]), "PINstate")
         .appendField("pin")
-        .appendField(new Blockly.FieldDropdown([["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]]), "PORToptions")
-        .appendField(new Blockly.FieldNumber(0, 0, 7), "PINnumber");
+        .appendField(dropdown, "PORToptions");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(65);
+  },
+  mutationToDom: function() {
+    var container = document.createElement("mutation");
+    var whenPortA = (this.getFieldValue("PORToptions") == "PORT_A");
+    var whenPortE = (this.getFieldValue("PORToptions") == "PORT_E");
+    container.setAttribute("when_port_a", whenPortA);
+    container.setAttribute("when_port_e", whenPortE);
+    return container;
+  },
+  domToMutation: function(xmlElement) {
+    var whenPortA = (xmlElement.getAttribute("when_port_a") == "true");
+    var whenPortE = (xmlElement.getAttribute("when_port_e") == "true");
+    this.updateShapePort_(whenPortA, whenPortE);
+  },
+  updateShapePort_: function(whenPortA, whenPortE) {
+    var getBlock = this.getInput("PORTpins");
+    if (whenPortA) {
+        getBlock.removeField("PINnumber");
+        getBlock.appendField(new Blockly.FieldNumber(0, 0, 5), "PINnumber");
+    } else if (whenPortE) {
+        getBlock.removeField("PINnumber");
+        getBlock.appendField(new Blockly.FieldNumber(0, 0, 2), "PINnumber");
+    } else {
+        getBlock.removeField("PINnumber");
+        getBlock.appendField(new Blockly.FieldNumber(0, 0, 7), "PINnumber");
+    }
   }
 };
 Blockly.Blocks['io_pin_get'] = {
   init: function() {
-    this.appendDummyInput()
+    var PROPERTIES = [["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]];
+    var dropdown = new Blockly.FieldDropdown(PROPERTIES, function(option) {
+            var whenPortA = (option == "PORT_A");
+            var whenPortE = (option == "PORT_E");
+            this.sourceBlock_.updateShapePort_(whenPortA, whenPortE);
+        });
+    this.appendDummyInput("PORTpins")
         .appendField("Pin")
-        .appendField(new Blockly.FieldDropdown([["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]]), "PORToptions")
-        .appendField(new Blockly.FieldNumber(0, 0, 7), "PINnumber");
+        .appendField(dropdown, "PORToptions");
     this.setInputsInline(true);
     this.setOutput(true, "Boolean");
     this.setColour(65);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
+  },
+  mutationToDom: function() {
+    var container = document.createElement("mutation");
+    var whenPortA = (this.getFieldValue("PORToptions") == "PORT_A");
+    var whenPortE = (this.getFieldValue("PORToptions") == "PORT_E");
+    container.setAttribute("when_port_a", whenPortA);
+    container.setAttribute("when_port_e", whenPortE);
+    return container;
+  },
+  domToMutation: function(xmlElement) {
+    var whenPortA = (xmlElement.getAttribute("when_port_a") == "true");
+    var whenPortE = (xmlElement.getAttribute("when_port_e") == "true");
+    this.updateShapePort_(whenPortA, whenPortE);
+  },
+  updateShapePort_: function(whenPortA, whenPortE) {
+    var getBlock = this.getInput("PORTpins");
+    if (whenPortA) {
+        getBlock.removeField("PINnumber");
+        getBlock.appendField(new Blockly.FieldNumber(0, 0, 5), "PINnumber");
+    } else if (whenPortE) {
+        getBlock.removeField("PINnumber");
+        getBlock.appendField(new Blockly.FieldNumber(0, 0, 2), "PINnumber");
+    } else {
+        getBlock.removeField("PINnumber");
+        getBlock.appendField(new Blockly.FieldNumber(0, 0, 7), "PINnumber");
+    }
   }
 };

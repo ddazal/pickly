@@ -16,6 +16,9 @@ var translationEN = {
 		"option2" : "Change to {{otherPic}}",
 		"BTN_es" : "Spanish",
 		"BTN_en" : "English"
+	},
+	"evento" : {
+		"advertencia" : "Leave this page? Your work will not be saved."
 	}
 }
 
@@ -37,5 +40,8 @@ var translationES = {
 		"option2" : "Cambiar a {{otherPic}}",
 		"BTN_es" : "Español",
 		"BTN_en" : "Inglés"
+	},
+	"evento" : {
+		"advertencia" : "¿Salir de esta página? Su trabajo no será guardado."
 	}	
 }
