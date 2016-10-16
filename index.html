@@ -22,7 +22,10 @@
 </head>
 <body>
 
-	<div id="blocklyDiv" ng-view></div>
+	<div>
+		<div ng-view id="blocklyDiv">
+		</div>
+	</div>
 	
 
 	<!-- AngularJS -->
@@ -43,5 +46,7 @@
 	<script src="google-blockly/blocks/analog.js"></script>
 	<script src="google-blockly/blocks/timers.js"></script>
 	<script src="google-blockly/blocks/interrupts.js"></script>
+	<!-- Generadores -->
+	<script src="google-blockly/javascript_compressed.js"></script>
 </body>
 </html>

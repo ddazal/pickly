@@ -3,11 +3,12 @@
 	<div class="container-fluid">
 		<form class="navbar-form">
 			<div class="btn-group">
-  				<a type="button" class="btn btn-primary" ng-click="clickHome()"><span class="fa fa-home fa-lg"></span></a>
+  				<a type="button" class="btn btn-primary" ng-click="clickHome()"><span class="fa fa-home fa-lg fa-fw"></span></a>
   				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 			  	<ul class="dropdown-menu">
 			    	<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank" translate="pic.option1"></a></li>
 			    	<li><a role="button" ng-click="changePic()" translate="pic.option2" translate-values="{otherPic: '{{picNotChosen}}'}"></a></li>
+			    	<li><a role="button" onclick="showCode()" translate="pic.option3"></a></li>
 			  	</ul>
 			  	<p class="navbar-text">{{picChosen}}</p>
 			</div>
@@ -25,113 +26,112 @@
 </nav>
 
 <!-- Bloques -->
-<div class="row">
-	<div class="container">
-		<div class="col-md-12 col-sm-3">
-			<xml id="toolbox" style="display:none;">
-				<category name="Control" colour="120">
-					<block type="controls_if"></block>
-					<block type="controls_repeat"></block>
-					<block type="controls_whileUntil"></block>
-					<block type="controls_for"></block>
-					<block type="controls_forEach"></block>
-					<block type="controls_flow_statements"></block>
-				</category>
-				<category name="Texto" colour="160">
-					<block type="text"></block>
-					<block type="text_join"></block>	
-					<block type="text_append"></block>
-					<block type="text_length"></block>
-					<block type="text_isEmpty"></block>
-					<!-- Opcionales -->
-					<!-- <block type="text_indexOf"></block>
-					<block type="text_charAt"></block>
-					<block type="text_getSubstring"></block>
-					<block type="text_print"></block> -->
-				</category>		
-				<category name="Listas" colour="260">
-					<block type="lists_create_empty"></block>
-					<block type="lists_repeat"></block>
-					<block type="lists_length"></block>
-					<block type="lists_getIndex"></block>
-					<block type="lists_setIndex"></block>
-				</category>
-				<category name="Matemáticas" colour="230">
-					<block type="math_number"></block>	
-					<block type="math_arithmetic"></block>
-					<block type="math_single"></block>						
-					<block type="math_constant"></block>			
-					<block type="math_number_property"></block>
-					<block type="math_change"></block>				
-					<block type="math_round"></block>
-					<block type="math_on_list"></block>
-					<block type="math_modulo"></block>
-					<block type="math_random_int"></block>
-					<block type="math_random_float"></block>
-				</category>
-				<category name="Lógica" colour="210">
-					<block type="logic_compare"></block>
-					<block type="logic_operation"></block>
-					<block type="logic_negate"></block>
-					<block type="logic_boolean"></block>	
-				</category>
-				<category name="Variables" colour="330">	
-					<block type="variables_get"></block>
-					<block type="variables_set"></block>	
-				</category>
-				<category name="Subrutinas" colour="290">
-					<block type="procedures_defnoreturn"></block> 
-					<block type="procedures_defreturn"></block>	
-					<block type="procedures_ifreturn"></block>
-				</category>
-				<sep></sep>
-				<category name="Análogico" colour="0">
-					<block type="adc_done"></block>
-					<block type="adc_read"></block>
-					<block type="adc_channel"></block>
-					<block type="adc_setup"></block>
-				</category>
-				<category name="Comunicaciones" colour="20">
-					<block type="comm_send"></block>
-					<block type="comm_receive"></block>
-				</category>
-				<category name="Input/Output" colour="65">
-					<block type="io_type"></block>
-					<block type="io_ports"></block>
-					<block type="io_get"></block>
-					<block type="io_set"></block>		
-					<block type="io_pins"></block>
-					<block type="io_pin_set"></block>
-					<block type="io_pin_get"></block>
-				</category>
-				<category name="Timers" colour="180">
-					<category name="Timer 0">
-						<block type="tmr_tmr0_get"></block>
-						<block type="tmr_tmr0_set"></block>
-						<block type="tmr_tmr0_setup"></block>
-					</category>
-					<category name="Timer 1">
-						<block type="tmr_tmr1_get"></block>
-						<block type="tmr_tmr1_set"></block>
-						<block type="tmr_tmr1_setup"></block>
-					</category>
-					<category name="Timer 2">
-						<block type="tmr_tmr2_get"></block>
-						<block type="tmr_tmr2_set"></block>
-						<block type="tmr_tmr2_setup"></block>
-					</category>
-				</category>
-				<category name="Interrupciones">
-					<block type=""></block>
-					<block type=""></block>
-					<block type=""></block>
-					<block type=""></block>
-					<block type=""></block>
-				</category>
-			</xml>
-		</div>
-	</div>
-</div>
+<xml id="toolbox">
+	<category name="Control" colour="120">
+		<block type="controls_if"></block>
+		<block type="controls_repeat"></block>
+		<block type="controls_whileUntil"></block>
+		<block type="controls_for"></block>
+		<block type="controls_forEach"></block>
+		<block type="controls_flow_statements"></block>
+		<block type="delay_block"></block>
+	</category>
+	<category name="Texto" colour="160">
+		<block type="text"></block>
+		<block type="text_join"></block>	
+		<block type="text_append"></block>
+		<block type="text_length"></block>
+		<block type="text_isEmpty"></block>
+		<!-- Opcionales -->
+		<!-- <block type="text_indexOf"></block>
+		<block type="text_charAt"></block>
+		<block type="text_getSubstring"></block>
+		<block type="text_print"></block> -->
+	</category>		
+	<category name="Listas" colour="260">
+		<block type="lists_create_empty"></block>
+		<block type="lists_repeat"></block>
+		<block type="lists_length"></block>
+		<block type="lists_getIndex"></block>
+		<block type="lists_setIndex"></block>
+	</category>
+	<category name="Matemáticas" colour="230">
+		<block type="math_number"></block>	
+		<block type="math_arithmetic"></block>			
+		<block type="math_number_property"></block>
+		<block type="math_change"></block>				
+		<block type="math_round"></block>
+		<block type="math_on_list"></block>
+		<block type="math_modulo"></block>
+		<block type="math_random_int"></block>
+		<block type="math_random_float"></block>
+	</category>
+	<category name="Lógica" colour="210">
+		<block type="logic_compare"></block>
+		<block type="logic_operation"></block>
+		<block type="logic_negate"></block>
+		<block type="logic_boolean"></block>	
+	</category>
+	<category name="Variables" colour="330">	
+		<block type="variables_get"></block>
+		<block type="variables_set"></block>	
+	</category>
+	<category name="Subrutinas" colour="290">
+		<block type="procedures_defnoreturn"></block> 
+		<block type="procedures_defreturn"></block>	
+		<block type="procedures_ifreturn"></block>
+	</category>
+	<sep></sep>
+	<!-- Bloques propios del microcontrolador -->
+	<category name="Analógico" colour="0">
+		<block type="adc_done"></block>
+		<block type="adc_read"></block>
+		<block type="adc_channel"></block>
+		<block type="adc_setup"></block>
+	</category>
+	<category name="Comunicaciones" colour="20">
+		<block type="comm_send"></block>
+		<block type="comm_receive"></block>
+		<block type="comm_baud_rate"></block>
+	</category>
+	<category name="Input/Output" colour="65">
+		<block type="io_type"></block>
+		<block type="io_ports"></block>
+		<block type="io_get"></block>
+		<block type="io_set"></block>		
+		<block type="io_pins"></block>
+		<block type="io_pin_set"></block>
+		<block type="io_pin_get"></block>
+	</category>
+	<category name="Timers" colour="180">
+		<category name="Timer 0">
+			<block type="tmr_tmr0_get"></block>
+			<block type="tmr_tmr0_set"></block>
+			<block type="tmr_tmr0_setup"></block>
+		</category>
+		<category name="Timer 1">
+			<block type="tmr_tmr1_get"></block>
+			<block type="tmr_tmr1_set"></block>
+			<block type="tmr_tmr1_setup"></block>
+		</category>
+		<category name="Timer 2">
+			<block type="tmr_tmr2_get"></block>
+			<block type="tmr_tmr2_set"></block>
+			<block type="tmr_tmr2_setup"></block>
+		</category>
+	</category>
+	<category name="Interrupciones" colour="85">
+		<block type="int_enable"></block>
+		<block type="int_timer0"></block>
+		<block type="int_timer1"></block>
+		<block type="int_timer2"></block>
+		<block type="int_rb"></block>
+		<block type="int_ext"></block>
+		<block type="int_ad"></block>
+		<block type="int_tbe"></block>
+		<block type="int_rda"></block>
+	</category>
+</xml>
 
 <script>
 	var workspace = Blockly.inject('blocklyDiv',{
@@ -140,4 +140,11 @@
 			spacing: 20
 		}
 	});
+
+	function showCode() {
+      // Generate JavaScript code and display it.
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.JavaScript.workspaceToCode(workspace);
+      alert(code);
+    }
 </script>

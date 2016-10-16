@@ -14,6 +14,7 @@ var translationEN = {
 	"pic" : {
 		"option1" : "View datasheet",
 		"option2" : "Change to {{otherPic}}",
+		"option3" : "View code",
 		"BTN_es" : "Spanish",
 		"BTN_en" : "English"
 	},
@@ -38,6 +39,7 @@ var translationES = {
 	"pic" : {
 		"option1" : "Ver datasheet",
 		"option2" : "Cambiar a {{otherPic}}",
+		"option3" : "Ver código",
 		"BTN_es" : "Español",
 		"BTN_en" : "Inglés"
 	},
