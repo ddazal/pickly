@@ -5,12 +5,21 @@
 		.controller('PicPageController', PicPageController);
 
 	function PicPageController($scope, $route, $location, $translate, $rootScope){
+		$scope.tab = 1;
 		$scope.picChosen = "";
 		$scope.picNotChosen = "";
 		$scope.datasheet = "";
 		$scope.mensaje = $translate('evento.advertencia').then(function(translationId){
 			$scope.mensaje = translationId;
 		});
+
+		$scope.selectTab = function(setTab) {
+			$scope.tab = setTab;
+		};
+
+		$scope.tabIsSelected = function(checkTab) {
+			return $scope.tab === checkTab;
+		};
 
 		$rootScope.$on('$translateChangeSuccess', function() {
 			$translate('evento.advertencia').then(function(translationId){
