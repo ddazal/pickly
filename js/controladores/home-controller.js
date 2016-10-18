@@ -17,7 +17,8 @@
 			}
 		]
 		$scope.changeLanguage = function(Lan_key){
-			$translate.use(Lan_key)
+			$translate.use(Lan_key);
+			$('#block_lang').replaceWith('<script id="block_lang" src="google-blockly/msg/js/'+Lan_key+'.js"></script>');
 		};
 	};
 

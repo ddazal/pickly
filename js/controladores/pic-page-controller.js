@@ -5,7 +5,6 @@
 		.controller('PicPageController', PicPageController);
 
 	function PicPageController($scope, $route, $location, $translate, $rootScope){
-		// Pic seleccionado
 		$scope.picChosen = "";
 		$scope.picNotChosen = "";
 		$scope.datasheet = "";
@@ -17,7 +16,7 @@
 			$translate('evento.advertencia').then(function(translationId){
 				$scope.mensaje = translationId;
 			});			
-		})
+		});
 
 		if ($location.url()==="/p16f877a") {
 			$scope.picChosen = "PIC16F877A";
@@ -44,7 +43,8 @@
 		};
 		// Traductor
 		$scope.changeLanguage = function(Lan_key){
-			$translate.use(Lan_key)
+			$translate.use(Lan_key);
+			$('#block_lang').replaceWith('<script id="block_lang" src="google-blockly/msg/js/'+Lan_key+'.js"></script>');
 		};
 	};
 	
