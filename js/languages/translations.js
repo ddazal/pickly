@@ -16,10 +16,16 @@ var translationEN = {
 		"option2" : "Change to {{otherPic}}",
 		"option3" : "View code",
 		"BTN_es" : "Spanish",
-		"BTN_en" : "English"
+		"BTN_en" : "English",
+		"tab1" : "Blocks",
+		"tab2" : "Code"
 	},
 	"evento" : {
 		"advertencia" : "Leave this page? Your work will not be saved."
+	},
+	"error_page" : {
+		"warning" : "This page doesn't exist",
+		"btn_back" : "Go to home"
 	}
 }
 
@@ -41,9 +47,15 @@ var translationES = {
 		"option2" : "Cambiar a {{otherPic}}",
 		"option3" : "Ver código",
 		"BTN_es" : "Español",
-		"BTN_en" : "Inglés"
+		"BTN_en" : "Inglés",
+		"tab1" : "Bloques",
+		"tab2" : "Código"
 	},
 	"evento" : {
 		"advertencia" : "¿Salir de esta página? Su trabajo no será guardado."
+	},
+	"error_page" : {
+		"warning" : "Esta página no existe",
+		"btn_back" : "Volver al inicio"
 	}	
 }

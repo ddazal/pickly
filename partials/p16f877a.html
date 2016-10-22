@@ -8,7 +8,6 @@
 			  	<ul class="dropdown-menu">
 			    	<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank" translate="pic.option1"></a></li>
 			    	<li><a role="button" ng-click="changePic()" translate="pic.option2" translate-values="{otherPic: '{{picNotChosen}}'}"></a></li>
-			    	<li><a role="button" onclick="showCode()" translate="pic.option3"></a></li>
 			  	</ul>
 			  	<p class="navbar-text">{{picChosen}}</p>
 			</div>
@@ -23,8 +22,8 @@
 			</div>
 			<div class="form-group pull-right" ng-init="tab = 1">
 				<ul class="nav nav-tabs">
-					<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)">Bloques</a></li>
-					<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" >Codigo</a></li>
+					<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.tab1"></a></li>
+					<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.tab2"></a></li>
 				</ul>
 			</div>
 		</form>
@@ -141,21 +140,39 @@
 	</xml>
 </div>
 
+<!-- Panel de código -->
 <div class="panel" ng-show="tabIsSelected(2)">
 	<pre id="codigo"></pre>
 </div>
-<script>
-	var workspace = Blockly.inject('blocklyDiv',{
-		toolbox : document.getElementById('toolbox'),
-		trashcan : true,
-		grid : {
-			spacing: 20
-		}
-	});
 
-	function myUpdateFunction(event) {
-		  var code = Blockly.JavaScript.workspaceToCode(workspace);
-		  document.getElementById('codigo').innerHTML = code;
-	}
-	workspace.addChangeListener(myUpdateFunction);
+<script>
+	$(function() {
+
+		/* Propiedades CSS del workspace */
+		$("#blocklyDiv").css("height", $(window).height() - $(".navbar").height());
+		$(".panel").css("height", $(window).height() - $(".navbar").height());
+
+		/* Evento
+		 * Detecta los cambios en el tamaño de la pantalla y cambia el tamaño del área de trabajo
+		 */
+		$(window).resize(function() {
+			$("#blocklyDiv").innerHeight($(window).height() - $(".navbar").height());
+			$(".panel").innerHeight($(window).height() - $(".navbar").height());
+		}).resize();
+
+		var workspace = Blockly.inject('blocklyDiv',{
+			toolbox : document.getElementById('toolbox'),
+			trashcan : true,
+			grid : {
+				spacing: 20
+			}
+		});
+
+		/* Generación de código en tiempo real */
+		function myUpdateFunction(event) {
+			  var code = Blockly.JavaScript.workspaceToCode(workspace);
+			  $('#codigo').html(code);
+		}
+		workspace.addChangeListener(myUpdateFunction);
+	});
 </script>

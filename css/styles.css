@@ -41,9 +41,6 @@
 .thumbnail {
 	height: 180px;
 }
-#blocklyDiv {
-	height: 550px;
-}
 .navbar-text {
 	font-size: 20px;
 	margin-top: 5px;
@@ -51,4 +48,11 @@
 }
 .lang {
 	margin-top: 5px;
+}
+.panel {
+	background-color: #f5f5f5;
+}
+#codigo {
+	border: 0px;
+	border-radius: 0px;
 }
