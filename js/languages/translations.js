@@ -27,7 +27,7 @@ var translationEN = {
 		"warning" : "This page doesn't exist",
 		"btn_back" : "Go to home"
 	}
-}
+};
 
 var translationES = {
 	"home" : {
@@ -58,4 +58,4 @@ var translationES = {
 		"warning" : "Esta página no existe",
 		"btn_back" : "Volver al inicio"
 	}	
-}
+};

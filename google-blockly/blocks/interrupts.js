@@ -1,8 +1,8 @@
 Blockly.Blocks['int_enable'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Habilitar interrupción")
-        .appendField(new Blockly.FieldDropdown([["Global", "GLOBAL"], ["Timer 0", "INT_TIMER0"], ["Timer 1", "INT_TIMER1"], ["Timer 2", "INT_TIMER2"], ["Cambio en RB4-RB7", "INT_RB"], ["Cambio en RB0", "INT_EXT"], ["ADC finalizado", "INT_AD"], ["Buffer vacío", "INT_TBE"], ["Dato disponible", "INT_RDA"]]), "ISRoptions");
+        .appendField()
+        .appendField(new Blockly.FieldDropdown([["Global", "GLOBAL"], ["Timer 0", "INT_TIMER0"], ["Timer 1", "INT_TIMER1"], ["Timer 2", "INT_TIMER2"], [Blockly.Msg.INT_ENABLE_RB, "INT_RB"], [Blockly.Msg.INT_ENABLE_EXT, "INT_EXT"], [Blockly.Msg.INT_ENABLE_AD, "INT_AD"], [Blockly.Msg.INT_ENABLE_TBE, "INT_TBE"], [Blockly.Msg.INT_ENABLE_RDA, "INT_RDA"]]), "ISRoptions");
     this.setColour(85);
   }
 };
@@ -33,7 +33,7 @@ Blockly.Blocks['int_timer2'] = {
 Blockly.Blocks['int_rb'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Cambio en RB4-RB7");
+        .appendField(Blockly.Msg.INT_ENABLE_RB);
     this.appendStatementInput("INT_RB");
     this.setColour(85);
   }
@@ -41,7 +41,7 @@ Blockly.Blocks['int_rb'] = {
 Blockly.Blocks['int_ext'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Cambio en RB0");
+        .appendField(Blockly.Msg.INT_ENABLE_EXT);
     this.appendStatementInput("INT_EXT");
     this.setColour(85);
   }
@@ -49,7 +49,7 @@ Blockly.Blocks['int_ext'] = {
 Blockly.Blocks['int_ad'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("ADC Finalizado");
+        .appendField(Blockly.Msg.INT_ENABLE_AD);
     this.appendStatementInput("INT_AD");
     this.setColour(85);
   }
@@ -57,7 +57,7 @@ Blockly.Blocks['int_ad'] = {
 Blockly.Blocks['int_tbe'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Buffer de transmisión vacío");
+        .appendField(Blockly.Msg.INT_ENABLE_TBE);
     this.appendStatementInput("INT_TBE");
     this.setColour(85);
   }
@@ -65,7 +65,7 @@ Blockly.Blocks['int_tbe'] = {
 Blockly.Blocks['int_rda'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Dato disponible");
+        .appendField(Blockly.Msg.INT_ENABLE_RDA);
     this.appendStatementInput("INT_RDA");
     this.setColour(85);
   }

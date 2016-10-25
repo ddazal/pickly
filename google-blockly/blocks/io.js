@@ -12,7 +12,7 @@
 Blockly.Blocks['io_type'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([['entrada', "IO_INPUT"],["salida", "IO_OUTPUT"]]),"IOptions");
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.IO_TYPE_INPUT, "IO_INPUT"],[Blockly.Msg.IO_TYPE_OUTPUT, "IO_OUTPUT"]]),"IOptions");
     this.setInputsInline(true);
     this.setOutput(true, "io");
     this.setColour(65);
@@ -21,7 +21,7 @@ Blockly.Blocks['io_type'] = {
 Blockly.Blocks['io_ports'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Puerto")
+        .appendField(Blockly.Msg.IO_PORTS)
         .appendField(new Blockly.FieldDropdown([["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]]), "PORToptions");
     this.appendValueInput("io_mode")
         .setCheck("io");
@@ -32,9 +32,9 @@ Blockly.Blocks['io_ports'] = {
 Blockly.Blocks['io_get'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Guardar valor de puerto")
+        .appendField(Blockly.Msg.IO_GET_F1)
         .appendField(new Blockly.FieldDropdown([["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]]), "PORTget")
-        .appendField("en");
+        .appendField(Blockly.Msg.IO_GET_F2);
     this.appendValueInput("NAME")
         .setCheck(null);
     this.setInputsInline(true);
@@ -46,11 +46,11 @@ Blockly.Blocks['io_get'] = {
 Blockly.Blocks['io_set'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Poner ");
+        .appendField(Blockly.Msg.IO_SET_F1);
     this.appendValueInput("NAME")
         .setCheck(null);
     this.appendDummyInput()
-        .appendField("en puerto")
+        .appendField(Blockly.Msg.IO_SET_F2)
         .appendField(new Blockly.FieldDropdown([["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]]), "PORTset");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -69,7 +69,6 @@ Blockly.Blocks['io_pins'] = {
     this.appendDummyInput("PORTpins")
         .appendField("PIN")
         .appendField(dropdown, "PORToptions");
-        //.appendField(new Blockly.FieldNumber(0, 0, 7), "PINnumber");
     this.appendValueInput("io_mode")
         .setCheck("io");
     this.setInputsInline(true);
@@ -113,8 +112,8 @@ Blockly.Blocks['io_pin_set'] = {
             this.sourceBlock_.updateShapePort_(whenPortA, whenPortE);
         });
     this.appendDummyInput("PORTpins")
-        .appendField("Poner en ")
-        .appendField(new Blockly.FieldDropdown([["alto", "HIGH"], ["bajo", "LOW"]]), "PINstate")
+        .appendField(Blockly.Msg.IO_PIN_SET_F1)
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.IO_PIN_SET_HIGH, "HIGH"], [Blockly.Msg.IO_PIN_SET_LOW, "LOW"]]), "PINstate")
         .appendField("pin")
         .appendField(dropdown, "PORToptions");
     this.setInputsInline(true);

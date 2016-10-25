@@ -16,7 +16,7 @@
 Blockly.Blocks['tmr_tmr0_get'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Obtener Timer0");
+        .appendField(Blockly.Msg.TMR0_GET);
     this.setOutput(true, null);
     this.setColour(180);
   }
@@ -34,17 +34,17 @@ Blockly.Blocks['tmr_tmr0_set'] = {
 };
 Blockly.Blocks['tmr_tmr0_setup'] = {
   init: function() {
-  	var PROPERTIES = [["Interno", "T0_INTERNAL"], ["Externo", "T0_EXTERNAL"]];
+  	var PROPERTIES = [[Blockly.Msg.TMR0_SETUP_T0_INTERNAL, "T0_INTERNAL"], [Blockly.Msg.TMR0_SETUP_T0_EXTERNAL, "T0_EXTERNAL"]];
   	var dropdown = new Blockly.FieldDropdown(PROPERTIES, function(option){
   		var whenExternalSelect = (option == "T0_EXTERNAL");
   		this.sourceBlock_.updateShape_(whenExternalSelect);
   	})
     this.appendDummyInput()
-        .appendField("Configurar Timer0");
+        .appendField(Blockly.Msg.TMR0_SETUP_F1);
     this.appendDummyInput("Setup")
         .appendField("Prescaler")
         .appendField(new Blockly.FieldDropdown([["1", "T0_DIV_1"], ["2", "T0_DIV_2"], ["4", "T0_DIV_4"], ["8", "T0_DIV_8"], ["16", "T0_DIV_16"], ["32", "T0_DIV_32"], ["64", "T0_DIV_64"], ["128", "T0_DIV_128"], ["256", "T0_DIV_256"]]), "PSAoptions")
-        .appendField("Reloj")
+        .appendField(Blockly.Msg.TMR0_SETUP_F2)
         .appendField(dropdown, "CLKoptions");
     this.setColour(180);
   },
@@ -63,8 +63,8 @@ Blockly.Blocks['tmr_tmr0_setup'] = {
     if (whenExternalSelect) {
       if (!fieldExists) {
         this.appendDummyInput("TMR0Mutator")
-            .appendField("Seleccione flanco")
-            .appendField(new Blockly.FieldDropdown([['Subida','LOW2HIGH'],['Bajada','HIGH2LOW']]),'EDGEoptions');
+            .appendField(Blockly.Msg.TMR0_SETUP_SIGNAL_EDGE)
+            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TMR0_SETUP_RISE_EDGE,'LOW2HIGH'],[Blockly.Msg.TMR0_SETUP_FALL_EDGE,'HIGH2LOW']]),'EDGEoptions');
       }
     } else if (fieldExists) {
       this.removeInput("TMR0Mutator");
@@ -94,12 +94,12 @@ Blockly.Blocks['tmr_tmr1_set'] = {
 Blockly.Blocks['tmr_tmr1_setup'] = {
   init: function(){
     this.appendDummyInput()
-        .appendField("Habilitar Timer1")
+        .appendField(Blockly.Msg.TMR1_SETUP_F1)
         .appendField(new Blockly.FieldCheckbox("FALSE",function(whenCheck) {
           this.sourceBlock_.updateShape_(whenCheck);
         }),"ENABLEtmr1")
-        .appendField("Reloj")
-        .appendField(new Blockly.FieldDropdown([["Interno","T1_INTERNAL"],["Externo","T1_EXTERNAL"]], function(option){
+        .appendField(Blockly.Msg.TMR1_SETUP_F2)
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TMR1_SETUP_T1_INTERNAL,"T1_INTERNAL"],[Blockly.Msg.TMR1_SETUP_T1_EXTERNAL,"T1_EXTERNAL"]], function(option){
           var whenExternalSelect = (option == "T1_EXTERNAL");
           this.sourceBlock_.updateSecondShape_(whenExternalSelect);
         }),"CLKoptions");
@@ -137,8 +137,8 @@ Blockly.Blocks['tmr_tmr1_setup'] = {
     if (whenExternalSelect) {
       if (!fieldExists) {
         this.appendDummyInput("TMR1SecondMutator")
-            .appendField("Seleccione flanco")
-            .appendField(new Blockly.FieldDropdown([['Subida','LOW2HIGH'],['Bajada','HIGH2LOW']]),'EDGEoptions');
+            .appendField(Blockly.Msg.TMR1_SETUP_SIGNAL_EDGE)
+            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TMR1_SETUP_RISE_EDGE,'LOW2HIGH'],[Blockly.Msg.TMR1_SETUP_FALL_EDGE,'HIGH2LOW']]),'EDGEoptions');
       }
     } else if (fieldExists) {
       this.removeInput("TMR1SecondMutator");
@@ -149,7 +149,7 @@ Blockly.Blocks['tmr_tmr1_setup'] = {
 Blockly.Blocks['tmr_tmr2_get'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Obtener Timer2");
+        .appendField(Blockly.Msg.TMR2_GET);
     this.setOutput(true, null);
     this.setColour(180);
   }
@@ -168,7 +168,7 @@ Blockly.Blocks['tmr_tmr2_set'] = {
 Blockly.Blocks['tmr_tmr2_setup'] = {
   init: function(){
     this.appendDummyInput()
-        .appendField("Habilitar Timer2")
+        .appendField(Blockly.Msg.TMR2_SETUP_F1)
         .appendField(new Blockly.FieldCheckbox("FALSE",function(whenCheck) {
           this.sourceBlock_.updateShape_(whenCheck);
         }),"ENABLEtmr2");
@@ -192,7 +192,7 @@ Blockly.Blocks['tmr_tmr2_setup'] = {
         this.appendDummyInput("TMR2mutator")
             .appendField("Prescaler")
             .appendField(new Blockly.FieldDropdown([["1", "T2_DIV_BY_1"], ["4", "T2_DIV_BY_4"], ["16", "T2_DIV_BY_16"]]), "PSAoptions")
-            .appendField("Periodo")
+            .appendField(Blockly.Msg.TMR2_SETUP_F2)
             .appendField(new Blockly.FieldNumber(0, 0, 255), "PR2value")
             .appendField("Postscaler")
             .appendField(new Blockly.FieldNumber(1, 1, 16), "POSAvalue");

@@ -389,3 +389,60 @@ Blockly.Msg.TEXT_APPEND_VARIABLE = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 Blockly.Msg.TEXT_CREATE_JOIN_ITEM_TITLE_ITEM = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST = Blockly.Msg.LISTS_INLIST;
 Blockly.Msg.PROCEDURES_DEFRETURN_COMMENT = Blockly.Msg.PROCEDURES_DEFNORETURN_COMMENT;
+/* Textos personalizados */
+// analog.js
+Blockly.Msg.ADC_DONE = "ADC Finalizado";
+Blockly.Msg.ADC_START_AND_READ = "Iniciar y leer ADC";
+Blockly.Msg.ADC_START_ONLY = "Iniciar ADC";
+Blockly.Msg.ADC_READ_ONLY = "Leer ADC";
+Blockly.Msg.ADC_CHANNEL = "Canal ADC";
+Blockly.Msg.ADC_SETUP_ADC_OFF = "Apagado";
+Blockly.Msg.ADC_SETUP_ADC_CLOCK_INTERNAL = "Interno";
+Blockly.Msg.ADC_SETUP_F1 = "Reloj ADC";
+// communication.js
+Blockly.Msg.COMM_SEND = "Enviar";
+Blockly.Msg.COMM_RECEIVE = "Recibir y guardar en";
+Blockly.Msg.COMM_BAUD_RATE = "Baudios";
+// io.js
+Blockly.Msg.IO_TYPE_INPUT = "entrada";
+Blockly.Msg.IO_TYPE_OUTPUT = "salida";
+Blockly.Msg.IO_PORTS = "Puerto";
+Blockly.Msg.IO_GET_F1 = "Guardar valor de puerto";
+Blockly.Msg.IO_GET_F2 = "en";
+Blockly.Msg.IO_SET_F1 = "Poner";
+Blockly.Msg.IO_SET_F2 = "en puerto";
+Blockly.Msg.IO_PIN_SET_F1 = "Poner en";
+Blockly.Msg.IO_PIN_SET_HIGH = "alto";
+Blockly.Msg.IO_PIN_SET_LOW = "bajo";
+/* timers.js */
+// timer0
+Blockly.Msg.TMR0_GET = "Obtener Timer0";
+Blockly.Msg.TMR0_SETUP_F1 = "Configurar Timer0";
+Blockly.Msg.TMR0_SETUP_F2 = "Reloj";
+Blockly.Msg.TMR0_SETUP_T0_INTERNAL = "Interno";
+Blockly.Msg.TMR0_SETUP_T0_EXTERNAL = "Externo";
+Blockly.Msg.TMR0_SETUP_SIGNAL_EDGE = "Seleccione flanco";
+Blockly.Msg.TMR0_SETUP_RISE_EDGE = "Subida";
+Blockly.Msg.TMR0_SETUP_FALL_EDGE = "Bajada";
+// timer1
+Blockly.Msg.TMR1_GET = "Obtener Timer1";
+Blockly.Msg.TMR1_SETUP_F1 = "Habilitar Timer1";
+Blockly.Msg.TMR1_SETUP_F2 = Blockly.Msg.TMR0_SETUP_F2;
+Blockly.Msg.TMR1_SETUP_T1_INTERNAL = Blockly.Msg.TMR0_SETUP_T0_INTERNAL;
+Blockly.Msg.TMR1_SETUP_T1_EXTERNAL = Blockly.Msg.TMR0_SETUP_T0_EXTERNAL;
+Blockly.Msg.TMR1_SETUP_SIGNAL_EDGE = Blockly.Msg.TMR0_SETUP_SIGNAL_EDGE; 
+Blockly.Msg.TMR1_SETUP_RISE_EDGE = Blockly.Msg.TMR0_SETUP_RISE_EDGE; 
+Blockly.Msg.TMR1_SETUP_FALL_EDGE = Blockly.Msg.TMR0_SETUP_FALL_EDGE;
+// timer2
+Blockly.Msg.TMR2_GET = "Obtener Timer2";
+Blockly.Msg.TMR2_SETUP_F1 = "Habilitar Timer2";
+Blockly.Msg.TMR2_SETUP_F2 = "Período";
+// interrupts.js
+Blockly.Msg.INT_ENABLE = "Habilitar interrupción";
+Blockly.Msg.INT_ENABLE_RB = "Cambio en RB4-RB7";
+Blockly.Msg.INT_ENABLE_EXT = "Cambio en RB0";
+Blockly.Msg.INT_ENABLE_AD = "ADC finalizado";
+Blockly.Msg.INT_ENABLE_TBE = "Buffer de transmisión vacío";
+Blockly.Msg.INT_ENABLE_RDA = "Dato disponible";
+
+

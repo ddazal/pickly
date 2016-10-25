@@ -23,7 +23,7 @@
 			})
 			.otherwise({
 				redirectTo : '/error'
-			})
+			});
 		$translateProvider
 			.translations('es',translationES)
 			.translations('en',translationEN)

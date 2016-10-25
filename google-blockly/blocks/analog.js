@@ -12,14 +12,14 @@
 Blockly.Blocks['adc_done'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("ADC Finalizado");
+        .appendField(Blockly.Msg.ADC_DONE);
     this.setOutput(true, null);
     this.setColour(0);
   }
 };
 Blockly.Blocks['adc_read'] = {
 	init: function(){
-		var PROPERTIES=[['Iniciar ADC','ADC_START_ONLY'],	['Leer ADC','ADC_READ_ONLY'],['Iniciar y Leer ADC','ADC_START_AND_READ']];
+		var PROPERTIES=[[Blockly.Msg.ADC_START_ONLY,'ADC_START_ONLY'],[Blockly.Msg.ADC_READ_ONLY,'ADC_READ_ONLY'],[Blockly.Msg.ADC_START_AND_READ,'ADC_START_AND_READ']];
 		var dropdown = new Blockly.FieldDropdown (PROPERTIES,function(option){
 			var whenStartSelect = (option == 'ADC_START_ONLY');
       		this.sourceBlock_.updateShape_(whenStartSelect);
@@ -55,7 +55,7 @@ Blockly.Blocks['adc_read'] = {
 Blockly.Blocks['adc_channel'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Canal ADC")
+        .appendField(Blockly.Msg.ADC_CHANNEL)
         .appendField(new Blockly.FieldNumber(0, 0, 7), "channel");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -65,8 +65,8 @@ Blockly.Blocks['adc_channel'] = {
 Blockly.Blocks['adc_setup'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Reloj ADC")
-        .appendField(new Blockly.FieldDropdown([["Apagado", "ADC_OFF"], ["Frec/2", "ADC_CLOCK_DIV_2"], ["Frec/4", "ADC_CLOCK_DIV_4"], ["Frec/8", "ADC_CLOCK_DIV_8"], ["Frec/16", "ADC_CLOCK_DIV_16"], ["Frec/32", "ADC_CLOCK_DIV_32"], ["Frec/64", "ADC_CLOCK_DIV_64"], ["Interno", "ADC_CLOCK_INTERNAL"]]), "CLOCKoptions");
+        .appendField(Blockly.Msg.ADC_SETUP_F1)
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.ADC_SETUP_ADC_OFF, "ADC_OFF"], ["Frec/2", "ADC_CLOCK_DIV_2"], ["Frec/4", "ADC_CLOCK_DIV_4"], ["Frec/8", "ADC_CLOCK_DIV_8"], ["Frec/16", "ADC_CLOCK_DIV_16"], ["Frec/32", "ADC_CLOCK_DIV_32"], ["Frec/64", "ADC_CLOCK_DIV_64"], [Blockly.Msg.ADC_SETUP_ADC_CLOCK_INTERNAL, "ADC_CLOCK_INTERNAL"]]), "CLOCKoptions");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);
