@@ -33,7 +33,7 @@
 <!-- Bloques -->
 <div id="blocklyDiv" ng-show="tabIsSelected(1)">
 	<xml id="toolbox">
-		<category name="Control" colour="120">
+		<category name="{{ categoriaC1 }}" colour="120">
 			<block type="controls_if"></block>
 			<block type="controls_repeat"></block>
 			<block type="controls_whileUntil"></block>
@@ -42,7 +42,7 @@
 			<block type="controls_flow_statements"></block>
 			<block type="delay_block"></block>
 		</category>
-		<category name="Texto" colour="160">
+		<category name="{{ categoriaC2 }}" colour="160">
 			<block type="text"></block>
 			<block type="text_join"></block>	
 			<block type="text_append"></block>
@@ -54,14 +54,14 @@
 			<block type="text_getSubstring"></block>
 			<block type="text_print"></block> -->
 		</category>		
-		<category name="Listas" colour="260">
+		<category name="{{ categoriaC3 }}" colour="260">
 			<block type="lists_create_empty"></block>
 			<block type="lists_repeat"></block>
 			<block type="lists_length"></block>
 			<block type="lists_getIndex"></block>
 			<block type="lists_setIndex"></block>
 		</category>
-		<category name="Matemáticas" colour="230">
+		<category name="{{ categoriaC4 }}" colour="230">
 			<block type="math_number"></block>	
 			<block type="math_arithmetic"></block>			
 			<block type="math_number_property"></block>
@@ -72,35 +72,35 @@
 			<block type="math_random_int"></block>
 			<block type="math_random_float"></block>
 		</category>
-		<category name="Lógica" colour="210">
+		<category name="{{ categoriaC5 }}" colour="210">
 			<block type="logic_compare"></block>
 			<block type="logic_operation"></block>
 			<block type="logic_negate"></block>
 			<block type="logic_boolean"></block>	
 		</category>
-		<category name="Variables" colour="330">	
+		<category name="{{ categoriaC6 }}" colour="330">	
 			<block type="variables_get"></block>
 			<block type="variables_set"></block>	
 		</category>
-		<category name="Subrutinas" colour="290">
+		<category name="{{ categoriaC7 }}" colour="290">
 			<block type="procedures_defnoreturn"></block> 
 			<block type="procedures_defreturn"></block>	
 			<block type="procedures_ifreturn"></block>
 		</category>
 		<sep></sep>
 		<!-- Bloques propios del microcontrolador -->
-		<category name="Analógico" colour="0">
+		<category name="{{ categoriaC8 }}" colour="0">
 			<block type="adc_done"></block>
 			<block type="adc_read"></block>
 			<block type="adc_channel"></block>
 			<block type="adc_setup"></block>
 		</category>
-		<category name="Comunicaciones" colour="20">
+		<category name="{{ categoriaC9 }}" colour="20">
 			<block type="comm_send"></block>
 			<block type="comm_receive"></block>
 			<block type="comm_baud_rate"></block>
 		</category>
-		<category name="Input/Output" colour="65">
+		<category name="{{ categoriaC10 }}" colour="65">
 			<block type="io_type"></block>
 			<block type="io_ports"></block>
 			<block type="io_get"></block>
@@ -126,7 +126,7 @@
 				<block type="tmr_tmr2_setup"></block>
 			</category>
 		</category>
-		<category name="Interrupciones" colour="85">
+		<category name="{{ categoriaC12 }}" colour="85">
 			<block type="int_enable"></block>
 			<block type="int_timer0"></block>
 			<block type="int_timer1"></block>
@@ -146,33 +146,30 @@
 </div>
 
 <script>
-	$(function() {
+	/* Propiedades CSS del workspace */
+	$("#blocklyDiv").css("height", $(window).height() - $(".navbar").height());
+	$(".panel").css("height", $(window).height() - $(".navbar").height());
 
-		/* Propiedades CSS del workspace */
-		$("#blocklyDiv").css("height", $(window).height() - $(".navbar").height());
-		$(".panel").css("height", $(window).height() - $(".navbar").height());
+	/* Evento
+	 * Detecta los cambios en el tamaño de la pantalla y cambia el tamaño del área de trabajo
+	 */
+	$(window).resize(function() {
+		$("#blocklyDiv").innerHeight($(window).height() - $(".navbar").height());
+		$(".panel").innerHeight($(window).height() - $(".navbar").height());
+	}).resize();
 
-		/* Evento
-		 * Detecta los cambios en el tamaño de la pantalla y cambia el tamaño del área de trabajo
-		 */
-		$(window).resize(function() {
-			$("#blocklyDiv").innerHeight($(window).height() - $(".navbar").height());
-			$(".panel").innerHeight($(window).height() - $(".navbar").height());
-		}).resize();
-
-		var workspace = Blockly.inject('blocklyDiv',{
-			toolbox : document.getElementById('toolbox'),
-			trashcan : true,
-			grid : {
-				spacing: 20
-			}
-		});
-
-		/* Generación de código en tiempo real */
-		function myUpdateFunction(event) {
-			  var code = Blockly.JavaScript.workspaceToCode(workspace);
-			  $('#codigo').html(code);
+	var workspace = Blockly.inject('blocklyDiv',{
+		toolbox : document.getElementById('toolbox'),
+		trashcan : true,
+		grid : {
+			spacing: 20
 		}
-		workspace.addChangeListener(myUpdateFunction);
 	});
+
+	/* Generación de código en tiempo real */
+	function myUpdateFunction(event) {
+		  var code = Blockly.JavaScript.workspaceToCode(workspace);
+		  $('#codigo').html(code);
+	}
+	workspace.addChangeListener(myUpdateFunction);
 </script>

@@ -26,6 +26,19 @@ var translationEN = {
 	"error_page" : {
 		"warning" : "This page doesn't exist",
 		"btn_back" : "Go to home"
+	},
+	"Categorias" : {
+		"C1" : "Control",
+		"C2" : "Text",
+		"C3" : "Lists",
+		"C4" : "Math",
+		"C5" : "Logic",
+		"C6" : "Variables",
+		"C7" : "Subroutines",
+		"C8" : "Analogical",
+		"C9" : "Communications",
+		"C10" : "Input/Output",
+		"C12" : "Interruptions"
 	}
 };
 
@@ -57,5 +70,18 @@ var translationES = {
 	"error_page" : {
 		"warning" : "Esta página no existe",
 		"btn_back" : "Volver al inicio"
+	},
+	"Categorias" : {
+		"C1" : "Control",
+		"C2" : "Texto",
+		"C3" : "Listas",
+		"C4" : "Matematicas",
+		"C5" : "Lógica",
+		"C6" : "Variables",
+		"C7" : "Subrutinas",
+		"C8" : "Analógico",
+		"C9" : "Comunicaciones",
+		"C10" : "Entradas/Salidas",
+		"C12" : "Interrupciones"
 	}	
 };
