@@ -84,7 +84,7 @@ Blockly.Blocks['tmr_tmr1_set'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Set Timer1")
-        .appendField(new Blockly.FieldNumber(0, 0, 65535), "tmr0_value");
+        .appendField(new Blockly.FieldNumber(0, 0, 65535), "tmr1_value");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -99,26 +99,19 @@ Blockly.Blocks['tmr_tmr1_setup'] = {
           this.sourceBlock_.updateShape_(whenCheck);
         }),"ENABLEtmr1")
         .appendField(Blockly.Msg.TMR1_SETUP_F2)
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TMR1_SETUP_T1_INTERNAL,"T1_INTERNAL"],[Blockly.Msg.TMR1_SETUP_T1_EXTERNAL,"T1_EXTERNAL"]], function(option){
-          var whenExternalSelect = (option == "T1_EXTERNAL");
-          this.sourceBlock_.updateSecondShape_(whenExternalSelect);
-        }),"CLKoptions");
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TMR1_SETUP_T1_INTERNAL,"T1_INTERNAL"],[Blockly.Msg.TMR1_SETUP_T1_EXTERNAL,"T1_EXTERNAL"]]),"CLKoptions");
     this.setInputsInline(null);
     this.setColour(180);
   },
   mutationToDom: function(){
     var container = document.createElement("mutation");
     var whenCheck = (this.getFieldValue("ENABLEtmr1") == 'TRUE');
-    var whenExternalSelect = (this.getFieldValue("CLKoptions") == "T1_EXTERNAL");
     container.setAttribute('when_check', whenCheck);
-    container.setAttribute('when_external_select', whenExternalSelect);
     return container;
   },
   domToMutation: function(xmlElement){
     var whenCheck = (xmlElement.getAttribute('when_check') == 'TRUE');
-    var whenExternalSelect = (xmlElement.getAttribute('when_external_select') == "true");
     this.updateShape_(whenCheck);
-    this.updateSecondShape_(whenExternalSelect);
   },
   updateShape_: function(whenCheck){
     var fieldExists = this.getInput("TMR1FirstMutator");
@@ -132,18 +125,6 @@ Blockly.Blocks['tmr_tmr1_setup'] = {
       this.removeInput("TMR1FirstMutator");
     }
   },
-  updateSecondShape_: function(whenExternalSelect){
-    var fieldExists = this.getInput("TMR1SecondMutator");
-    if (whenExternalSelect) {
-      if (!fieldExists) {
-        this.appendDummyInput("TMR1SecondMutator")
-            .appendField(Blockly.Msg.TMR1_SETUP_SIGNAL_EDGE)
-            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TMR1_SETUP_RISE_EDGE,'LOW2HIGH'],[Blockly.Msg.TMR1_SETUP_FALL_EDGE,'HIGH2LOW']]),'EDGEoptions');
-      }
-    } else if (fieldExists) {
-      this.removeInput("TMR1SecondMutator");
-    }
-  }
 };
 // TIMER 2
 Blockly.Blocks['tmr_tmr2_get'] = {
