@@ -31,9 +31,7 @@ Blockly.Blocks['comm_baud_rate'] = {
   init: function() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.COMM_BAUD_RATE)
-        .appendField(new Blockly.FieldDropdown([["300", "BAUD300"], ["1200", "BAUD1200"], ["2400", "BAUD2400"], ["9600", "BAUD9600"], ["19200", "BAUD19200"], ["28800", "BAUD28800"], ["33600", "BAUD33600"], ["57600", "BAUD57600"]]), "baud_rate");
+        .appendField(new Blockly.FieldDropdown([["300", "300"], ["1200", "1200"], ["2400", "2400"], ["9600", "9600"], ["19200", "19200"], ["28800", "28800"], ["33600", "33600"], ["57600", "57600"]]), "baud_rate");
     this.setColour(20);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
   }
 };

@@ -22,7 +22,7 @@ Blockly.Blocks['io_ports'] = {
   init: function() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.IO_PORTS)
-        .appendField(new Blockly.FieldDropdown([["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]]), "PORToptions");
+        .appendField(new Blockly.FieldDropdown([["A", "A"], ["B", "B"], ["C", "C"], ["D", "D"], ["E", "E"]]), "PORToptions");
     this.appendValueInput("io_mode")
         .setCheck("io");
     this.setInputsInline(true);
@@ -105,7 +105,7 @@ Blockly.Blocks['io_pins'] = {
 };
 Blockly.Blocks['io_pin_set'] = {
   init: function() {
-    var PROPERTIES = [["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]];
+    var PROPERTIES = [["A", "A"], ["B", "B"], ["C", "C"], ["D", "D"], ["E", "E"]];
     var dropdown = new Blockly.FieldDropdown(PROPERTIES, function(option) {
             var whenPortA = (option == "PORT_A");
             var whenPortE = (option == "PORT_E");
@@ -123,8 +123,8 @@ Blockly.Blocks['io_pin_set'] = {
   },
   mutationToDom: function() {
     var container = document.createElement("mutation");
-    var whenPortA = (this.getFieldValue("PORToptions") == "PORT_A");
-    var whenPortE = (this.getFieldValue("PORToptions") == "PORT_E");
+    var whenPortA = (this.getFieldValue("PORToptions") == "A");
+    var whenPortE = (this.getFieldValue("PORToptions") == "E");
     container.setAttribute("when_port_a", whenPortA);
     container.setAttribute("when_port_e", whenPortE);
     return container;
@@ -150,7 +150,7 @@ Blockly.Blocks['io_pin_set'] = {
 };
 Blockly.Blocks['io_pin_get'] = {
   init: function() {
-    var PROPERTIES = [["A", "PORT_A"], ["B", "PORT_B"], ["C", "PORT_C"], ["D", "PORT_D"], ["E", "PORT_E"]];
+    var PROPERTIES = [["A", "A"], ["B", "B"], ["C", "C"], ["D", "D"], ["E", "E"]];
     var dropdown = new Blockly.FieldDropdown(PROPERTIES, function(option) {
             var whenPortA = (option == "PORT_A");
             var whenPortE = (option == "PORT_E");
@@ -167,8 +167,8 @@ Blockly.Blocks['io_pin_get'] = {
   },
   mutationToDom: function() {
     var container = document.createElement("mutation");
-    var whenPortA = (this.getFieldValue("PORToptions") == "PORT_A");
-    var whenPortE = (this.getFieldValue("PORToptions") == "PORT_E");
+    var whenPortA = (this.getFieldValue("PORToptions") == "A");
+    var whenPortE = (this.getFieldValue("PORToptions") == "E");
     container.setAttribute("when_port_a", whenPortA);
     container.setAttribute("when_port_e", whenPortE);
     return container;

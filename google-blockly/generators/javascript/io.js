@@ -13,23 +13,8 @@ Blockly.JavaScript['io_type'] = function(block) {
 Blockly.JavaScript['io_ports'] = function(block) {
 	var value = Blockly.JavaScript.valueToCode(block,'io_mode', Blockly.JavaScript.ORDER_NONE);
 	var option = block.getFieldValue("PORToptions");
-	value = value ? value:'null';
-	var code;
-	if(option == 'PORT_A'){
-		code = 'set_tris_a(' + value + ');';
-	}
-	if(option == 'PORT_B'){
-		code = 'set_tris_b(' + value + ');';
-	}
-	if(option == 'PORT_C'){
-		code = 'set_tris_c(' + value + ');';
-	}
-	if(option == 'PORT_D'){
-		code = 'set_tris_d(' + value + ');';
-	}
-	if(option == 'PORT_E'){
-		code = 'set_tris_e(' + value + ');';
-	}
+	value = value ? value:'0';
+	var code = 'set_tris_'+ option.toLowerCase() + '(' + value + ');\n';
 	return code;
 };
 Blockly.JavaScript['io_get'] = function(block) {
@@ -45,10 +30,20 @@ Blockly.JavaScript['io_pins'] = function(block) {
 	return code;
 };
 Blockly.JavaScript['io_pin_set'] = function(block) {
+	var state = block.getFieldValue('PINstate');
+	var port = block.getFieldValue('PORToptions').toLowerCase();
+	var pinNumber = block.getFieldValue('PINnumber');
 	var code;
+	if(state == 'HIGH') {
+		code = 'output_high(pin_'+ port + pinNumber + ');\n';
+	} else {
+		code = 'output_low(pin_'+ port + pinNumber + ');\n';
+	}
 	return code;
 };
 Blockly.JavaScript['io_pin_get'] = function(block) {
-	var code;
-	return code;
+	var port = block.getFieldValue("PORToptions").toLowerCase();
+	var pinNumber = block.getFieldValue("PINnumber");
+	var code = 'input(pin_'+ port + pinNumber+')';
+	return [code, Blockly.JavaScript.ORDER_NONE];
 };
