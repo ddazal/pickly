@@ -57,7 +57,7 @@ Blockly.JavaScript['tmr_tmr1_setup'] = function(block) {
 };
 /* Timer 2 */
 Blockly.JavaScript['tmr_tmr2_get'] = function(block) {
-	var code = 'get_timer2()\n';
+	var code = 'get_timer2()';
 	return [code, Blockly.JavaScript.ORDER_NONE];
 };
 Blockly.JavaScript['tmr_tmr2_set'] = function(block) {

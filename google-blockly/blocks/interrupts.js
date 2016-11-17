@@ -4,6 +4,8 @@ Blockly.Blocks['int_enable'] = {
         .appendField()
         .appendField(new Blockly.FieldDropdown([["Global", "GLOBAL"], ["Timer 0", "INT_TIMER0"], ["Timer 1", "INT_TIMER1"], ["Timer 2", "INT_TIMER2"], [Blockly.Msg.INT_ENABLE_RB, "INT_RB"], [Blockly.Msg.INT_ENABLE_EXT, "INT_EXT"], [Blockly.Msg.INT_ENABLE_AD, "INT_AD"], [Blockly.Msg.INT_ENABLE_TBE, "INT_TBE"], [Blockly.Msg.INT_ENABLE_RDA, "INT_RDA"]]), "ISRoptions");
     this.setColour(85);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 Blockly.Blocks['int_timer0'] = {
@@ -12,6 +14,8 @@ Blockly.Blocks['int_timer0'] = {
         .appendField("Timer 0");
     this.appendStatementInput("INT_TIMER0");
     this.setColour(85);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 Blockly.Blocks['int_timer1'] = {
@@ -20,6 +24,8 @@ Blockly.Blocks['int_timer1'] = {
         .appendField("Timer 1");
     this.appendStatementInput("INT_TIMER1");
     this.setColour(85);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 Blockly.Blocks['int_timer2'] = {
@@ -28,6 +34,8 @@ Blockly.Blocks['int_timer2'] = {
         .appendField("Timer 2");
     this.appendStatementInput("INT_TIMER2");
     this.setColour(85);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 Blockly.Blocks['int_rb'] = {
@@ -36,6 +44,8 @@ Blockly.Blocks['int_rb'] = {
         .appendField(Blockly.Msg.INT_ENABLE_RB);
     this.appendStatementInput("INT_RB");
     this.setColour(85);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 Blockly.Blocks['int_ext'] = {
@@ -44,6 +54,8 @@ Blockly.Blocks['int_ext'] = {
         .appendField(Blockly.Msg.INT_ENABLE_EXT);
     this.appendStatementInput("INT_EXT");
     this.setColour(85);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 Blockly.Blocks['int_ad'] = {
@@ -52,6 +64,8 @@ Blockly.Blocks['int_ad'] = {
         .appendField(Blockly.Msg.INT_ENABLE_AD);
     this.appendStatementInput("INT_AD");
     this.setColour(85);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 Blockly.Blocks['int_tbe'] = {
@@ -60,6 +74,8 @@ Blockly.Blocks['int_tbe'] = {
         .appendField(Blockly.Msg.INT_ENABLE_TBE);
     this.appendStatementInput("INT_TBE");
     this.setColour(85);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 Blockly.Blocks['int_rda'] = {
@@ -68,5 +84,7 @@ Blockly.Blocks['int_rda'] = {
         .appendField(Blockly.Msg.INT_ENABLE_RDA);
     this.appendStatementInput("INT_RDA");
     this.setColour(85);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };

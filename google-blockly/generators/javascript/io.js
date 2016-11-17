@@ -10,7 +10,7 @@ Blockly.JavaScript['io_type'] = function(block) {
 	}
 	return [code, Blockly.JavaScript.ORDER_NONE];
 };
-Blockly.JavaScript['io_ports'] = function(block) {
+Blockly.JavaScript['io_tris'] = function(block) {
 	var value = Blockly.JavaScript.valueToCode(block,'io_mode', Blockly.JavaScript.ORDER_NONE);
 	var option = block.getFieldValue("PORToptions");
 	value = value ? value:'0';
@@ -18,15 +18,15 @@ Blockly.JavaScript['io_ports'] = function(block) {
 	return code;
 };
 Blockly.JavaScript['io_get'] = function(block) {
-	var code;
+	var value = Blockly.JavaScript.valueToCode(block, 'var', Blockly.JavaScript.ORDER_NONE) || 'variable';
+	var option = block.getFieldValue('PORTget');
+	var code = value + ' = ' + 'input_' + option.toLowerCase() + '();\n';
 	return code;
 };
 Blockly.JavaScript['io_set'] = function(block) {
-	var code;
-	return code;
-};
-Blockly.JavaScript['io_pins'] = function(block) {
-	var code;
+	var value = Blockly.JavaScript.valueToCode(block,'port_value', Blockly.JavaScript.ORDER_NONE) || 0;
+	var option = block.getFieldValue('PORTset');
+	var code = 'output_' + option.toLowerCase() + '(' + value + ');\n';
 	return code;
 };
 Blockly.JavaScript['io_pin_set'] = function(block) {

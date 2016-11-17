@@ -47,6 +47,8 @@ Blockly.Blocks['tmr_tmr0_setup'] = {
         .appendField(Blockly.Msg.TMR0_SETUP_F2)
         .appendField(dropdown, "CLKoptions");
     this.setColour(180);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   },
   mutationToDom: function(){
   	var container = document.createElement("mutation");
@@ -102,6 +104,8 @@ Blockly.Blocks['tmr_tmr1_setup'] = {
         .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TMR1_SETUP_T1_INTERNAL,"T1_INTERNAL"],[Blockly.Msg.TMR1_SETUP_T1_EXTERNAL,"T1_EXTERNAL"]]),"CLKoptions");
     this.setInputsInline(null);
     this.setColour(180);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   },
   mutationToDom: function(){
     var container = document.createElement("mutation");
@@ -155,6 +159,8 @@ Blockly.Blocks['tmr_tmr2_setup'] = {
         }),"ENABLEtmr2");
     this.setInputsInline(null);
     this.setColour(180);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   },
   mutationToDom: function(){
     var container = document.createElement("mutation");

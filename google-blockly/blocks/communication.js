@@ -33,5 +33,7 @@ Blockly.Blocks['comm_baud_rate'] = {
         .appendField(Blockly.Msg.COMM_BAUD_RATE)
         .appendField(new Blockly.FieldDropdown([["300", "300"], ["1200", "1200"], ["2400", "2400"], ["9600", "9600"], ["19200", "19200"], ["28800", "28800"], ["33600", "33600"], ["57600", "57600"]]), "baud_rate");
     this.setColour(20);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };

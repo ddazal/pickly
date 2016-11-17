@@ -406,7 +406,7 @@ Blockly.Msg.COMM_BAUD_RATE = "Baudios";
 // io.js
 Blockly.Msg.IO_TYPE_INPUT = "entrada";
 Blockly.Msg.IO_TYPE_OUTPUT = "salida";
-Blockly.Msg.IO_PORTS = "Puerto";
+Blockly.Msg.IO_PORTS = "Tris";
 Blockly.Msg.IO_GET_F1 = "Guardar valor de puerto";
 Blockly.Msg.IO_GET_F2 = "en";
 Blockly.Msg.IO_SET_F1 = "Poner";

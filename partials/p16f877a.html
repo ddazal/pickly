@@ -102,10 +102,9 @@
 		</category>
 		<category name="{{ categoriaC10 }}" colour="65">
 			<block type="io_type"></block>
-			<block type="io_ports"></block>
+			<block type="io_tris"></block>
 			<block type="io_get"></block>
 			<block type="io_set"></block>		
-			<block type="io_pins"></block>
 			<block type="io_pin_set"></block>
 			<block type="io_pin_get"></block>
 		</category>
@@ -145,6 +144,11 @@
 	<pre id="codigo"></pre>
 </div>
 
+<!-- Bloque inicialización -->
+<xml id="startBlocks">
+	<block type="main_function"></block>
+</xml>
+
 <script>
 	/* Propiedades CSS del workspace */
 	$("#blocklyDiv").css("height", $(window).height() - $(".navbar").height());
@@ -172,4 +176,6 @@
 		  $('#codigo').html(code);
 	}
 	workspace.addChangeListener(myUpdateFunction);
+	
+	Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),workspace);
 </script>

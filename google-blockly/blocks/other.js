@@ -1,3 +1,16 @@
+Blockly.Blocks['main_function'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("void main");
+    this.appendStatementInput("main")
+        .setCheck(null);
+    this.setColour(290);
+    this.setTooltip('TODO code');
+    this.setDeletable(false);
+    this.setPreviousStatement(true, null);
+    this.moveBy(200,100);
+  }
+};
 Blockly.Blocks['delay_block'] = {
   init: function() {
     this.appendDummyInput()
@@ -7,7 +20,5 @@ Blockly.Blocks['delay_block'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(120);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
   }
 };

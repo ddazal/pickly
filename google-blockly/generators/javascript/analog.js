@@ -11,7 +11,7 @@ Blockly.JavaScript['adc_read'] = function(block) {
 	if(option == 'ADC_START_AND_READ') {
 		code = 'read_adc();\n';
 	}
-	return code;
+	return [code, Blockly.JavaScript.ORDER_NONE];
 };
 Blockly.JavaScript['adc_channel'] = function(block) {
 	var channel = block.getFieldValue('channel');

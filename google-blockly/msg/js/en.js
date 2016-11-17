@@ -406,7 +406,7 @@ Blockly.Msg.COMM_BAUD_RATE = "Bauds";
 // io.js
 Blockly.Msg.IO_TYPE_INPUT = "input";
 Blockly.Msg.IO_TYPE_OUTPUT = "output";
-Blockly.Msg.IO_PORTS = "Port";
+Blockly.Msg.IO_PORTS = "Tris";
 Blockly.Msg.IO_GET_F1 = "Save port";
 Blockly.Msg.IO_GET_F2 = "value in";
 Blockly.Msg.IO_SET_F1 = "Set";

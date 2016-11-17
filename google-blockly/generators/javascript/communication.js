@@ -12,6 +12,6 @@ Blockly.JavaScript['comm_receive'] = function(block) {
 }; 
 Blockly.JavaScript['comm_baud_rate'] = function(block){
 	var option = block.getFieldValue('baud_rate');
-	var code = '#use rs232(baud='+ option +',xmit=PIN_C6,rcv=PIN_C7,bits=8)';
+	var code = '#use rs232(baud='+ option +',xmit=PIN_C6,rcv=PIN_C7,bits=8)\n';
 	return code;
 };
