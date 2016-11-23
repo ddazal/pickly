@@ -5,95 +5,94 @@
 		.controller('PicPageController', PicPageController);
 
 	function PicPageController($scope, $route, $location, $translate, $rootScope){
-		$scope.tab = 1;
-		$scope.picChosen = "";
-		$scope.picNotChosen = "";
-		$scope.datasheet = "";
 		$scope.mensaje = $translate('evento.advertencia').then(function(translationId){
 			$scope.mensaje = translationId;
 		});
-		$scope.categoriaC1 = $translate('Categorias.C1').then(function(translationId){
-			$scope.categoriaC1 = translationId;
+		$scope.categoria1 = $translate('categorias.cat_1').then(function(translationId){
+			$scope.categoria1 = translationId;
 		});
-		$scope.categoriaC2 = $translate('Categorias.C2').then(function(translationId){
-			$scope.categoriaC2 = translationId;
+		$scope.categoria2 = $translate('categorias.cat_2').then(function(translationId){
+			$scope.categoria2 = translationId;
 		});
-		$scope.categoriaC3 = $translate('Categorias.C3').then(function(translationId){
-			$scope.categoriaC3 = translationId;
+		$scope.categoria3 = $translate('categorias.cat_3').then(function(translationId){
+			$scope.categoria3 = translationId;
 		});
-		$scope.categoriaC4 = $translate('Categorias.C4').then(function(translationId){
-			$scope.categoriaC4 = translationId;
+		$scope.categoria4 = $translate('categorias.cat_4').then(function(translationId){
+			$scope.categoria4 = translationId;
 		});
-		$scope.categoriaC5 = $translate('Categorias.C5').then(function(translationId){
-			$scope.categoriaC5 = translationId;
+		$scope.categoria5 = $translate('categorias.cat_5').then(function(translationId){
+			$scope.categoria5 = translationId;
 		});
-		$scope.categoriaC6 = $translate('Categorias.C6').then(function(translationId){
-			$scope.categoriaC6 = translationId;
+		$scope.categoria6 = $translate('categorias.cat_6').then(function(translationId){
+			$scope.categoria6 = translationId;
 		});
-		$scope.categoriaC7 = $translate('Categorias.C7').then(function(translationId){
-			$scope.categoriaC7 = translationId;
+		$scope.categoria7 = $translate('categorias.cat_7').then(function(translationId){
+			$scope.categoria7 = translationId;
 		});
-		$scope.categoriaC8 = $translate('Categorias.C8').then(function(translationId){
-			$scope.categoriaC8 = translationId;
+		$scope.categoria8 = $translate('categorias.cat_8').then(function(translationId){
+			$scope.categoria8 = translationId;
 		});
-		$scope.categoriaC9 = $translate('Categorias.C9').then(function(translationId){
-			$scope.categoriaC9 = translationId;
+		$scope.categoria9 = $translate('categorias.cat_9').then(function(translationId){
+			$scope.categoria9 = translationId;
 		});
-		$scope.categoriaC10 = $translate('Categorias.C10').then(function(translationId){
-			$scope.categoriaC10 = translationId;
+		$scope.categoria10 = $translate('categorias.cat_10').then(function(translationId){
+			$scope.categoria10 = translationId;
 		});
-		$scope.categoriaC12 = $translate('Categorias.C12').then(function(translationId){
-			$scope.categoriaC12 = translationId;
+		$scope.categoria12 = $translate('categorias.cat_12').then(function(translationId){
+			$scope.categoria12 = translationId;
 		});
 		
-
-		$scope.selectTab = function(setTab) {
-			$scope.tab = setTab;
-		};
-
-		$scope.tabIsSelected = function(checkTab) {
-			return $scope.tab === checkTab;
-		};
-
 		$rootScope.$on('$translateChangeSuccess', function() {
 			$translate('evento.advertencia').then(function(translationId){
 				$scope.mensaje = translationId;
 			});		
-			$translate('Categorias.C1').then(function(translationId){
-				$scope.categoriaC1 = translationId;
+			$translate('categorias.cat_1').then(function(translationId){
+				$scope.categoria1 = translationId;
 			});	
-			$translate('Categorias.C2').then(function(translationId){
-				$scope.categoriaC2 = translationId;
+			$translate('categorias.cat_2').then(function(translationId){
+				$scope.categoria2 = translationId;
 			});	
-			$translate('Categorias.C3').then(function(translationId){
-				$scope.categoriaC3 = translationId;
+			$translate('categorias.cat_3').then(function(translationId){
+				$scope.categoria3 = translationId;
 			});	
-			$translate('Categorias.C4').then(function(translationId){
-				$scope.categoriaC4 = translationId;
+			$translate('categorias.cat_4').then(function(translationId){
+				$scope.categoria4 = translationId;
 			});	
-			$translate('Categorias.C5').then(function(translationId){
-				$scope.categoriaC5 = translationId;
+			$translate('categorias.cat_5').then(function(translationId){
+				$scope.categoria5 = translationId;
 			});	
-			$translate('Categorias.C6').then(function(translationId){
-				$scope.categoriaC6 = translationId;
+			$translate('categorias.cat_6').then(function(translationId){
+				$scope.categoria6 = translationId;
 			});	
-			$translate('Categorias.C7').then(function(translationId){
-				$scope.categoriaC7 = translationId;
+			$translate('categorias.cat_7').then(function(translationId){
+				$scope.categoria7 = translationId;
 			});
-			$translate('Categorias.C8').then(function(translationId){
-				$scope.categoriaC8 = translationId;
+			$translate('categorias.cat_8').then(function(translationId){
+				$scope.categoria8 = translationId;
 			});	
-			$translate('Categorias.C9').then(function(translationId){
-				$scope.categoriaC9 = translationId;
+			$translate('categorias.cat_9').then(function(translationId){
+				$scope.categoria9 = translationId;
 			});	
-			$translate('Categorias.C10').then(function(translationId){
-				$scope.categoriaC10 = translationId;
+			$translate('categorias.cat_10').then(function(translationId){
+				$scope.categoria10 = translationId;
 			});	
-			$translate('Categorias.C12').then(function(translationId){
-				$scope.categoriaC12 = translationId;
+			$translate('categorias.cat_12').then(function(translationId){
+				$scope.categoria12 = translationId;
 			});		
 		});
 
+		// Funciones para el manejo de las pestañas Bloques y Código
+		$scope.tab = 1;
+		$scope.selectTab = function(setTab) {
+			$scope.tab = setTab;
+		};
+		$scope.tabIsSelected = function(checkTab) {
+			return $scope.tab === checkTab;
+		};
+		//
+		$scope.picChosen = "";
+		$scope.picNotChosen = "";
+		$scope.datasheet = "";
 		if ($location.url()==="/p16f877a") {
 			$scope.picChosen = "PIC16F877A";
 			$scope.picNotChosen = "PIC18F4550";
@@ -103,7 +102,7 @@
 			$scope.picNotChosen = "PIC16F877A";
 			$scope.datasheet = $location.url().slice(1);
 		}
-		// Evento de regresar utilizando el navegador
+		// Evento para detectar la acción de regresar en el navegador
 		$scope.$on('$routeChangeStart', function(event){
 			var back = confirm($scope.mensaje);
 			if(!back) { event.preventDefault(); }
@@ -117,10 +116,10 @@
 			if ($location.url() === "/p16f877a") { $location.path("/p18f4550"); }
 			else { $location.path("/p16f877a"); }
 		};
-		// Traductor
-		$scope.changeLanguage = function(Lan_key){
-			$translate.use(Lan_key);
-			$('#block_lang').replaceWith('<script id="block_lang" src="google-blockly/msg/js/'+Lan_key+'.js"></script>');
+		// Cambio de idioma de bloques
+		$scope.changeLanguage = function(lan_key){
+			$translate.use(lan_key);
+			$('#block_lang').replaceWith('<script id="block_lang" src="google-blockly/msg/js/'+lan_key+'.js"></script>');
 		};
 	};
 	

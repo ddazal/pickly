@@ -2,7 +2,7 @@ Blockly.Blocks['int_enable'] = {
   init: function() {
     this.appendDummyInput()
         .appendField()
-        .appendField(new Blockly.FieldDropdown([["Global", "GLOBAL"], ["Timer 0", "INT_TIMER0"], ["Timer 1", "INT_TIMER1"], ["Timer 2", "INT_TIMER2"], [Blockly.Msg.INT_ENABLE_RB, "INT_RB"], [Blockly.Msg.INT_ENABLE_EXT, "INT_EXT"], [Blockly.Msg.INT_ENABLE_AD, "INT_AD"], [Blockly.Msg.INT_ENABLE_TBE, "INT_TBE"], [Blockly.Msg.INT_ENABLE_RDA, "INT_RDA"]]), "ISRoptions");
+        .appendField(new Blockly.FieldDropdown([["Timer 0", "INT_TIMER0"], ["Timer 1", "INT_TIMER1"], ["Timer 2", "INT_TIMER2"], [Blockly.Msg.INT_ENABLE_RB, "INT_RB"], [Blockly.Msg.INT_ENABLE_EXT, "INT_EXT"], [Blockly.Msg.INT_ENABLE_AD, "INT_AD"], [Blockly.Msg.INT_ENABLE_TBE, "INT_TBE"], [Blockly.Msg.INT_ENABLE_RDA, "INT_RDA"]]), "ISRoptions");
     this.setColour(85);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

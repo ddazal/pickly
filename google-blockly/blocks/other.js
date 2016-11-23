@@ -8,7 +8,7 @@ Blockly.Blocks['main_function'] = {
     this.setTooltip('TODO code');
     this.setDeletable(false);
     this.setPreviousStatement(true, null);
-    this.moveBy(200,100);
+    this.moveBy(50,50);
   }
 };
 Blockly.Blocks['delay_block'] = {

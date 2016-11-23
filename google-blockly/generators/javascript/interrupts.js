@@ -2,7 +2,7 @@ goog.require('Blockly.JavaScript');
 
 Blockly.JavaScript['int_enable'] = function (block){
 	var option = block.getFieldValue('ISRoptions');
-	var code = 'enable_interrupts('+ option + ');\n';
+	var code = 'enable_interrupts('+ option + ');\nenable_interrupts(GLOBAL);\n';
 	return code;
 };
 

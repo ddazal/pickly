@@ -56,3 +56,7 @@
 	border: 0px;
 	border-radius: 0px;
 }
+.alert {
+	border-radius: 0px;
+	margin-bottom: 0px;
+}

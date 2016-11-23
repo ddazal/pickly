@@ -26,8 +26,8 @@ Blockly.Blocks['adc_read'] = {
 		});
 		this.appendDummyInput()
 	        .appendField(dropdown, "ADCoptions");
-	    this.setPreviousStatement(true, null);
-	    this.setNextStatement(true, null);
+	    this.setPreviousStatement(true);
+	    this.setNextStatement(true);
 	    this.setColour(0);
 	},
 	mutationToDom: function(){

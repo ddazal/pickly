@@ -1,3 +1,7 @@
+<!-- Notificación -->
+<div class="alert alert-info" id="notification">
+	<p class="text-center" translate="pic.notification_msg"></p>
+</div>
 <!-- Barra de navegación -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
@@ -33,7 +37,7 @@
 <!-- Bloques -->
 <div id="blocklyDiv" ng-show="tabIsSelected(1)">
 	<xml id="toolbox">
-		<category name="{{ categoriaC1 }}" colour="120">
+		<category name="{{ categoria1 }}" colour="120">
 			<block type="controls_if"></block>
 			<block type="controls_repeat"></block>
 			<block type="controls_whileUntil"></block>
@@ -42,26 +46,21 @@
 			<block type="controls_flow_statements"></block>
 			<block type="delay_block"></block>
 		</category>
-		<category name="{{ categoriaC2 }}" colour="160">
+		<category name="{{ categoria2 }}" colour="160">
 			<block type="text"></block>
 			<block type="text_join"></block>	
 			<block type="text_append"></block>
 			<block type="text_length"></block>
 			<block type="text_isEmpty"></block>
-			<!-- Opcionales -->
-			<!-- <block type="text_indexOf"></block>
-			<block type="text_charAt"></block>
-			<block type="text_getSubstring"></block>
-			<block type="text_print"></block> -->
 		</category>		
-		<category name="{{ categoriaC3 }}" colour="260">
+		<category name="{{ categoria3 }}" colour="260">
 			<block type="lists_create_empty"></block>
 			<block type="lists_repeat"></block>
 			<block type="lists_length"></block>
 			<block type="lists_getIndex"></block>
 			<block type="lists_setIndex"></block>
 		</category>
-		<category name="{{ categoriaC4 }}" colour="230">
+		<category name="{{ categoria4 }}" colour="230">
 			<block type="math_number"></block>	
 			<block type="math_arithmetic"></block>			
 			<block type="math_number_property"></block>
@@ -72,35 +71,35 @@
 			<block type="math_random_int"></block>
 			<block type="math_random_float"></block>
 		</category>
-		<category name="{{ categoriaC5 }}" colour="210">
+		<category name="{{ categoria5 }}" colour="210">
 			<block type="logic_compare"></block>
 			<block type="logic_operation"></block>
 			<block type="logic_negate"></block>
 			<block type="logic_boolean"></block>	
 		</category>
-		<category name="{{ categoriaC6 }}" colour="330">	
+		<category name="{{ categoria6 }}" colour="330">	
 			<block type="variables_get"></block>
 			<block type="variables_set"></block>	
 		</category>
-		<category name="{{ categoriaC7 }}" colour="290">
+		<category name="{{ categoria7 }}" colour="290">
 			<block type="procedures_defnoreturn"></block> 
 			<block type="procedures_defreturn"></block>	
 			<block type="procedures_ifreturn"></block>
 		</category>
 		<sep></sep>
 		<!-- Bloques propios del microcontrolador -->
-		<category name="{{ categoriaC8 }}" colour="0">
+		<category name="{{ categoria8 }}" colour="0">
 			<block type="adc_done"></block>
 			<block type="adc_read"></block>
 			<block type="adc_channel"></block>
 			<block type="adc_setup"></block>
 		</category>
-		<category name="{{ categoriaC9 }}" colour="20">
+		<category name="{{ categoria9 }}" colour="20">
 			<block type="comm_send"></block>
 			<block type="comm_receive"></block>
 			<block type="comm_baud_rate"></block>
 		</category>
-		<category name="{{ categoriaC10 }}" colour="65">
+		<category name="{{ categoria10 }}" colour="65">
 			<block type="io_type"></block>
 			<block type="io_tris"></block>
 			<block type="io_get"></block>
@@ -125,7 +124,7 @@
 				<block type="tmr_tmr2_setup"></block>
 			</category>
 		</category>
-		<category name="{{ categoriaC12 }}" colour="85">
+		<category name="{{ categoria12 }}" colour="85">
 			<block type="int_enable"></block>
 			<block type="int_timer0"></block>
 			<block type="int_timer1"></block>
@@ -150,6 +149,8 @@
 </xml>
 
 <script>
+
+	$('#notification').hide();
 	/* Propiedades CSS del workspace */
 	$("#blocklyDiv").css("height", $(window).height() - $(".navbar").height());
 	$(".panel").css("height", $(window).height() - $(".navbar").height());
@@ -177,5 +178,15 @@
 	}
 	workspace.addChangeListener(myUpdateFunction);
 	
+	/* Inicialización del bloque void main */
 	Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),workspace);
+
+	/* Despliegue de barra de notificaación */
+	$(document).ready(function(){
+		$('#notification').delay(500).slideDown(500);
+	});
+
+	$("#notification").click(function(){
+		$(this).slideUp();
+	});
 </script>
