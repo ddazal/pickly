@@ -19,15 +19,15 @@
 				<div class="btn-group">
 					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="fa fa-globe fa-fw"></span></button>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a role="button" translate="pic.BTN_es" ng-click="changeLanguage('es');"></a></li>
-						<li><a role="button" translate="pic.BTN_en" ng-click="changeLanguage('en');"></a></li>
+						<li><a class="langBlock" role="button" translate="pic.BTN_es" ng-click="changeLanguage('es');"></a></li>
+						<li><a class="langBlock" role="button" translate="pic.BTN_en" ng-click="changeLanguage('en');"></a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="form-group pull-right" ng-init="tab = 1">
+			<div class="form-group pull-right">
 				<ul class="nav nav-tabs">
-					<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.tab1"></a></li>
-					<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.tab2"></a></li>
+					<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.tab1" id="tabBlocks"></a></li>
+					<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.tab2" id="tabCode"></a></li>
 				</ul>
 			</div>
 		</form>
@@ -149,8 +149,8 @@
 </xml>
 
 <script>
-
 	$('#notification').hide();
+
 	/* Propiedades CSS del workspace */
 	$("#blocklyDiv").css("height", $(window).height() - $(".navbar").height());
 	$(".panel").css("height", $(window).height() - $(".navbar").height());
@@ -161,8 +161,9 @@
 	$(window).resize(function() {
 		$("#blocklyDiv").innerHeight($(window).height() - $(".navbar").height());
 		$(".panel").innerHeight($(window).height() - $(".navbar").height());
-	}).resize();
+	});
 
+	/* Inyección del workspace de Blockly */
 	var workspace = Blockly.inject('blocklyDiv',{
 		toolbox : document.getElementById('toolbox'),
 		trashcan : true,
@@ -172,11 +173,35 @@
 	});
 
 	/* Generación de código en tiempo real */
+	var xml = '';
+	var xml_text = '';
+
 	function myUpdateFunction(event) {
 		  var code = Blockly.JavaScript.workspaceToCode(workspace);
 		  $('#codigo').html(code);
+		  // Conversión de bloques a texto
+		  xml = Blockly.Xml.workspaceToDom(workspace);
+		  xml_text = Blockly.Xml.domToPrettyText(xml);
 	}
 	workspace.addChangeListener(myUpdateFunction);
+
+	/* Destrucción y restauración del workspace */
+
+	$('.langBlock').click(function() {
+		setTimeout(refresh, 100);
+		function refresh() {
+			workspace.dispose();
+			workspace = Blockly.inject('blocklyDiv', {
+				toolbox : document.getElementById('toolbox'),
+				trashcan : true,
+				grid : {
+					spacing : 20
+				}
+			});
+			var pre_xml = Blockly.Xml.textToDom(xml_text);
+			Blockly.Xml.domToWorkspace(pre_xml, workspace);
+		}
+	});
 	
 	/* Inicialización del bloque void main */
 	Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),workspace);
@@ -187,6 +212,6 @@
 	});
 
 	$("#notification").click(function(){
-		$(this).slideUp();
+		$(this).slideUp(500);
 	});
 </script>

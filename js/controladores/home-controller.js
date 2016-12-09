@@ -14,7 +14,7 @@
 			{
 				name: 'PIC18F4550',
 				url: '#p18f4550'
-			}
+			},
 		]
 		$scope.changeLanguage = function(Lan_key){
 			$translate.use(Lan_key);

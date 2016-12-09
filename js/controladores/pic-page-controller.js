@@ -4,7 +4,7 @@
 		.module('appPickly')
 		.controller('PicPageController', PicPageController);
 
-	function PicPageController($scope, $route, $location, $translate, $rootScope){
+	function PicPageController($scope, $route, $location, $translate, $rootScope, $timeout){
 		$scope.mensaje = $translate('evento.advertencia').then(function(translationId){
 			$scope.mensaje = translationId;
 		});
@@ -87,7 +87,8 @@
 			$scope.tab = setTab;
 		};
 		$scope.tabIsSelected = function(checkTab) {
-			return $scope.tab === checkTab;
+			var flag = $scope.tab === checkTab;
+			return flag;
 		};
 		//
 		$scope.picChosen = "";

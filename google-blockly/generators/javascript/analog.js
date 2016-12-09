@@ -17,7 +17,7 @@ Blockly.JavaScript['adc_read'] = function(block) {
 	// 	return code;
 	// }
 	if(block.outputConnection) {
-		return ["I have an output", Blockly.JavaScript.ORDER_NONE];
+		return "I have an output";
 	} else {
 		return "I don't have an output";
 	}
