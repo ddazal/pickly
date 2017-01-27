@@ -1,10 +1,30 @@
 {
-  "devDependencies": {
-    "jasmine": "^2.5.1",
-    "jasmine-core": "^2.5.1",
-    "karma": "^1.2.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-firefox-launcher": "^1.0.0",
-    "karma-jasmine": "^1.0.2"
+  "name": "pickly",
+  "version": "1.0.0",
+  "description": "Editor web de lenguaje de programación visual para microcontroladores PIC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddazal/pickly.git"
+  },
+  "author": "David Daza <03dazal@gmail.com>",
+  "contributors": [
+    {
+      "name": "Edinson Gómez",
+      "email": "gomezedinson92@gmail.com"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddazal/pickly/issues"
+  },
+  "homepage": "https://github.com/ddazal/pickly#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.7.8"
   }
 }
