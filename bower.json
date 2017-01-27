@@ -1,0 +1,14 @@
+{
+  "name": "pickly",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "angularjs#^1.6.1",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "Font-Awesome#^4.7.0",
+    "angular-route": "^1.6.1",
+    "angular-translate": "^2.13.1"
+  },
+  "resolutions": {
+    "angular": "^1.6.1"
+  }
+}
