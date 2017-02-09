@@ -1,25 +1,26 @@
 var translationEN = {
 	"home" : {
-		"description" : "Web based visual programming editor for PIC&reg; controller",
-		"btn_msg" : "Choose an option <span class='caret'></span>",
-		"header_thumb1" : "Step 1",
-		"header_thumb2" : "Step 2",
-		"header_thumb3" : "Step 3",
-		"description_thumb1" : "If you are a student of the Universidad Pedagógica Nacional, enter your institutional code. Otherwise, select any of the microcontrollers available",
-		"description_thumb2" : "Drag the blocks you need for your program to the work area and join them.",
-		"description_thumb3" : "Once finished, download and use your preference program, to compile the code in C language code.",
-		"BTN_es" : "Spanish",
-		"BTN_en" : "English"
+		"sign-in": "Sign in",
+		"description" : "Web based visual programming editor for PIC&reg; microcontroller",
+		"header-btn": "Learn more",
+		"main-section": "How is it work?",
+		"section-one":"Select a microcontroller",
+		"section-two":"Drag the blocks",
+		"section-three":"Join the blocks",
+		"section-four":"Download the code",
+		"main-btn": "Select PIC",
+		"modal-title": "Select PIC",
+		"modal-close": "Close",
+		"es-btn" : "Spanish",
+		"en-btn" : "English"
 	},
 	"pic" : {
-		"option1" : "View datasheet",
-		"option2" : "Change to {{otherPic}}",
-		"option3" : "View code",
-		"BTN_es" : "Spanish",
-		"BTN_en" : "English",
-		"tab1" : "Blocks",
-		"tab2" : "Code",
-		"notification_msg": "For more options, make right click in the blocks.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
+		"datasheet" : "View datasheet",
+		"es-btn" : "Spanish",
+		"en-btn" : "English",
+		"blocks-tab" : "Blocks",
+		"code-tab" : "Code",
+		"notification": "For more options, make right click in the blocks.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
 	},
 	"evento" : {
 		"advertencia" : "Leave this page? Your work will not be saved."
@@ -45,26 +46,27 @@ var translationEN = {
 
 var translationES = {
 	"home" : {
+		"sign-in": "Iniciar sesión",
 		"description" : "Editor web de lenguaje de programación visual para microncontroladres PIC&reg;",
-		"btn_msg" : "Seleccione una opción <span class='caret'></span>",
-		"header_thumb1" : "Paso 1",
-		"header_thumb2" : "Paso 2",
-		"header_thumb3" : "Paso 3",
-		"description_thumb1" : "Si eres estudiante de la Universidad Pedagógica Nacional, ingresa con tu código institucional. De lo contrario, selecciona cualquiera de los microcontroladores disponibles.",
-		"description_thumb2" : "Arrastra los bloques que necesitas para tu programa al área de trabajo y únelos.",
-		"description_thumb3" : "Una vez terminado, descarga el código en lenguaje C y utiliza tu programa de preferencia, para compilar el código.",
-		"BTN_es" : "Español",
-		"BTN_en" : "Inglés"
+		"header-btn": "Conocer más",
+		"main-section": "¿Cómo funciona?",
+		"section-one":"Selecciona un microcontrolador",
+		"section-two":"Arrastra los bloques",
+		"section-three":"Une los bloques",
+		"section-four":"Descarga el código",
+		"main-btn": "Seleccionar PIC",
+		"modal-title": "Seleccionar PIC",
+		"modal-close": "Cerrar",
+		"es-btn" : "Español",
+		"en-btn" : "Inglés"
 	},
 	"pic" : {
-		"option1" : "Ver datasheet",
-		"option2" : "Cambiar a {{otherPic}}",
-		"option3" : "Ver código",
-		"BTN_es" : "Español",
-		"BTN_en" : "Inglés",
-		"tab1" : "Bloques",
-		"tab2" : "Código",
-		"notification_msg": "Para más opciones, haz clic derecho sobre los bloques.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
+		"datasheet" : "Ver datasheet",
+		"es-btn" : "Español",
+		"en-btn" : "Inglés",
+		"blocks-tab" : "Bloques",
+		"code-tab" : "Código",
+		"notification": "Para más opciones, haz clic derecho sobre los bloques.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
 	},
 	"evento" : {
 		"advertencia" : "¿Salir de esta página? Su trabajo no será guardado."

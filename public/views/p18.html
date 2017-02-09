@@ -1,6 +1,6 @@
 <!-- Notificación -->
 <div class="alert alert-info" id="notification">
-	<p class="text-center" translate="pic.notification_msg"></p>
+	<p class="text-center" translate="pic.notification"></p>
 </div>
 <!-- Barra de navegación -->
 <nav class="navbar navbar-default">
@@ -10,24 +10,27 @@
   				<a type="button" class="btn btn-primary" ng-click="clickHome()"><span class="fa fa-home fa-lg fa-fw"></span></a>
   				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 			  	<ul class="dropdown-menu">
-			    	<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank" translate="pic.option1"></a></li>
-			    	<li><a role="button" ng-click="changePic()" translate="pic.option2" translate-values="{otherPic: '{{picNotChosen}}'}"></a></li>
+			    	<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank" translate="pic.datasheet"></a></li>
+			    	<li ng-repeat="option in remaining">
+			    		<!-- <a role="button" ng-click="changePic()" translate="pic.option2" translate-values="{otherPic: '{{pic.name}}'}"></a> -->
+			    		<a role="button" ng-href="{{option.url}}">{{option.name}}</a>
+			    	</li>
 			  	</ul>
-			  	<p class="navbar-text">{{picChosen | uppercase}}</p>
+			  	<p class="navbar-text">{{pic | uppercase}}</p>
 			</div>
 			<div class="form-group pull-right lang">
 				<div class="btn-group">
 					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="fa fa-globe fa-fw"></span></button>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a class="langBlock" role="button" translate="pic.BTN_es" ng-click="changeLanguage('es');"></a></li>
-						<li><a class="langBlock" role="button" translate="pic.BTN_en" ng-click="changeLanguage('en');"></a></li>
+						<li><a class="langBlock" role="button" translate="pic.es-btn" ng-click="changeLanguage('es');"></a></li>
+						<li><a class="langBlock" role="button" translate="pic.en-btn" ng-click="changeLanguage('en');"></a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="form-group pull-right">
 				<ul class="nav nav-tabs">
-					<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.tab1" id="tabBlocks"></a></li>
-					<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.tab2" id="tabCode"></a></li>
+					<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.blocks-tab" id="tabBlocks"></a></li>
+					<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.code-tab" id="tabCode"></a></li>
 				</ul>
 			</div>
 		</form>
@@ -187,9 +190,9 @@
 
 	/* Destrucción y restauración del workspace */
 
-	$('.langBlock').click(function() {
+	$('.langBlock').click(function () {
 		setTimeout(refresh, 100);
-		function refresh() {
+		function refresh () {
 			workspace.dispose();
 			workspace = Blockly.inject('blocklyDiv', {
 				toolbox : document.getElementById('toolbox'),
@@ -207,13 +210,13 @@
 	Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),workspace);
 
 	/* Despliegue de barra de notificaación */
-	$(document).ready(function(){
+	$(document).ready(function () {
 		$('#notification').delay(500).slideDown(500);
 		$('body').removeClass('modal-open');
 		$('.modal-backdrop').remove();
 	});
 
-	$("#notification").click(function(){
+	$("#notification").click(function () {
 		$(this).slideUp(500);
 	});
 </script>

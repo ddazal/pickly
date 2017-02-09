@@ -2,7 +2,8 @@ angular
 	.module('pickly')
 	.controller('PicPageController', PicPageController);
 
-function PicPageController($scope, $route, $location, $translate, $rootScope, $routeParams){
+function PicPageController($scope, $route, $location, $translate, $rootScope, $routeParams, $data){
+
 	$scope.mensaje = $translate('evento.advertencia').then(function(translationId){
 		$scope.mensaje = translationId;
 	});
@@ -89,9 +90,10 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 		return flag;
 	};
 	//
-	$scope.picChosen = $routeParams.id;
-	$scope.picNotChosen = "";
+	$scope.pic = $routeParams.id;
 	$scope.datasheet = $location.path().slice(1, 4);
+	$scope.remaining = $data.filterPics($location.path())
+
 	// Evento para detectar la acción de regresar en el navegador
 	$scope.$on('$routeChangeStart', function(event){
 		var back = confirm($scope.mensaje);
@@ -101,11 +103,6 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 	$scope.clickHome = function(){
 		$location.path("/");
 	};
-	// Cambiar de pic
-	// $scope.changePic = function(){
-	// 	if ($location.url() === "/p16/") { $location.path("/p18/"); }
-	// 	else { $location.path("/p16/"); }
-	// };
 	// Cambio de idioma de bloques
 	$scope.changeLanguage = function(lan_key){
 		$translate.use(lan_key);

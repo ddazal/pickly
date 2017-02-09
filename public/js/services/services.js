@@ -20,6 +20,15 @@ function data () {
 	return {
 		getPics: function() {
 			return pics
+		},
+		filterPics: function (location) {
+			var array = this.getPics().filter(function (obj) {
+				if (obj.url === location) {
+					return false
+				}
+				return true
+			})
+			return array
 		}
 	}
 }
