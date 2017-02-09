@@ -6,14 +6,16 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	
 
-	<title>Pickly: Editor web para microcontroladores PIC</title>
+	<title>Pickly | Editor web de lenguaje de programación visual para microcontroladores PIC</title>
 
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css" type="text/css">
 	<link rel="stylesheet" href="css/styles.css" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
 	
 </head>
 <body id="body">
+	
 	<div ng-view></div>
 
 	<!-- jQuery -->
@@ -25,6 +27,7 @@
 	<script src="js/config.js"></script>
 	<script src="js/controllers/pic-page-controller.js"></script>
 	<script src="js/controllers/home-controller.js"></script>
+	<script src="js/services/services.js"></script>
 	<!-- Angular translate-->
 	<script src="libs/angular-translate/angular-translate.min.js"></script>
 	<script src="js/languages/translations.js" ></script>
@@ -50,6 +53,8 @@
 	<script src="google-blockly/generators/javascript/other.js"></script>
 	<!-- Blockly User's Language -->
 	<script src="google-blockly/msg/js/es.js" id="block_lang"></script>
+	<!-- Scroll Reveal -->
+	<script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
 </body>
 </html>
 

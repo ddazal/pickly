@@ -2,7 +2,7 @@ angular
 	.module('pickly')
 	.controller('PicPageController', PicPageController);
 
-function PicPageController($scope, $route, $location, $translate, $rootScope, $timeout){
+function PicPageController($scope, $route, $location, $translate, $rootScope, $routeParams){
 	$scope.mensaje = $translate('evento.advertencia').then(function(translationId){
 		$scope.mensaje = translationId;
 	});
@@ -89,18 +89,9 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $t
 		return flag;
 	};
 	//
-	$scope.picChosen = "";
+	$scope.picChosen = $routeParams.id;
 	$scope.picNotChosen = "";
-	$scope.datasheet = "";
-	if ($location.url()==="/p16/") {
-		$scope.picChosen = "PIC16F877A";
-		$scope.picNotChosen = "PIC18F4550";
-		$scope.datasheet = $location.url().slice(1, -1);
-	} else {
-		$scope.picChosen = "PIC18F4550";
-		$scope.picNotChosen = "PIC16F877A";
-		$scope.datasheet = $location.url().slice(1, -1);
-	}
+	$scope.datasheet = $location.path().slice(1, 4);
 	// Evento para detectar la acción de regresar en el navegador
 	$scope.$on('$routeChangeStart', function(event){
 		var back = confirm($scope.mensaje);
@@ -111,10 +102,10 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $t
 		$location.path("/");
 	};
 	// Cambiar de pic
-	$scope.changePic = function(){
-		if ($location.url() === "/p16/") { $location.path("/p18/"); }
-		else { $location.path("/p16/"); }
-	};
+	// $scope.changePic = function(){
+	// 	if ($location.url() === "/p16/") { $location.path("/p18/"); }
+	// 	else { $location.path("/p16/"); }
+	// };
 	// Cambio de idioma de bloques
 	$scope.changeLanguage = function(lan_key){
 		$translate.use(lan_key);

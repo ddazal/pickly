@@ -8,11 +8,11 @@ function config($routeProvider, $locationProvider, $translateProvider) {
 			templateUrl : 'views/home.html',
 			controller : 'HomeController'
 		})
-		.when('/p16/',{
+		.when('/p16/:id',{
 			templateUrl : 'views/p16.html',
 			controller : 'PicPageController'
 		})
-		.when('/p18/',{
+		.when('/p18/:id',{
 			templateUrl : 'views/p18.html',
 			controller : 'PicPageController'
 		})

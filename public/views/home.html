@@ -1,18 +1,141 @@
-<!-- Barra de navegación -->
-<div>
+<nav id="main-nav" class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+			Iniciar sesión
+			</button>
+			<a href="#" class="navbar-brand"><span class="fa fa-microchip"></span> Pickly</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="menu">
+			<form class="navbar-form navbar-right">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Código institucional"/>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn">
+						<span class="fa fa-sign-in fa-fw"></span>
+					</button>
+					<button type="submit" class="btn">
+						<span class="fa fa-globe fa-fw"></span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</nav>
+
+<header>
+	<div class="header-content">
+		<div class="header-content-inner">
+			<h1 id="home-heading">Pickly</h1>
+			<hr/>
+			<p><strong>Editor web de lenguaje de programación visual para microcontroladres PIC&reg;</strong></p>
+			<div><a class="btn btn-default btn-lg">Conocer más</a></div>
+		</div>
+	</div>
+</header>
+
+<section id="steps">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading">Sencillos pasos</h2>
+				<hr>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<i class="fa fa-microchip fa-4x icon"></i>
+					<h4>Selecciona el microcontrolador</h4>
+					<p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+				</div>
+			</div>
+			<div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<i class="fa fa-mouse-pointer fa-4x icon"></i>
+					<h4>Arrastra los bloques</h4>
+					<p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+				</div>
+			</div>
+			<div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<i class="fa fa-puzzle-piece fa-4x icon"></i>
+					<h4>Une los bloques</h4>
+					<p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+				</div>
+			</div>
+			<div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<i class="fa fa-download fa-4x icon"></i>
+					<h4>Descarga el código</h4>
+					<p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container options">
+		<div class="text-center">
+			<a type="button" data-toggle="modal" data-target="#modal_pic" class="btn btn-default dropdown-toggle btn-lg sr-button"> Seleccionar PIC </a>
+		</div>
+		<div class="modal fade" tabindex="-1" role="dialog" id="modal_pic">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" data-dismiss="modal" class="close" aria-label="close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Seleccionar PIC</h4>
+					</div>
+					<div class="modal-body" ng-controller="HomeController">
+						<table class="table table-hover">
+							<tbody>
+								<tr ng-repeat="pic in pics">
+									<td><a href="{{pic.url}}" type="button"><span class="fa fa-microchip"></span> {{pic.name}}</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer>
+	<div class="container">
+		<hr>
+		<p>2016-2017&copy;</p>
+	</div>
+</footer>
+
+<script type="text/javascript">
+	window.sr = ScrollReveal().reveal('.icon', { duration: 1000 }, 250).reveal('.sr-button');
+	$("#modal_pic").on('hidden.bs.modal', function () {
+    $(this).data('bs.modal', null);
+	});
+</script>
+
+<!-- <!-- Barra de navegación -->
+<!-- <div>
 	<nav class="navbar nav-color">
-		<div class="container">
+		<div class="container"> -->
 			<!-- Barra para móviles -->
-			<div class="navbar-header">
+			<!-- <div class="navbar-header">
 				<button class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#desplegable_inicio">
 					<span class="icon-bar bar-color"></span>
 					<span class="icon-bar bar-color"></span>
 					<span class="icon-bar bar-color"></span>
 				</button>
-			</div>
+			</div> -->
 
 			<!-- Nav links -->
-			<div class="navbar-collapse collapse" id="desplegable_inicio">
+<!-- 			<div class="navbar-collapse collapse" id="desplegable_inicio">
 				<form class="navbar-form navbar-right">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Código" />
@@ -33,50 +156,50 @@
 			</div>
 		</div>
 	</nav>
-</div>
+</div> -->
 
 <!-- Sección bienvenida -->
-<div class="jumbotron jumbo-home">
+<!-- <div class="jumbotron jumbo-home">
 	<div class="container">
 		<div class="col-md-12">
 			<h1><span class="jumbo-header">Pickly</span></h1>
 			<p translate="home.description" class="jumbo-text hidden-xs"></p>
 			<hr>
 			<div class="btn-group">
-				<button translate="home.btn_msg" type="button" class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown">
+				<button translate="home.btn_msg" type="button" class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown"> -->
 					<!-- <span class="caret"></span> -->
-				</button>
+<!-- 				</button>
 				<ul class="dropdown-menu" role="menu">
 					<li ng-repeat="pic in pics"><a href="{{pic.url}}">{{ pic.name }}</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 <!-- Articulos -->
-<div class="row" id="articulos">
-	<div class="container">
+<!-- <div class="row" id="articulos">
+	<div class="container"> -->
 		<!-- Thumbnail 1 -->
-		<div class="col-md-4">
+<!-- 		<div class="col-md-4">
 			<div class="thumbnail">
 				<div class="caption">
 					<h3 translate="home.header_thumb1"></h3>
 					<p class="text-justify" translate="home.description_thumb1"></p>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- Thumbnail 2 -->
-		<div class="col-md-4">
+		<!-- <div class="col-md-4">
 			<div class="thumbnail">
 				<div class="caption">
 					<h3 translate="home.header_thumb2"></h3>
 					<p class="text-justify" translate="home.description_thumb2"></p>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- Thumbnail 3 -->
-		<div class="col-md-4">
+<!-- 		<div class="col-md-4">
 			<div class="thumbnail">
 				<div class="caption">
 					<h3 translate="home.header_thumb3"></h3>
@@ -85,11 +208,10 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
-<div class="container">
+<!-- <div class="container">
 	<hr/>
 	<footer>&copy;2016</footer>
-</div>
-<!-- 212a6f
+</div> -->

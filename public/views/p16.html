@@ -13,7 +13,7 @@
 			    	<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank" translate="pic.option1"></a></li>
 			    	<li><a role="button" ng-click="changePic()" translate="pic.option2" translate-values="{otherPic: '{{picNotChosen}}'}"></a></li>
 			  	</ul>
-			  	<p class="navbar-text">{{picChosen}}</p>
+			  	<p class="navbar-text">{{picChosen | uppercase}}</p>
 			</div>
 			<div class="form-group pull-right lang">
 				<div class="btn-group">
@@ -187,9 +187,9 @@
 
 	/* Destrucción y restauración del workspace */
 
-	$('.langBlock').click(function() {
+	$('.langBlock').click(function () {
 		setTimeout(refresh, 100);
-		function refresh() {
+		function refresh () {
 			workspace.dispose();
 			workspace = Blockly.inject('blocklyDiv', {
 				toolbox : document.getElementById('toolbox'),
@@ -207,11 +207,13 @@
 	Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),workspace);
 
 	/* Despliegue de barra de notificaación */
-	$(document).ready(function(){
+	$(document).ready(function () {
 		$('#notification').delay(500).slideDown(500);
+		$('body').removeClass('modal-open');
+		$('.modal-backdrop').remove();
 	});
 
-	$("#notification").click(function(){
+	$("#notification").click(function () {
 		$(this).slideUp(500);
 	});
 </script>

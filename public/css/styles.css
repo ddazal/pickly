@@ -1,3 +1,163 @@
+html,
+body {
+	height: 100vh;
+	width: 100vw;
+}
+/* Estilos para home.html */
+/* Navbar style for mobiles */
+.navbar-default {
+	background-color: white;
+	border-color: rgba(34, 34, 34, 0.05);
+  transition: all 0.35s;
+}
+.navbar-default .navbar-header .navbar-brand {
+	color: #f05f40;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.navbar-default .navbar-header .navbar-brand:hover,
+.navbar-default .navbar-header .navbar-brand:focus {
+  color: #eb3812;
+}
+.navbar-default .navbar-header .navbar-toggle {
+  font-weight: 700;
+  font-size: 12px;
+  color: #222222;
+  text-transform: uppercase;
+}
+/* Navbar style for larger screens */
+@media (min-width: 768px) {
+	.navbar-default {
+		background-color: transparent;
+		border: 0px;
+	}
+	.navbar-default .navbar-header .navbar-brand {
+    color: rgba(255, 255, 255, 0.7);
+    display: none;
+  }
+  .navbar-default .navbar-header .navbar-brand:hover,
+  .navbar-default .navbar-header .navbar-brand:focus {
+    color: white;
+  }
+}
+/* Header style for mobiles */
+header {
+	position: relative;
+  background-color: #464646;
+  /*background-image: url('../../img/electricity-1288717_1920.jpg');*/
+  background-position: center;
+  background-size: cover;
+  color: azure;
+  min-height: auto;
+  width: 100vw;
+}
+header .header-content {
+	position: relative;
+	width: 100vw;
+	padding: 100px 15px 100px;
+}
+header .header-content .header-content-inner h1 {
+	font-family: 'Merriweather', serif;
+  font-weight: 700;
+  margin: 0 auto;
+  font-size: 50px;
+}
+header .header-content .header-content-inner hr {
+  margin: 30px auto;
+}
+header .header-content .header-content-inner p {
+  font-weight: 300;
+  font-size: 16px;
+}
+header .header-content a {
+	background-color: transparent;
+  border-color: white;
+  border-radius: 70px;
+  color: white;
+  margin: 15px 0;
+}
+/* Header style for larger screens */
+@media (min-width: 768px) {
+	header {
+		min-height: 100vh;
+	}
+	header .header-content {
+    padding: 0 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  header .header-content .header-content-inner {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header .header-content .header-content-inner h1 {
+  	font-family: 'Merriweather', serif;
+    font-size: 80px;
+  }
+  header .header-content .header-content-inner p {
+    font-size: 25px;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header .header-content a {
+  	font-size: 25px;
+  }
+}
+section {
+	padding: 40px 0;
+}
+section-heading {
+	margin-top: 0;
+}
+section-description {
+	text-align: justify;
+}
+section hr {
+	max-width: 500px;
+	margin-bottom: 50px;
+}
+section p {
+	margin-bottom: 30px;
+}
+i {
+	color: #EDA807;
+}
+.options {
+	margin-top: 50px;
+}
+.options > div > a {
+	border-radius: 70px;
+}
+.modal {
+	color: black;
+}
+.modal-body {
+	padding: 0;
+}
+.modal-open .modal {
+  background-color: rgba(50, 50, 70, 0.9);
+}
+table {
+	border: none;
+}
+.table > tbody > tr > td {
+	padding: 8px;
+	padding-left: 15px;
+}
+.table a {
+	color: black;
+	text-decoration: none;
+}
+.table {
+	margin: 0;
+}
+/*rgba(20, 201, 152, 0.9)*/
+/* ====================== */
+
+/* Estilos para error.html */
 .error-page {
 	margin-bottom : 150px;
 	margin-left : auto;
@@ -10,26 +170,10 @@
 .error-title {
 	font-size : 80px;
 }
-.jumbo-home {
-	background-color : #212a6f;
-	padding-bottom : 120px;
-	padding-top : 100px;
-}
-.nav-color {
-	background-color : #212a6f;
-}
+/* ======================= */
+
 .brand-name {
 	color : white;
-}
-.jumbo-header {
-	color : white;
-	font-size : 100px;
-}
-.jumbo-text {
-	color : white;
-}
-.bar-color {
-	background-color : #515ED7;
 }
 .navbar {
 	border-radius : 0px;
@@ -37,9 +181,6 @@
 }
 .icon:hover {
 	text-decoration: none;
-}
-.thumbnail {
-	height: 180px;
 }
 .navbar-text {
 	font-size: 20px;
