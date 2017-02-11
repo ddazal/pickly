@@ -3,6 +3,38 @@ angular
 	.controller('PicPageController', PicPageController);
 
 function PicPageController($scope, $route, $location, $translate, $rootScope, $routeParams, $data){
+	
+	$scope.pic = $routeParams.id;
+	$scope.datasheet = $location.path().slice(1, 4);
+	$scope.remaining = $data.filterPics($location.path());
+	$scope.tab = 1;
+	$scope.selectTab = setTab;
+	$scope.tabIsSelected = checkTab;
+	$scope.clickHome = clickHome;
+	$scope.changeLanguage = changeLanguage;
+	$scope.$on('$routeChangeStart', goBack)
+	
+	function setTab (setTab) {
+		$scope.tab = setTab;
+	}
+	
+	function checkTab (checkTab) {
+		return $scope.tab === checkTab;
+	}
+
+	function clickHome () {
+		$location.path("/");
+	}
+
+	function changeLanguage (lan_key) {
+		$translate.use(lan_key);
+		$('#block_lang').replaceWith('<script id="block_lang" src="google-blockly/msg/js/'+lan_key+'.js"></script>');
+	}
+	
+	function goBack (event) {
+		var back = confirm($scope.mensaje);
+		if(!back) { event.preventDefault(); }
+	}
 
 	$scope.mensaje = $translate('evento.advertencia').then(function(translationId){
 		$scope.mensaje = translationId;
@@ -80,33 +112,5 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 		});		
 	});
 
-	// Funciones para el manejo de las pestañas Bloques y Código
-	$scope.tab = 1;
-	$scope.selectTab = function(setTab) {
-		$scope.tab = setTab;
-	};
-	$scope.tabIsSelected = function(checkTab) {
-		var flag = $scope.tab === checkTab;
-		return flag;
-	};
-	//
-	$scope.pic = $routeParams.id;
-	$scope.datasheet = $location.path().slice(1, 4);
-	$scope.remaining = $data.filterPics($location.path())
-
-	// Evento para detectar la acción de regresar en el navegador
-	$scope.$on('$routeChangeStart', function(event){
-		var back = confirm($scope.mensaje);
-		if(!back) { event.preventDefault(); }
-	});
-	// Volver al home
-	$scope.clickHome = function(){
-		$location.path("/");
-	};
-	// Cambio de idioma de bloques
-	$scope.changeLanguage = function(lan_key){
-		$translate.use(lan_key);
-		$('#block_lang').replaceWith('<script id="block_lang" src="google-blockly/msg/js/'+lan_key+'.js"></script>');
-	};
 };
 	

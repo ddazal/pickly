@@ -36,7 +36,7 @@
 			<h1 id="home-heading">Pickly</h1>
 			<hr/>
 			<p><strong translate="home.description"></strong></p>
-			<div><a class="btn btn-default btn-lg" translate="home.header-btn"></a></div>
+			<div><a class="btn btn-default btn-lg" translate="home.header-btn" ng-href="#steps" id="header-btn"></a></div>
 		</div>
 	</div>
 </header>
@@ -117,10 +117,3 @@
 		<p>2016-2017&copy;</p>
 	</div>
 </footer>
-
-<script type="text/javascript">
-	window.sr = ScrollReveal().reveal('.icon', { duration: 1000 }, 250).reveal('.sr-button');
-	$("#modal_pic").on('hidden.bs.modal', function () {
-    $(this).data('bs.modal', null);
-	});
-</script>

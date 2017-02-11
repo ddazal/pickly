@@ -20,6 +20,7 @@ var translationEN = {
 		"en-btn" : "English",
 		"blocks-tab" : "Blocks",
 		"code-tab" : "Code",
+		"download": "Download code",
 		"notification": "For more options, make right click in the blocks.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
 	},
 	"evento" : {
@@ -66,6 +67,7 @@ var translationES = {
 		"en-btn" : "Inglés",
 		"blocks-tab" : "Bloques",
 		"code-tab" : "Código",
+		"download": "Descargar código",
 		"notification": "Para más opciones, haz clic derecho sobre los bloques.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
 	},
 	"evento" : {
