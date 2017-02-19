@@ -171,13 +171,125 @@ table {
 	font-size : 80px;
 }
 /* ======================= */
-
-.brand-name {
-	color : white;
+/* Estilos para vistas p16 y p18 */
+.alert {
+	border-radius: 0px;
+	margin-bottom: 0px;
 }
 .navbar {
 	border-radius : 0px;
 	margin-bottom : 0px;
+	color: #000;
+}
+.navbar-inverse {
+	background-color: white;
+	border-color: rgba(34, 34, 34, 0.05);
+  transition: all 0.35s;
+}
+.navbar-inverse .navbar-header .navbar-brand {
+	color: #f05f40;
+	font-weight: 700;
+	font-size: 18px;
+	transition: all 0.5s;
+}
+.navbar-inverse .navbar-header .navbar-brand:hover,
+.navbar-inverse .navbar-header .navbar-brand:focus {
+  color: #eb3812;
+  font-size: 22px;
+}
+#wrapper {
+	transition: all 0.5s;
+	overflow: hidden;
+}
+/* Sidenav style */
+#sidenav-wrapper {
+	background: rgba(0,118,138,0.9);
+	height: 100%;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	transition: all 0.5s ease-out;
+	width: 0px;
+	z-index: 1;
+}
+#sidenav-content {
+	list-style: none;
+	line-height: 42px;
+	margin: 20px auto;
+	padding-left: 0;
+	width: 15em;
+	overflow-x: hidden;
+}
+#sidenav-content li {
+	padding-right: : .5em;
+	box-shadow: 3px 0 rgba(52,152,219.2)inset;
+}
+#sidenav-content li a {
+	color: #ddd;
+	text-decoration: none;
+	text-transform: uppercase;
+	display: block;
+	width: 100%;	
+}
+#sidenav-content li a:hover {
+	margin-left: 1em;
+	transition: all 0.3s;
+}
+#main-content-wrapper {
+	transition: all 0.7s;
+}
+/*#wrapper.toggled #main-content-wrapper{
+	padding-left: 200px;
+}*/
+#wrapper.toggled #sidenav-wrapper {
+	width: 250px;
+}
+#main-content-wrapper > .container-fluid {
+	padding: 0;
+}
+.navbar-inverse .navbar-nav li a,
+.navbar-inverse .navbar-nav li a:visited {
+	position: relative;
+	color:#f05f40;
+	transition: all 0.95s;
+	overflow-x: hidden;
+	margin: 2px;
+	font-size: 14px;
+}
+.navbar-inverse .navbar-nav li a:hover,
+.navbar-inverse .navbar-nav li a:focus {
+	color: #eb3812;
+	font-size: 18px;
+}
+.navbar-inverse .navbar-nav>li.active>a,
+.navbar-inverse .navbar-nav>li.active>a:hover,
+.navbar-inverse .navbar-nav>li.active>a:focus {
+	background-color: #f05f40;
+	border-radius: 4px;
+	color: white;
+	font-size: 14px;
+}
+#closebtn {
+	color: #fff;
+	text-decoration: none;
+	font-size: 25px;
+	position: absolute;
+	top: 0;
+	right: 20px;
+}
+.panel {
+	margin: 0;
+	padding: 0;
+}
+#codigo {
+	position: absolute;
+	width: 100%;
+	border-radius: 0;
+}
+/* ============================= */
+/*.brand-name {
+	color : white;
 }
 .icon:hover {
 	text-decoration: none;
@@ -197,7 +309,4 @@ table {
 	border: 0px;
 	border-radius: 0px;
 }
-.alert {
-	border-radius: 0px;
-	margin-bottom: 0px;
-}
+*/

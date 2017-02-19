@@ -15,12 +15,13 @@ var translationEN = {
 		"en-btn" : "English"
 	},
 	"pic" : {
-		"datasheet" : "View datasheet",
+		"home": "<span class='fa fa-home fa-fw'></span> Home",
+		"datasheet" : "<span class='fa fa-file-pdf-o fa-fw'></span> View datasheet",
 		"es-btn" : "Spanish",
 		"en-btn" : "English",
 		"blocks-tab" : "Blocks",
 		"code-tab" : "Code",
-		"download": "Download code",
+		"download": "<span class='fa fa-download fa-fw'></span> Download code",
 		"notification": "For more options, make right click in the blocks.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
 	},
 	"evento" : {
@@ -62,12 +63,13 @@ var translationES = {
 		"en-btn" : "Inglés"
 	},
 	"pic" : {
-		"datasheet" : "Ver datasheet",
+		"home": "<span class='fa fa-home fa-fw'></span> Inicio",
+		"datasheet" : "<span class='fa fa-file-pdf-o fa-fw'></span> Ver datasheet",
 		"es-btn" : "Español",
 		"en-btn" : "Inglés",
 		"blocks-tab" : "Bloques",
 		"code-tab" : "Código",
-		"download": "Descargar código",
+		"download": "<span class='fa fa-download fa-fw'></span> Descargar código",
 		"notification": "Para más opciones, haz clic derecho sobre los bloques.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
 	},
 	"evento" : {

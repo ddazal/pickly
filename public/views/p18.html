@@ -1,159 +1,163 @@
-<!-- Notificación -->
-<div class="alert alert-info" id="notification">
-	<p class="text-center" translate="pic.notification"></p>
-</div>
-<!-- Barra de navegación -->
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<form class="navbar-form">
-			<div class="btn-group">
-  				<a type="button" class="btn btn-primary" ng-click="clickHome()"><span class="fa fa-home fa-lg fa-fw"></span></a>
-  				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-			  	<ul class="dropdown-menu">
-			    	<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank" translate="pic.datasheet"></a></li>
-			    	<li><a id="download" href="" translate="pic.download"></a></li>
-			    	<li ng-repeat="option in remaining">
-			    		<!-- <a role="button" ng-click="changePic()" translate="pic.option2" translate-values="{otherPic: '{{pic.name}}'}"></a> -->
-			    		<a role="button" ng-href="{{option.url}}">{{option.name}}</a>
-			    	</li>
-			  	</ul>
-			  	<p class="navbar-text">{{pic | uppercase}}</p>
-			</div>
-			<div class="form-group pull-right lang">
-				<div class="btn-group">
-					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="fa fa-globe fa-fw"></span></button>
-					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a class="langBlock" role="button" translate="pic.es-btn" ng-click="changeLanguage('es');"></a></li>
-						<li><a class="langBlock" role="button" translate="pic.en-btn" ng-click="changeLanguage('en');"></a></li>
+<div id="wrapper">
+	<div id="sidenav-wrapper">
+		<a href="#" id="closebtn">&times;</a>
+		<ul id="sidenav-content">
+			<li><a role="button" href="" ng-click="clickHome()" translate="pic.home"></a></li>
+			<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank" translate="pic.datasheet"></a></li>
+			<li><a role="button" id="download" href="" translate="pic.download"></a></li>
+			<li ng-repeat="option in remaining"><a role="button" href="{{option.url}}"><span class="fa fa-microchip fa-fw"></span> {{option.name}}</a></li>
+		</ul>
+	</div>
+
+	<div id="main-content-wrapper">
+		<!-- Notificación -->
+		<div class="alert alert-info" id="notification">
+			<p class="text-center" translate="pic.notification"></p>
+		</div>
+
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<!-- Mobile Display -->
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand" id="toggle"><span class="fa fa-bars"></span></a>
+					<a ng-href="datasheets/{{datasheet}}.pdf" class="navbar-brand" target="_blank" title="Datasheet">{{ pic | uppercase}}</a>
+				</div>
+				<!-- Nav elements -->
+				<div>
+					<form class="navbar-form navbar-right">
+						<div class="btn-group">
+							<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="fa fa-globe fa-fw"></span></button>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a class="langBlock" role="button" translate="pic.es-btn" ng-click="changeLanguage('es');"></a></li>
+								<li><a class="langBlock" role="button" translate="pic.en-btn" ng-click="changeLanguage('en');"></a></li>
+							</ul>
+						</div>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+	  				<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.blocks-tab"></a></li>
+	  				<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.code-tab" id="test"></a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="form-group pull-right">
-				<ul class="nav nav-tabs">
-					<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.blocks-tab" id="tabBlocks"></a></li>
-					<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.code-tab" id="tabCode"></a></li>
-				</ul>
+		</nav>
+			
+		<div id="blocklyDiv" ng-show="tabIsSelected(1)">
+			<xml id="toolbox">
+				<category name="{{ categoria1 }}" colour="120">
+					<block type="controls_if"></block>
+					<block type="controls_repeat"></block>
+					<block type="controls_whileUntil"></block>
+					<block type="controls_for"></block>
+					<block type="controls_forEach"></block>
+					<block type="controls_flow_statements"></block>
+					<block type="delay_block"></block>
+				</category>
+				<category name="{{ categoria2 }}" colour="160">
+					<block type="text"></block>
+					<block type="text_join"></block>	
+					<block type="text_append"></block>
+					<block type="text_length"></block>
+					<block type="text_isEmpty"></block>
+				</category>		
+				<category name="{{ categoria3 }}" colour="260">
+					<block type="lists_create_empty"></block>
+					<block type="lists_repeat"></block>
+					<block type="lists_length"></block>
+					<block type="lists_getIndex"></block>
+					<block type="lists_setIndex"></block>
+				</category>
+				<category name="{{ categoria4 }}" colour="230">
+					<block type="math_number"></block>	
+					<block type="math_arithmetic"></block>			
+					<block type="math_number_property"></block>
+					<block type="math_change"></block>				
+					<block type="math_round"></block>
+					<block type="math_on_list"></block>
+					<block type="math_modulo"></block>
+					<block type="math_random_int"></block>
+					<block type="math_random_float"></block>
+				</category>
+				<category name="{{ categoria5 }}" colour="210">
+					<block type="logic_compare"></block>
+					<block type="logic_operation"></block>
+					<block type="logic_negate"></block>
+					<block type="logic_boolean"></block>	
+				</category>
+				<category name="{{ categoria6 }}" colour="330">	
+					<block type="variables_get"></block>
+					<block type="variables_set"></block>	
+				</category>
+				<category name="{{ categoria7 }}" colour="290">
+					<block type="procedures_defnoreturn"></block> 
+					<block type="procedures_defreturn"></block>	
+					<block type="procedures_ifreturn"></block>
+				</category>
+				<sep></sep>
+				<!-- Bloques propios del microcontrolador -->
+				<category name="{{ categoria8 }}" colour="0">
+					<block type="adc_done"></block>
+					<block type="adc_read"></block>
+					<block type="adc_channel"></block>
+					<block type="adc_setup"></block>
+				</category>
+				<category name="{{ categoria9 }}" colour="20">
+					<block type="comm_send"></block>
+					<block type="comm_receive"></block>
+					<block type="comm_baud_rate"></block>
+				</category>
+				<category name="{{ categoria10 }}" colour="65">
+					<block type="io_type"></block>
+					<block type="io_tris"></block>
+					<block type="io_get"></block>
+					<block type="io_set"></block>		
+					<block type="io_pin_set"></block>
+					<block type="io_pin_get"></block>
+				</category>
+				<category name="Timers" colour="180">
+					<category name="Timer 0">
+						<block type="tmr_tmr0_get"></block>
+						<block type="tmr_tmr0_set"></block>
+						<block type="tmr_tmr0_setup"></block>
+					</category>
+					<category name="Timer 1">
+						<block type="tmr_tmr1_get"></block>
+						<block type="tmr_tmr1_set"></block>
+						<block type="tmr_tmr1_setup"></block>
+					</category>
+					<category name="Timer 2">
+						<block type="tmr_tmr2_get"></block>
+						<block type="tmr_tmr2_set"></block>
+						<block type="tmr_tmr2_setup"></block>
+					</category>
+				</category>
+				<category name="{{ categoria12 }}" colour="85">
+					<block type="int_enable"></block>
+					<block type="int_timer0"></block>
+					<block type="int_timer1"></block>
+					<block type="int_timer2"></block>
+					<block type="int_rb"></block>
+					<block type="int_ext"></block>
+					<block type="int_ad"></block>
+					<block type="int_tbe"></block>
+					<block type="int_rda"></block>
+				</category>
+			</xml>
+		</div>
+
+		<!-- Panel de código -->
+		<div ng-show="tabIsSelected(2)">
+			<div class="panel">
+				<pre id="codigo"></pre>
 			</div>
-		</form>
+		</div>
 	</div>
-</nav>
-
-<!-- Bloques -->
-<div id="blocklyDiv" ng-show="tabIsSelected(1)">
-	<xml id="toolbox">
-		<category name="{{ categoria1 }}" colour="120">
-			<block type="controls_if"></block>
-			<block type="controls_repeat"></block>
-			<block type="controls_whileUntil"></block>
-			<block type="controls_for"></block>
-			<block type="controls_forEach"></block>
-			<block type="controls_flow_statements"></block>
-			<block type="delay_block"></block>
-		</category>
-		<category name="{{ categoria2 }}" colour="160">
-			<block type="text"></block>
-			<block type="text_join"></block>	
-			<block type="text_append"></block>
-			<block type="text_length"></block>
-			<block type="text_isEmpty"></block>
-		</category>		
-		<category name="{{ categoria3 }}" colour="260">
-			<block type="lists_create_empty"></block>
-			<block type="lists_repeat"></block>
-			<block type="lists_length"></block>
-			<block type="lists_getIndex"></block>
-			<block type="lists_setIndex"></block>
-		</category>
-		<category name="{{ categoria4 }}" colour="230">
-			<block type="math_number"></block>	
-			<block type="math_arithmetic"></block>			
-			<block type="math_number_property"></block>
-			<block type="math_change"></block>				
-			<block type="math_round"></block>
-			<block type="math_on_list"></block>
-			<block type="math_modulo"></block>
-			<block type="math_random_int"></block>
-			<block type="math_random_float"></block>
-		</category>
-		<category name="{{ categoria5 }}" colour="210">
-			<block type="logic_compare"></block>
-			<block type="logic_operation"></block>
-			<block type="logic_negate"></block>
-			<block type="logic_boolean"></block>	
-		</category>
-		<category name="{{ categoria6 }}" colour="330">	
-			<block type="variables_get"></block>
-			<block type="variables_set"></block>	
-		</category>
-		<category name="{{ categoria7 }}" colour="290">
-			<block type="procedures_defnoreturn"></block> 
-			<block type="procedures_defreturn"></block>	
-			<block type="procedures_ifreturn"></block>
-		</category>
-		<sep></sep>
-		<!-- Bloques propios del microcontrolador -->
-		<category name="{{ categoria8 }}" colour="0">
-			<block type="adc_done"></block>
-			<block type="adc_read"></block>
-			<block type="adc_channel"></block>
-			<block type="adc_setup"></block>
-		</category>
-		<category name="{{ categoria9 }}" colour="20">
-			<block type="comm_send"></block>
-			<block type="comm_receive"></block>
-			<block type="comm_baud_rate"></block>
-		</category>
-		<category name="{{ categoria10 }}" colour="65">
-			<block type="io_type"></block>
-			<block type="io_tris"></block>
-			<block type="io_get"></block>
-			<block type="io_set"></block>		
-			<block type="io_pin_set"></block>
-			<block type="io_pin_get"></block>
-		</category>
-		<category name="Timers" colour="180">
-			<category name="Timer 0">
-				<block type="tmr_tmr0_get"></block>
-				<block type="tmr_tmr0_set"></block>
-				<block type="tmr_tmr0_setup"></block>
-			</category>
-			<category name="Timer 1">
-				<block type="tmr_tmr1_get"></block>
-				<block type="tmr_tmr1_set"></block>
-				<block type="tmr_tmr1_setup"></block>
-			</category>
-			<category name="Timer 2">
-				<block type="tmr_tmr2_get"></block>
-				<block type="tmr_tmr2_set"></block>
-				<block type="tmr_tmr2_setup"></block>
-			</category>
-		</category>
-		<category name="{{ categoria12 }}" colour="85">
-			<block type="int_enable"></block>
-			<block type="int_timer0"></block>
-			<block type="int_timer1"></block>
-			<block type="int_timer2"></block>
-			<block type="int_rb"></block>
-			<block type="int_ext"></block>
-			<block type="int_ad"></block>
-			<block type="int_tbe"></block>
-			<block type="int_rda"></block>
-		</category>
-	</xml>
 </div>
 
-<!-- Panel de código -->
-<div class="panel" ng-show="tabIsSelected(2)">
-	<pre id="codigo"></pre>
-</div>
-
-<!-- Bloque inicialización -->
 <xml id="startBlocks">
 	<block type="main_function"></block>
 </xml>
 
-<script>
-	
+<script>	
 	var workspaceData = {
 		toolbox: document.getElementById('toolbox'),
 		trashcan: true,
@@ -161,6 +165,7 @@
 			spacing: 20
 		}
 	}
+	var initHeight = $(window).height() - $(".navbar").height();
 	var xml = '';
 	var xml_text = '';
   var dataType = { type: 'text/plain;charset=utf-8' }
@@ -175,12 +180,13 @@
 	$('#download').click(downloadCode)
 
 	/* Propiedades CSS del workspace */
-	$("#blocklyDiv").css("height", $(window).height() - $(".navbar").height());
-	$(".panel").css("height", $(window).height() - $(".navbar").height());
+	$("#blocklyDiv").css("height", initHeight);
+	$("#codigo").css("height", initHeight);
 
 	/* Evento
 	 * Detecta los cambios en el tamaño de la pantalla y cambia el tamaño del área de trabajo
 	 */
+	$(document).resize(responsive)
 	$(window).resize(responsive)
 
 	/* Inyección del workspace de Blockly */
@@ -216,7 +222,6 @@
 		$("#blocklyDiv").innerHeight($(window).height() - $(".navbar").height());
 		$(".panel").innerHeight($(window).height() - $(".navbar").height());
 	}
-	
 	function myUpdateFunction (event) {
 		var code = Blockly.JavaScript.workspaceToCode(workspace);
 	  var codeArr = []
@@ -228,8 +233,18 @@
 	  xml_text = Blockly.Xml.domToPrettyText(xml);
 	}
 
-	function downloadCode () {
+	function downloadCode (e) {
+		e.preventDefault()
 		saveAs(blob, filename)
 	}
-	
+
+	$('#toggle').click(function (e) {
+		e.preventDefault();
+		$('#wrapper').toggleClass('toggled');
+	});
+
+	$('#closebtn').click(function (e) {
+		e.preventDefault();
+		$('#wrapper').toggleClass('toggled');
+	});
 </script>
