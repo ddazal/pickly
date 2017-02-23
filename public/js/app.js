@@ -1,2 +1,2 @@
 angular
-	.module('pickly', ['ngRoute', 'pascalprecht.translate', 'ngAnimate'])
+	.module('pickly', ['ngRoute', 'pascalprecht.translate'])
