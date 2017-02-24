@@ -165,7 +165,6 @@
 			spacing: 20
 		}
 	}
-	var initHeight = $(window).height() - $(".navbar").height();
 	var xml = '';
 	var xml_text = '';
   var dataType = { type: 'text/plain;charset=utf-8' }
@@ -180,8 +179,8 @@
 	$('#download').click(downloadCode)
 
 	/* Propiedades CSS del workspace */
-	$("#blocklyDiv").css("height", initHeight);
-	$("#codigo").css("height", initHeight);
+	$("#blocklyDiv").css("height", $(window).height() - $(".navbar").height());
+	$("#codigo").css("height", $(window).height() - $(".navbar").height());
 
 	/* Evento
 	 * Detecta los cambios en el tamaño de la pantalla y cambia el tamaño del área de trabajo
@@ -201,15 +200,17 @@
 	}
 
 	/* Despliegue de barra de notificación y cierre total del modal*/
+
 	function whenReady () {
 		$('#notification').delay(500).slideDown(500);
 		$('body').removeClass('modal-open');
 		$('.modal-backdrop').remove();
+		$('#blocklyDiv').show();
 	}
 
 	/* Destrucción y restauración del workspace */
 	function changeWorkspaceLanguage () {
-		setTimeout(refresh, 100);
+		setTimeout(refresh, 0);
 		function refresh () {
 			workspace.dispose();
 			workspace = Blockly.inject('blocklyDiv', workspaceData)

@@ -210,7 +210,7 @@
 
 	/* Destrucción y restauración del workspace */
 	function changeWorkspaceLanguage () {
-		setTimeout(refresh, 100);
+		setTimeout(refresh, 0);
 		function refresh () {
 			workspace.dispose();
 			workspace = Blockly.inject('blocklyDiv', workspaceData)
