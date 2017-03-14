@@ -5,4 +5,4 @@ Editor web de programación visual para micro-controladores PIC. Este trabajo ha
 2. Instalar dependencias del backend: `npm install`
 3. Instalar dependencias del frontend: `bower install`
 4. Iniciar el servidor: `npm start`
-5. Visitar el sitio web en **localhost:8080**
+5. Visitar el sitio web en **localhost:3000**

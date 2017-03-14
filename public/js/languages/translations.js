@@ -49,7 +49,7 @@ var translationEN = {
 var translationES = {
 	"home" : {
 		"sign-in": "Iniciar sesión",
-		"description" : "Editor web de lenguaje de programación visual para microncontroladres PIC&reg;",
+		"description" : "Editor web de lenguaje de programación visual para microncontroladores PIC&reg;",
 		"header-btn": "Conocer más",
 		"main-section": "¿Cómo funciona?",
 		"section-one":"Selecciona un microcontrolador",

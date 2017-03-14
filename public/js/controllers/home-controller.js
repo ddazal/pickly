@@ -11,7 +11,7 @@ function HomeController($scope, $translate, $data) {
 	};
 	function homeJS () {
   	window.sr = ScrollReveal({ reset: true })
-  	.reveal('.icon', { duration: 1000 }, 250)
+  	.reveal('.icon', { duration: 1500 }, 375)
     .reveal('.sr-button')
   	$("#modal_pic").on('hidden.bs.modal', function () {
     	$(this).data('bs.modal', null);
@@ -22,11 +22,16 @@ function HomeController($scope, $translate, $data) {
       	var hash = this.hash;
       	$('html, body').animate({
         	scrollTop: $(hash).offset().top
-      	}, 1500, function(){
+      	}, 1000, function(){
       		window.location.hash = hash;
       	});
     	}
   	});
+    $('#main-nav').affix({
+      offset: {
+        top: 200
+      }
+    })
 	}
 };
 

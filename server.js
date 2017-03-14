@@ -10,5 +10,5 @@ app.use('/', router)
 app.listen(port, function (err) {
 	if (err)
 		res.send(err)
-	console.log('Servidor iniciado en puerto ' + port)
+	console.log(`http://localhost:${port}/`)
 })
