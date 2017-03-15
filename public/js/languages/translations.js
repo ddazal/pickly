@@ -12,7 +12,10 @@ var translationEN = {
 		"modal-title": "Select PIC",
 		"modal-close": "Close",
 		"es-btn" : "Spanish",
-		"en-btn" : "English"
+		"en-btn" : "English",
+		"lang": "Language",
+		"code": "Institutional Code",
+		"password": "Password"
 	},
 	"pic" : {
 		"home": "<span class='fa fa-home fa-fw'></span> Home",
@@ -49,7 +52,7 @@ var translationEN = {
 var translationES = {
 	"home" : {
 		"sign-in": "Iniciar sesión",
-		"description" : "Editor web de lenguaje de programación visual para microncontroladores PIC&reg;",
+		"description" : "Editor web de lenguaje de programación visual para microcontroladores PIC&reg;",
 		"header-btn": "Conocer más",
 		"main-section": "¿Cómo funciona?",
 		"section-one":"Selecciona un microcontrolador",
@@ -60,7 +63,10 @@ var translationES = {
 		"modal-title": "Seleccionar PIC",
 		"modal-close": "Cerrar",
 		"es-btn" : "Español",
-		"en-btn" : "Inglés"
+		"en-btn" : "Inglés",
+		"lang": "Idioma",
+		"code": "Código Institucional",
+		"password": "Contraseña"
 	},
 	"pic" : {
 		"home": "<span class='fa fa-home fa-fw'></span> Inicio",

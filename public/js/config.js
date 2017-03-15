@@ -4,20 +4,24 @@ angular
 
 function config($routeProvider, $locationProvider, $translateProvider) {
 	$routeProvider
-		.when('/',{
+		.when('/', {
 			templateUrl : 'views/home.html',
 			controller : 'HomeController'
 		})
-		.when('/p16/:id',{
+		.when('/p16/:id', {
 			templateUrl : 'views/p16.html',
 			controller : 'PicPageController'
 		})
-		.when('/p18/:id',{
+		.when('/p18/:id', {
 			templateUrl : 'views/p18.html',
 			controller : 'PicPageController'
 		})
-		.when('/error',{
+		.when('/error', {
 			templateUrl : 'views/error.html'
+		})
+		.when('/login', {
+			templateUrl: 'views/login.html',
+			controller: 'LoginController'
 		})
 		.otherwise({
 			redirectTo : '/error'

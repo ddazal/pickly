@@ -1,4 +1,7 @@
 <nav id="main-nav" class="navbar navbar-default navbar-fixed-top">
+	<div class="alert alert-danger" id="login-failed" ng-show="data">
+		<p class="text-center">Usuario y/o contraseña incorrecto <a href="#"><span class="fa fa-close fa-fw pull-right"></span></a></p>
+	</div>
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -7,27 +10,18 @@
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="menu">
-			<form class="navbar-form navbar-right">
+			<form class="navbar-form navbar-right" ng-submit="checkUser()">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Código institucional"/>
+					<input type="text" class="form-control" ng-model="username" name="username" placeholder="{{ 'home.code' | translate }}"/>
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" placeholder="Contraseña"/>
+					<input type="password" class="form-control" ng-model="password" name="password" placeholder="{{ 'home.password' | translate }}"/>
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn">
 						<span class="fa fa-sign-in fa-fw"></span>
 					</button>
 				</div>
-				<div class="form-group">
-						<div class="btn-group">
-							<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="fa fa-globe fa-fw"></span></button>
-							<ul class="dropdown-menu">
-								<li><a role="button" translate="home.es-btn" ng-click="changeLanguage('es');"></a></li>
-								<li><a role="button" translate="home.en-btn" ng-click="changeLanguage('en');"></a></li>
-							</ul>
-						</div>
-					</div>
 			</form>
 		</div>
 	</div>
@@ -117,6 +111,21 @@
 <footer>
 	<div class="container">
 		<hr>
-		<p>2016-2017&copy;</p>
+		<div class="row">
+			<div class="col-xs-5">
+				<div class="form-group">
+						<div class="btn-group dropup">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" translate="home.lang"></a>
+							<ul class="dropdown-menu">
+								<li><a role="button" translate="home.es-btn" ng-click="changeLanguage('es');"></a></li>
+								<li><a role="button" translate="home.en-btn" ng-click="changeLanguage('en');"></a></li>
+							</ul>
+						</div>
+				</div>
+			</div>
+			<div class="col-xs-2 col-xs-offset-5">
+				<p>2016-2017&copy;</p>
+			</div>
+		</div>
 	</div>
 </footer>
