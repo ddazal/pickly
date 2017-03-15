@@ -348,3 +348,6 @@ table {
 	box-shadow: 0 3px #286090;
 	border-bottom: none;
 }
+.login-error {
+	color: #B71C1C;
+}

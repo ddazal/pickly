@@ -13,7 +13,7 @@ var server = http.createServer(app)
 var port = process.env.PORT || 3000
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(session({
 	secret: 'evmp',
@@ -24,6 +24,19 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', router)
+
+passport.use(new LocalStrategy(function (username, password, done) {
+	if (username === password)
+		return done(null, { username: username })
+	return done(null, false, { 'message': 'true' })
+}))
+
+passport.serializeUser(function (user, done) {
+	done(null, user)
+})
+passport.deserializeUser(function (user, done) {
+	done(null, user)
+})
 
 server.listen(port, function (err) {
 	if (err)

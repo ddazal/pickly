@@ -20,7 +20,11 @@ function config($routeProvider, $locationProvider, $translateProvider) {
 			templateUrl : 'views/error.html'
 		})
 		.when('/login', {
-			templateUrl: 'views/login.html'
+			templateUrl: 'views/login.html',
+			controller: 'LoginController'
+		})
+		.when('/dashboard', {
+			templateUrl: 'views/dashboard.html'
 		})
 		.otherwise({
 			redirectTo : '/error'
