@@ -1,26 +1,15 @@
 <nav id="main-nav" class="navbar navbar-default navbar-fixed-top">
-	<div class="alert alert-danger" id="login-failed" ng-show="data">
-		<p class="text-center">Usuario y/o contraseña incorrecto <a href="#"><span class="fa fa-close fa-fw pull-right"></span></a></p>
-	</div>
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" translate="home.sign-in"></button>
+			<a class="btn navbar-toggle collapsed" href="/login" translate="home.sign-in"></a>
 			<a href="#" class="navbar-brand"><span class="fa fa-microchip"></span> Pickly</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="menu">
-			<form class="navbar-form navbar-right" ng-submit="checkUser()">
+			<form class="navbar-form navbar-right">
 				<div class="form-group">
-					<input type="text" class="form-control" ng-model="username" name="username" placeholder="{{ 'home.code' | translate }}"/>
-				</div>
-				<div class="form-group">
-					<input type="password" class="form-control" ng-model="password" name="password" placeholder="{{ 'home.password' | translate }}"/>
-				</div>
-				<div class="form-group">
-					<button type="submit" class="btn">
-						<span class="fa fa-sign-in fa-fw"></span>
-					</button>
+					<a href="/login" class="btn btn-info" translate="home.sign-in"></a>
 				</div>
 			</form>
 		</div>

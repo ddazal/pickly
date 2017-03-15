@@ -9,20 +9,6 @@ function HomeController($scope, $translate, $data, $http) {
 		$translate.use(lan_key);
 		$('#block_lang').replaceWith('<script id="block_lang" src="google-blockly/msg/js/' + lan_key + '.js"></script>');
 	};
-  $scope.checkUser = function () {
-    $http({
-      method: 'POST',
-      url: '/login',
-      data: {
-        username: $scope.username,
-        password: $scope.password
-      }
-    }).then(function (res) {
-      $scope.data = res.data.failed
-    }, function (res) {
-      $scope.data = res.data.failed || 'Request failed'
-    })
-  }
 
 	function homeJS () {
   	window.sr = ScrollReveal({ reset: true })
@@ -31,10 +17,6 @@ function HomeController($scope, $translate, $data, $http) {
   	$("#modal_pic").on('hidden.bs.modal', function () {
     	$(this).data('bs.modal', null);
   	});
-    $('#login-failed').click(function (event) {
-      event.preventDefault()
-      $(this).slideUp(500)
-    })
   	$("#header-btn").on('click', function(event) {
     	if (this.hash !== "") {
       	event.preventDefault();
