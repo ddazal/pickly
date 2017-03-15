@@ -307,3 +307,44 @@ table {
 	width: 100%;
 	border-radius: 0;
 }
+/* Estilos para vista de login */
+#login-wrapper {
+	position: absolute;
+	height: 100%;
+	margin: 0;
+	width: 100%;
+	background-color: #eee;
+	background-image: url('../img/bg.jpg');
+	background-position: center;
+  background-size: cover;
+}
+.login-content {
+	background-color: #fafafa;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 500px;
+	height: 300px;
+	border-radius: 5px;
+	box-shadow: 0 5px 10px;
+}
+.login-box {
+	max-width: 400px;
+	position: relative;
+	top: 50%;
+	margin: 0 auto;
+	transform: translateY(-50%);
+}
+.login-box .btn {
+	box-shadow: 0 3px #286090;
+	border-bottom: none;
+}
+.login-box .btn:hover {
+	box-shadow: 0 3px ##286090;
+	border-bottom: none;
+}
+.login-box .btn:active {
+	box-shadow: 0 3px #286090;
+	border-bottom: none;
+}

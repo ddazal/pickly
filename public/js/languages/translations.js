@@ -46,6 +46,11 @@ var translationEN = {
 		"cat_9" : "Communications",
 		"cat_10" : "Input/Output",
 		"cat_12" : "Interrupts"
+	},
+	"login": {
+		"code": "Institutional Code",
+		"password": "Password",
+		"sign-in": "Sign in"
 	}
 };
 
@@ -97,5 +102,10 @@ var translationES = {
 		"cat_9" : "Comunicaciones",
 		"cat_10" : "Entradas/Salidas",
 		"cat_12" : "Interrupciones"
-	}	
+	}	,
+	"login": {
+		"code": "Código Institucional",
+		"password": "Contraseña",
+		"sign-in": "Ingresar"
+	}
 };
