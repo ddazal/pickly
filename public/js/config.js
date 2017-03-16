@@ -24,7 +24,8 @@ function config($routeProvider, $locationProvider, $translateProvider) {
 			controller: 'LoginController'
 		})
 		.when('/dashboard', {
-			templateUrl: 'views/dashboard.html'
+			templateUrl: 'views/dashboard.html',
+			controller: 'DashboardController'
 		})
 		.otherwise({
 			redirectTo : '/error'

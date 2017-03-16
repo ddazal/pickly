@@ -1,1 +1,8 @@
-<h1>Dashboard de usuario</h1>
+<div class="alert alert-warning" ng-show="failed">
+	<p class="text-center">Lo sentimos, algo ha salido mal. Intenta de nuevo</p>
+</div>
+
+<div class="container">
+	<h1>Bienvenido {{user.username}}</h1>
+	<button ng-click="logout()" class="btn btn-primary">Cerrar sesión</button>
+</div>

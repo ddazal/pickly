@@ -2,17 +2,18 @@ angular
 	.module('pickly')
 	.controller('LoginController', LoginController);
 
-function LoginController($scope, $http, $location) {
+function LoginController($scope, $http, $location, $rootScope) {
 	$scope.login = function (user) {
 		$http({
 			method: 'POST',
 			url: '/login',
 			data: user
 		}).then(function(res) {
-			$scope.flag = '';
+			$scope.failed = '';
+			$rootScope.currentUser = res.data
 			$location.path('/dashboard')
 		}, function(res) {
-			$scope.flag = true;
+			$scope.failed = true;
 		})
 	}
 }

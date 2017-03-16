@@ -2,8 +2,9 @@ angular
 	.module('pickly')
 	.controller('HomeController', HomeController);
 
-function HomeController($scope, $translate, $data, $http) {
-	$scope.$on('$viewContentLoaded', homeJS)
+function HomeController($scope, $translate, $data, $http, $rootScope) {
+	$scope.user = $rootScope.currentUser
+  $scope.$on('$viewContentLoaded', homeJS)
 	$scope.pics = $data.getPics()
 	$scope.changeLanguage = function(lan_key){
 		$translate.use(lan_key);
