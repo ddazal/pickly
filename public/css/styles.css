@@ -179,10 +179,7 @@ table {
 
 /* Estilos para error.html */
 .error-page {
-	margin-bottom : 150px;
-	margin-left : auto;
-	margin-right : auto;
-	margin-top : 150px;
+	margin: 150px auto;
 }
 .error-sub {
 	font-size : 30px;
@@ -259,9 +256,6 @@ table {
 #main-content-wrapper {
 	transition: all 0.7s;
 }
-/*#wrapper.toggled #main-content-wrapper{
-	padding-left: 200px;
-}*/
 #wrapper.toggled #sidenav-wrapper {
 	width: 250px;
 }

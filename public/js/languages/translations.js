@@ -26,7 +26,9 @@ var translationEN = {
 		"blocks-tab" : "Blocks",
 		"code-tab" : "Code",
 		"download": "<span class='fa fa-download fa-fw'></span> Download code",
-		"notification": "For more options, make right click in the blocks.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
+		"notification": "For more options, make right click in the blocks.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>",
+		"profile": "<span class='fa fa-user'></span> Profile",
+		"save": "Save"
 	},
 	"evento" : {
 		"advertencia" : "Leave this page? Your work will not be saved."
@@ -83,7 +85,9 @@ var translationES = {
 		"blocks-tab" : "Bloques",
 		"code-tab" : "Código",
 		"download": "<span class='fa fa-download fa-fw'></span> Descargar código",
-		"notification": "Para más opciones, haz clic derecho sobre los bloques.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>"
+		"notification": "Para más opciones, haz clic derecho sobre los bloques.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>",
+		"profile": "<span class='fa fa-user'></span> Perfil",
+		"save": "Guardar"
 	},
 	"evento" : {
 		"advertencia" : "¿Salir de esta página? Su trabajo no será guardado."

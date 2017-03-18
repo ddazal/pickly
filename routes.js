@@ -9,7 +9,10 @@ router.get('/', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-	res.sendFile(path.join(__dirname, 'public', 'index.html'))
+	if (req.isAuthenticated) 
+		res.redirect('/dashboard')
+	else
+		res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 router.get('/p16/:id', (req, res) => {

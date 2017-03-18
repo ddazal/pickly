@@ -11,6 +11,7 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 	$scope.selectTab = setTab;
 	$scope.tabIsSelected = checkTab;
 	$scope.clickHome = clickHome;
+	$scope.clickDashboard = clickDashboard;
 	$scope.changeLanguage = changeLanguage;
 	$scope.$on('$routeChangeStart', goBack)
 	$scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
@@ -25,6 +26,10 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 
 	function clickHome () {
 		$location.path("/");
+	}
+
+	function clickDashboard () {
+		$location.path("/dashboard");
 	}
 
 	function changeLanguage (lan_key) {
