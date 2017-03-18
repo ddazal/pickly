@@ -2,9 +2,8 @@ angular
 	.module('pickly')
 	.controller('LoginController', LoginController);
 
-function LoginController($scope, $http, $location, $rootScope) {
-	$scope.user = $rootScope.currentUser;
-	console.log($scope.user)
+function LoginController($scope, $http, $location, $window) {
+	$scope.user;
 	$scope.login = function (user) {
 		$http({
 			method: 'POST',
@@ -12,7 +11,8 @@ function LoginController($scope, $http, $location, $rootScope) {
 			data: user
 		}).then(function(res) {
 			$scope.failed = '';
-			$rootScope.currentUser = res.data
+			$window.sessionStorage.setItem('currentUser', angular.toJson(res.data))
+			$scope.user = $window.sessionStorage.getItem('currentUser')
 			$location.path('/dashboard')
 		}, function(res) {
 			$scope.failed = true;

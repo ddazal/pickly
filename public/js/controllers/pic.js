@@ -13,7 +13,6 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 	$scope.clickHome = clickHome;
 	$scope.changeLanguage = changeLanguage;
 	$scope.$on('$routeChangeStart', goBack)
-	$scope.user = $rootScope.currentUser
 	
 	function setTab (setTab) {
 		$scope.tab = setTab;

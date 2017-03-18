@@ -1,6 +1,6 @@
 var http = require('http')
-var express = require('express')
 var path = require('path')
+var express = require('express')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
@@ -14,9 +14,10 @@ var port = process.env.PORT || 3000
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser())
+//app.use(cookieParser())
 app.use(session({
-	secret: 'evmp',
+	name: 'session',
+	secret: '53kre7',
 	resave: false,
 	saveUninitialized: true
 }))
@@ -25,20 +26,20 @@ app.use(passport.session())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', router)
 
-passport.use(new LocalStrategy(function (username, password, done) {
+passport.use(new LocalStrategy((username, password, done) => {
 	if (username === password)
 		return done(null, { username: username })
 	return done(null, false)
 }))
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser((user, done) => {
 	done(null, user)
 })
-passport.deserializeUser(function (user, done) {
+passport.deserializeUser((user, done) => {
 	done(null, user)
 })
 
-server.listen(port, function (err) {
+server.listen(port, (err) => {
 	if (err)
 		res.send(err)
 	console.log(`http://localhost:${port}/`)

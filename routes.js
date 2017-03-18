@@ -4,42 +4,41 @@ var path = require('path')
 var bodyParser = require('body-parser')
 var passport = require('passport')
 
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-router.get('/login', function (req, res) {
+router.get('/login', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-router.get('/p16/:id', function (req, res) {
+router.get('/p16/:id', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-router.get('/p18/:id', function (req, res) {
+router.get('/p18/:id', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-router.get('/error', function (req, res) {
+router.get('/error', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-router.get('/dashboard', function (req, res) {
+router.get('/dashboard', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-router.get('/logout', function (req, res) {
+router.get('/logout', (req, res) => {
 	req.logout()
 	res.sendStatus(200)
 })
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post('/login', passport.authenticate('local'), (req, res)  => {
 	res.status(200).json(req.user)
 })
 
-router.get('/check', function(req, res) {
+router.get('/check', (req, res)  => {
 	let status = req.isAuthenticated ? req.user : undefined
-	console.log(status)
 	res.send(status)
 })
 
