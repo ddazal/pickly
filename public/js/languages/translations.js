@@ -15,7 +15,8 @@ var translationEN = {
 		"en-btn" : "English",
 		"lang": "Language",
 		"code": "Institutional Code",
-		"password": "Password"
+		"password": "Password",
+		"profile": "Profile"
 	},
 	"pic" : {
 		"home": "<span class='fa fa-home fa-fw'></span> Home",
@@ -71,7 +72,8 @@ var translationES = {
 		"en-btn" : "Inglés",
 		"lang": "Idioma",
 		"code": "Código Institucional",
-		"password": "Contraseña"
+		"password": "Contraseña",
+		"profile": "Perfil"
 	},
 	"pic" : {
 		"home": "<span class='fa fa-home fa-fw'></span> Inicio",

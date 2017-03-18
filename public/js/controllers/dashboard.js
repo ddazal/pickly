@@ -10,7 +10,7 @@ function DashboardController($scope, $http, $location, $window) {
 			url: '/logout'
 		}).then(function(res) {
 			$scope.failed = ''
-			$window.sessionStorage.removeItem('currentUser') 	
+			$window.sessionStorage.clear()
 			$location.path('/')
 		}, function(res) {
 			$scope.failed = true

@@ -2,7 +2,7 @@ angular
 	.module('pickly')
 	.controller('PicPageController', PicPageController);
 
-function PicPageController($scope, $route, $location, $translate, $rootScope, $routeParams, $data){
+function PicPageController($scope, $route, $location, $translate, $rootScope, $routeParams, $data, $window){
 	
 	$scope.pic = $routeParams.id;
 	$scope.datasheet = $location.path().slice(1, 4);
@@ -13,6 +13,7 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 	$scope.clickHome = clickHome;
 	$scope.changeLanguage = changeLanguage;
 	$scope.$on('$routeChangeStart', goBack)
+	$scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
 	
 	function setTab (setTab) {
 		$scope.tab = setTab;

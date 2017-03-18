@@ -4,7 +4,6 @@ angular
 
 function HomeController($scope, $translate, $data, $window) {
   $scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
-  console.log($scope.user)
   $scope.$on('$viewContentLoaded', homeJS)
 	$scope.pics = $data.getPics()
 	$scope.changeLanguage = function(lan_key){
