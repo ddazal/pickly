@@ -28,7 +28,7 @@ app.use('/', router)
 passport.use(new LocalStrategy(function (username, password, done) {
 	if (username === password)
 		return done(null, { username: username })
-	return done(null, false, { 'message': 'true' })
+	return done(null, false)
 }))
 
 passport.serializeUser(function (user, done) {

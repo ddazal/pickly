@@ -10,6 +10,7 @@ function DashboardController($scope, $http, $location, $rootScope) {
 			url: '/logout'
 		}).then(function(res) {
 			$scope.failed = ''
+			$rootScope.currentUser = ''
 			$location.path('/')
 		}, function(res) {
 			$scope.failed = true

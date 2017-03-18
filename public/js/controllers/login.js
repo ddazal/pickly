@@ -3,6 +3,8 @@ angular
 	.controller('LoginController', LoginController);
 
 function LoginController($scope, $http, $location, $rootScope) {
+	$scope.user = $rootScope.currentUser;
+	console.log($scope.user)
 	$scope.login = function (user) {
 		$http({
 			method: 'POST',

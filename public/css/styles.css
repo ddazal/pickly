@@ -351,3 +351,9 @@ table {
 .login-error {
 	color: #B71C1C;
 }
+.login-icon {
+	color: #e3aa03;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}

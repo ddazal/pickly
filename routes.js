@@ -24,7 +24,7 @@ router.get('/error', function (req, res) {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-router.get('/dashboard', protect, function (req, res) {
+router.get('/dashboard', function (req, res) {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
@@ -37,10 +37,10 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
 	res.status(200).json(req.user)
 })
 
-function protect(req, res, next) {
-	if (req.isAuthenticated()) 
-		return next()
-	res.redirect('/login')
-}
+router.get('/check', function(req, res) {
+	let status = req.isAuthenticated ? req.user : undefined
+	console.log(status)
+	res.send(status)
+})
 
 module.exports = router
