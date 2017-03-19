@@ -1,5 +1,6 @@
 angular
 	.module('pickly')
+	.directive('getInput', getInput)
 	.controller('LoginController', LoginController);
 
 function LoginController($scope, $http, $location, $window) {
@@ -17,5 +18,17 @@ function LoginController($scope, $http, $location, $window) {
 		}, function(res) {
 			$scope.failed = true;
 		})
+	}
+}
+
+function getInput() {
+	return {
+		restrict: 'A',
+		scope: true,
+		link: function(scope, element, attrs) {
+			element.on('change', function(event) {
+				scope.user.password = event.target.value
+			})
+		}
 	}
 }
