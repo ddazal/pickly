@@ -13,7 +13,7 @@
 					<a href="/login" 	class="btn btn-info" translate="home.sign-in"></a>
 				</div>
 				<div class="form-group" ng-show="user">
-					<a href="/dashboard" class="btn btn-default">{{user.username | uppercase}} <span class="fa fa-user"></span></a>
+					<a href="/dashboard" class="btn btn-default">{{user.firstname}} {{user.lastname}} <span class="fa fa-user"></span></a>
 				</div>
 			</form>
 		</div>
@@ -105,7 +105,7 @@
 	<div class="container">
 		<hr>
 		<div class="row">
-			<div class="col-xs-5">
+			<div class="col-xs-6">
 				<div class="form-group">
 						<div class="btn-group dropup">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" translate="home.lang"></a>
@@ -116,8 +116,8 @@
 						</div>
 				</div>
 			</div>
-			<div class="col-xs-2 col-xs-offset-5">
-				<p>2016-2017&copy;</p>
+			<div class="col-xs-1 col-xs-offset-5">
+				<a href="https://github.com/ddazal/pickly" target="_blank"><span class="fa fa-github fa-2x"></span></a>
 			</div>
 		</div>
 	</div>

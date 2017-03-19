@@ -5,16 +5,36 @@ var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
 var passport = require('passport')
+var mongoose = require('mongoose')
 var LocalStrategy = require('passport-local').Strategy
+var bcrypt = require('bcryptjs')
 var router = require('./routes')
+var Student = require('./models/students')
 
 var app = express()
 var server = http.createServer(app)
 var port = process.env.PORT || 3000
 
+var db = "mongodb://localhost/pickly"
+mongoose.connect(db)
+
+mongoose.connection.on('connected', () => console.log(`Connected to ${db}`))
+mongoose.connection.on('error', (err) => console.log(err))
+
+/*
+var newStudent = new Student({
+	id: 1,
+	username: "2011203021",
+	password: "2011203021",
+	firstname: "David",
+	lastname: "Daza"
+})
+
+newStudent.save()*/
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-//app.use(cookieParser())
+app.use(cookieParser())
 app.use(session({
 	name: 'session',
 	secret: '53kre7',
@@ -27,9 +47,27 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', router)
 
 passport.use(new LocalStrategy((username, password, done) => {
-	if (username === password)
-		return done(null, { username: username })
-	return done(null, false)
+	Student.findOne({ username: username}, (err, student) => {
+		
+		student.comparePassword(password, (err, match) => {
+			if (match) {
+				return done(null, { 
+					username: student.username,
+					firstname: student.firstname,
+					lastname: student.lastname,
+					id: student.id,
+					projects: student.projects
+				})		
+			} else {
+				return done(null, false)
+			}
+		})
+
+		if (err)
+			return done(err)
+		if (!student)
+			return done(null, false)
+	})
 }))
 
 passport.serializeUser((user, done) => {

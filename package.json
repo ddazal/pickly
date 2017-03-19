@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/ddazal/pickly#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
