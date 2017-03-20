@@ -54,7 +54,7 @@ router.get('/get/students', justForAdmin, (req, res) => {
 	Student.find({}, (err, students) => {
 		if (err)
 			return res.json(err)
-		res.json(students)
+		res.status(200).json(students)
 	})
 })
 

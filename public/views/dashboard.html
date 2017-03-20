@@ -2,10 +2,43 @@
 	<p class="text-center">Lo sentimos, algo ha salido mal. Intenta de nuevo</p>
 </div>
 
-<div class="container">
-	<h1>Bienvenido {{user.firstname}} {{user.lastname}}</h1>
-	<h3 ng-show="admin">Eres administrador</h3>
-	<button ng-click="logout()" class="btn btn-primary">Cerrar sesión</button>
-	<a href="/">Home</a>
-	<a href="/get/students" target="_self" ng-show="admin">Ver estudiantes</a>
+<nav class="navbar navbar-default" id="dashboard-nav">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dashboard"><span class="fa fa-navicon"></span></button>
+			<a href="" class="navbar-brand"><span class="fa fa-microchip"></span> {{user.firstname}} {{user.lastname}}</a>
+		</div>
+		<div class="collapse navbar-collapse" id="dashboard">
+			<ul class="nav navbar-nav">
+				<li><a href="/">Home</a></li>
+				<li><a href="" ng-show="admin" ng-click="getStudents()" ng-hide="students">Ver estudiantes</a></li>
+				<li><a href="" ng-show="students" ng-click="dispose()">Ocultar lista</a></li>
+				<li><a href="" ng-click="logout()">Cerrar sesión</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container-fluid">
+	<!-- Ver estudiantes -->
+	<div class="table-responsive" ng-show="students">
+		<table class="table table-hover text-center">
+			<thead>
+				<th class="text-center">Id</th>
+				<th class="text-center">Nombre</th>
+				<th class="text-center">Código</th>
+				<th class="text-center">Proyectos</th>
+				<th class="text-center">Rol(es)</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="student in students">
+					<td>{{student.id}}</td>
+					<td>{{student.firstname}} {{student.lastname}}</td>
+					<td>{{student.username}}</td>
+					<td>{{student.projects.length}}</td>
+					<td>{{student.roles.toString()}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>

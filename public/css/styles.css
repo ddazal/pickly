@@ -5,21 +5,21 @@ body {
 }
 /* Estilos para home.html */
 /* Navbar style for mobiles */
-.navbar-default {
+#main-nav.navbar-default {
 	background-color: white;
 	border-color: rgba(34, 34, 34, 0.05);
   transition: all 0.35s;
 }
-.navbar-default .navbar-header .navbar-brand {
+#main-nav.navbar-default .navbar-header .navbar-brand {
 	color: #f05f40;
 	font-weight: 700;
 	text-transform: uppercase;
 }
-.navbar-default .navbar-header .navbar-brand:hover,
-.navbar-default .navbar-header .navbar-brand:focus {
+#main-nav.navbar-default .navbar-header .navbar-brand:hover,
+#main-nav.navbar-default .navbar-header .navbar-brand:focus {
   color: #eb3812;
 }
-.navbar-default .navbar-header .navbar-toggle {
+#main-nav.navbar-default .navbar-header .navbar-toggle {
   font-weight: 700;
   font-size: 12px;
   color: #222222;
@@ -27,32 +27,32 @@ body {
 }
 /* Navbar style for larger screens */
 @media (min-width: 768px) {
-	.navbar-default {
+	#main-nav.navbar-default {
 		background-color: transparent;
 		border: 0px;
 	}
-	.navbar-default .navbar-header .navbar-brand {
+	#main-nav.navbar-default .navbar-header .navbar-brand {
     color: rgba(255, 255, 255, 0);
     display: none;
   }
-  .navbar-default .navbar-header .navbar-brand:hover,
-  .navbar-default .navbar-header .navbar-brand:focus {
+  #main-nav.navbar-default .navbar-header .navbar-brand:hover,
+  #main-nav.navbar-default .navbar-header .navbar-brand:focus {
     color: rgba(255, 255, 255, 0);
   }
-  .navbar-default.affix {
+  #main-nav.navbar-default.affix {
   	background-color: #fff;
   	top: 0;
   	width: 100%;
   	border-bottom: 0.5px solid #eee;
   }
-	.navbar-default.affix .navbar-header .navbar-brand {
+	#main-nav.navbar-default.affix .navbar-header .navbar-brand {
 		color: #795548;
 		font-weight: 700;
 		text-transform: uppercase;
 		display: inline;
 	}
-	.navbar-default.affix .navbar-header .navbar-brand:hover,
-	.navbar-default.affix .navbar-header .navbar-brand:focus {
+	#main-nav.navbar-default.affix .navbar-header .navbar-brand:hover,
+	#main-nav.navbar-default.affix .navbar-header .navbar-brand:focus {
 	  color: #5d4037;
 	}
 }
@@ -351,7 +351,7 @@ table {
 	top: 10px;
 	left: 10px;
 }
-/* Forbidden page */
+/* FEstilo para vista de forbidden */
 .forbidden-img {
 	max-width: 100%;
 }
@@ -380,3 +380,4 @@ table {
 	top: 50%;
 	transform: translateY(-50%);
 }
+/* Estilo de vista dashboard */

@@ -9,7 +9,6 @@ function DashboardController($scope, $http, $location, $window) {
 			return true;
 		return false;
 	}).toString()
-	console.log(typeof($scope.admin))
 	$scope.logout = function() {
 		$http({
 			method: 'GET',
@@ -21,5 +20,19 @@ function DashboardController($scope, $http, $location, $window) {
 		}, function(res) {
 			$scope.failed = true
 		})
+	}
+	$scope.getStudents = function() {
+		$http({
+			method: 'GET',
+			url: '/get/students'
+		}).then(function(res) {
+			$scope.students = res.data
+			console.log($scope.list)
+		}, function(res) {
+			console.log('Algo ha salido mal')
+		})
+	}
+	$scope.dispose = function() {
+		$scope.students = ''
 	}
 }
