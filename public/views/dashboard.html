@@ -9,36 +9,65 @@
 			<a href="" class="navbar-brand"><span class="fa fa-microchip"></span> {{user.firstname}} {{user.lastname}}</a>
 		</div>
 		<div class="collapse navbar-collapse" id="dashboard">
-			<ul class="nav navbar-nav">
-				<li><a href="/">Home</a></li>
-				<li><a href="" ng-show="admin" ng-click="getStudents()" ng-hide="students">Ver estudiantes</a></li>
-				<li><a href="" ng-show="students" ng-click="dispose()">Ocultar lista</a></li>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">Inicio</a></li>
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" role="button" data-toggle="dropdown">Proyectos <span class="fa fa-caret-down"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="" ng-click="setTab(1)">Mis proyectos</a></li>
+						<li><a href="">Crear nuevo proyecto</a></li>
+					</ul>
+				</li>
+				<li><a href="" ng-show="admin && checkTab(1)" ng-click="getStudents();setTab(2)" ng-hide="!admin || students">Ver estudiantes</a></li>
+				<li><a href="" ng-show="students && checkTab(2)" ng-click="dispose();setTab(1)">Ocultar lista</a></li>
+				<li><a href="">Configuración</a></li>
 				<li><a href="" ng-click="logout()">Cerrar sesión</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
 
-<div class="container-fluid">
-	<!-- Ver estudiantes -->
-	<div class="table-responsive" ng-show="students">
-		<table class="table table-hover text-center">
+<!-- Ver proyectos -->
+<div class="panel panel-success dashboard-panel" ng-show="checkTab(1)">
+	<div class="panel-heading">
+		<h3 class="panel-title">Mis Proyectos</h3>
+	</div>
+	<div class="panel-body">
+		<p class="text-center" ng-show="!user.projects.length">Aún no tienes proyectos creados :(</p>
+		<table class="table table-condensed text-center" ng-show="user.projects.length">
 			<thead>
-				<th class="text-center">Id</th>
 				<th class="text-center">Nombre</th>
-				<th class="text-center">Código</th>
-				<th class="text-center">Proyectos</th>
-				<th class="text-center">Rol(es)</th>
+				<th class="text-center">Creado</th>
+				<th class="text-center">Opciones</th>
 			</thead>
 			<tbody>
-				<tr ng-repeat="student in students">
-					<td>{{student.id}}</td>
-					<td>{{student.firstname}} {{student.lastname}}</td>
-					<td>{{student.username}}</td>
-					<td>{{student.projects.length}}</td>
-					<td>{{student.roles.toString()}}</td>
+				<tr ng-repeat="project in projects">
+					<td>{{project.name}}</td>
+					<td>{{project.createdAt}}</td>
+					<td><a href=""><span class="fa fa-trash-o"></span></a></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+</div>
+<!-- Ver estudiantes -->
+<div class="table-responsive" ng-show="students && checkTab(2)">
+	<table class="table table-hover text-center">
+		<thead>
+			<th class="text-center">Id</th>
+			<th class="text-center">Nombre</th>
+			<th class="text-center">Código</th>
+			<th class="text-center">Proyectos</th>
+			<th class="text-center">Rol(es)</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="student in students">
+				<td>{{student.id}}</td>
+				<td>{{student.firstname}} {{student.lastname}}</td>
+				<td>{{student.username}}</td>
+				<td>{{student.projects.length}}</td>
+				<td>{{student.roles.toString()}}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>

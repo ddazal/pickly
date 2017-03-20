@@ -4,6 +4,14 @@ angular
 
 function DashboardController($scope, $http, $location, $window) {
 	$scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
+	$scope.projects = $scope.user.projects;
+	$scope.tab = 1
+	$scope.setTab = function(tab) {
+		$scope.tab = tab
+	}
+	$scope.checkTab = function(tab) {
+		return $scope.tab === tab
+	}
 	$scope.admin = $scope.user.roles.filter(function(el) {
 		if (el === 'admin')
 			return true;
@@ -27,7 +35,6 @@ function DashboardController($scope, $http, $location, $window) {
 			url: '/get/students'
 		}).then(function(res) {
 			$scope.students = res.data
-			console.log($scope.list)
 		}, function(res) {
 			console.log('Algo ha salido mal')
 		})

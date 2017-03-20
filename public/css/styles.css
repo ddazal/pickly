@@ -381,3 +381,7 @@ table {
 	transform: translateY(-50%);
 }
 /* Estilo de vista dashboard */
+.dashboard-panel,
+.panel-heading {
+	border-radius: 0;
+}
