@@ -4,6 +4,8 @@
 
 <div class="container">
 	<h1>Bienvenido {{user.firstname}} {{user.lastname}}</h1>
+	<h3 ng-show="admin">Eres administrador</h3>
 	<button ng-click="logout()" class="btn btn-primary">Cerrar sesión</button>
 	<a href="/">Home</a>
+	<a href="/get/students" target="_self" ng-show="admin">Ver estudiantes</a>
 </div>

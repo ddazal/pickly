@@ -351,3 +351,32 @@ table {
 	top: 10px;
 	left: 10px;
 }
+/* Forbidden page */
+.forbidden-img {
+	max-width: 100%;
+}
+.forbidden-content {
+	margin: 70px auto;
+}
+.forbidden-content h1 {
+	font-size: 100px;
+}
+.forbidden-content p {
+	font-size: 20px;
+}
+.forbidden-content a {
+	border-radius: 70px;
+}
+.forbidden-main-wrapper {
+	position: absolute;;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 100%;
+}
+.forbidden-wrapper {
+	position: absolute;
+	margin: 0 auto;
+	top: 50%;
+	transform: translateY(-50%);
+}

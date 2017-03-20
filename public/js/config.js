@@ -30,6 +30,9 @@ function config($routeProvider, $locationProvider, $translateProvider) {
 			},
 			controller: 'DashboardController',
 		})
+		.when('/forbidden', {
+			templateUrl: 'views/forbidden.html'
+		})
 		.otherwise({
 			redirectTo : '/error'
 		});
