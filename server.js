@@ -21,8 +21,8 @@ mongoose.connect(db)
 mongoose.connection.on('connected', () => console.log(`Connected to ${db}`))
 mongoose.connection.on('error', (err) => console.log(err))
 
-
-/*var newStudent = new Student({
+/*
+var newStudent = new Student({
 	id: 1,
 	username: "2011203021",
 	password: "2011203021",
@@ -41,8 +41,8 @@ var newStudent2 = new Student({
 	lastname: "Gómez"
 })
 
-newStudent2.save()*/
-
+newStudent2.save()
+*/
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))

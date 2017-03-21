@@ -22,17 +22,17 @@ function DashboardController($scope, $http, $location, $window) {
 			method: 'GET',
 			url: '/logout'
 		}).then(function(res) {
-			$scope.failed = ''
+			$scope.logoutFailed = ''
 			$window.sessionStorage.clear()
 			$location.path('/')
 		}, function(res) {
-			$scope.failed = true
+			$scope.logoutFailed = true
 		})
 	}
 	$scope.getStudents = function() {
 		$http({
 			method: 'GET',
-			url: '/get/students'
+			url: '/students'
 		}).then(function(res) {
 			$scope.students = res.data
 		}, function(res) {
@@ -41,5 +41,31 @@ function DashboardController($scope, $http, $location, $window) {
 	}
 	$scope.dispose = function() {
 		$scope.students = ''
+	}
+	$scope.saveStudent = function(newStudent) {
+		if(!newStudent) {
+			$scope.idFailed = true
+		} else {
+			$scope.idFailed = false
+			$http({
+				method: 'POST',
+				url: '/max'
+			}).then(function(res) {
+				$scope.maxId = res.data[0].id
+				newStudent.id = $scope.maxId + 1
+				$http({
+					method: 'POST',
+					url: '/student',
+					data: newStudent
+				}).then(function(res) {
+					$scope.success = true
+					$scope.newStudent = {}
+				}, function(res) {
+					$scope.success = false
+				})
+			}, function(res) {
+				console.log('Wuuuut')
+			})
+		}
 	}
 }

@@ -385,3 +385,9 @@ table {
 .panel-heading {
 	border-radius: 0;
 }
+.dashboard-space {
+	margin: 10px auto;
+}
+.alert > p > span > a {
+	color: inherit;
+}

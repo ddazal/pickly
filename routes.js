@@ -50,11 +50,38 @@ router.get('/check', (req, res)  => {
 	res.send(status)
 })
 
-router.get('/get/students', justForAdmin, (req, res) => {
-	Student.find({}, (err, students) => {
+router.get('/students', justForAdmin, (req, res) => {
+	Student.find({}, null, {sort: { id: -1 }}, (err, students) => {
 		if (err)
 			return res.json(err)
 		res.status(200).json(students)
+	})
+})
+
+router.post('/max', justForAdmin, (req, res) => {
+	Student.find({}).sort({ id: -1 }).limit(1).exec(function(err, student) {
+		if (err)
+			return res.json(err)
+		res.status(200).json(student)
+	})
+})
+
+router.post('/student', justForAdmin, (req, res) => {
+	let newStudent = new Student()
+
+	newStudent.id = req.body.id
+	newStudent.username = req.body.username
+	newStudent.password = req.body.password
+	newStudent.firstname = req.body.firstname
+	newStudent.lastname = req.body.lastname
+
+	if (req.body.admin)
+		newStudent.roles = ['admin', 'student']
+
+	newStudent.save(err => {
+		if (err)
+			return res.status(500).json(err)
+		res.sendStatus(200)
 	})
 })
 
