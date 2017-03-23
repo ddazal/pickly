@@ -96,7 +96,6 @@ function DashboardController($scope, $http, $location, $window, $data) {
 			url: '/deleteProject',
 			data: project
 		}).then(function(res) {
-			console.log('OK')
 			getProjects()	
 		}, function(res) {
 			console.log('ERR')

@@ -187,8 +187,6 @@
 
 	/* Inyección del workspace de Blockly */
 	var workspace = Blockly.inject('blocklyDiv', workspaceData)
-	/* Inicialización del bloque void main */
-	Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), workspace);
 	/* Generación(real-time) y descarga de código */
 	workspace.addChangeListener(myUpdateFunction);
 
@@ -245,4 +243,13 @@
 		e.preventDefault();
 		$('#wrapper').toggleClass('toggled');
 	});
+
+	var projectComming = JSON.parse(window.sessionStorage.getItem('currentProject'))
+	if (projectComming.xml) {
+		var xmlFromDb = Blockly.Xml.textToDom(projectComming.xml)
+		Blockly.Xml.domToWorkspace(xmlFromDb, workspace)
+	} else {
+		/* Inicialización del bloque void main */
+		Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), workspace);
+	}
 </script>

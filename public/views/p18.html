@@ -26,15 +26,8 @@
 				<!-- Nav elements -->
 				<div>
 					<form class="navbar-form navbar-right">
-						<!-- <div class="btn-group">
-							<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="fa fa-globe fa-fw"></span></button>
-							<ul class="dropdown-menu dropdown-menu-right">
-								<li><a class="langBlock" role="button" translate="pic.es-btn" ng-click="changeLanguage('es');"></a></li>
-								<li><a class="langBlock" role="button" translate="pic.en-btn" ng-click="changeLanguage('en');"></a></li>
-							</ul>
-						</div> -->
 						<div class="form-group" ng-show="user">
-							<a href="" class="btn btn-default">Guardar</a>
+							<a href="" class="btn btn-default" translate="pic.save" ng-click="saveXml()"></a>
 						</div>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
@@ -194,8 +187,6 @@
 
 	/* Inyección del workspace de Blockly */
 	var workspace = Blockly.inject('blocklyDiv', workspaceData)
-	/* Inicialización del bloque void main */
-	Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), workspace);
 	/* Generación(real-time) y descarga de código */
 	workspace.addChangeListener(myUpdateFunction);
 
@@ -252,4 +243,13 @@
 		e.preventDefault();
 		$('#wrapper').toggleClass('toggled');
 	});
+
+	var projectComming = JSON.parse(window.sessionStorage.getItem('currentProject'))
+	if (projectComming.xml) {
+		var xmlFromDb = Blockly.Xml.textToDom(projectComming.xml)
+		Blockly.Xml.domToWorkspace(xmlFromDb, workspace)
+	} else {
+		/* Inicialización del bloque void main */
+		Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), workspace);
+	}
 </script>
