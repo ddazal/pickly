@@ -35,15 +35,14 @@ newStudent.save()
 
 var newStudent2 = new Student({
 	id: 2,
-	username: "2010203021",
-	password: "2010203021",
+	username: "2010103030",
+	password: "2010103030",
 	firstname: "Edinson",
 	lastname: "Gómez"
 })
 
 newStudent2.save()
 */
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())

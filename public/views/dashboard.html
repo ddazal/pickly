@@ -51,14 +51,16 @@
 		<table class="table table-condensed text-center" ng-show="user.projects.length">
 			<thead>
 				<th class="text-center">Nombre</th>
+				<th class="text-center">PIC</th>
 				<th class="text-center">Creado</th>
 				<th class="text-center">Opciones</th>
 			</thead>
 			<tbody>
 				<tr ng-repeat="project in projects">
-					<td>{{project.name}}</td>
+					<td ng-model="project.name">{{project.name}}</td>
+					<td>{{project.pic}}</td>
 					<td>{{project.createdAt}}</td>
-					<td><a href=""><span class="fa fa-trash-o"></span></a></td>
+					<td><a href="" ng-click="persist(project)"><span class="fa-pencil-square-o fa"></span></a> <a href=""><span class="fa fa-trash-o"></span></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -88,6 +90,24 @@
 				</tr>
 			</tbody>
 		</table>
+	</div>
+
+	<div class="create project">
+		<form>
+			<div class="form-group">
+				<label for="projectNew">Nombre</label>
+				<input required="true" class="form-control" type="text" name="projetNew" id="projetNew" ng-model="project.name">
+			</div>
+			<div class="form-group">
+				<label for="">PIC</label>
+				<select name="option" id="" class="form-control" ng-model="project.pic" required>
+					<option value="">Seleccione una opción...</option>
+					<option ng-repeat="pic in pics" value="{{pic.name}}">{{ pic.name }}</option>
+				</select>
+			</div>
+			<button class="btn-primary btn" ng-click="createProject(project)">Crear proyecto</button>
+		</form>
+
 	</div>
 	<div class="row" ng-show="checkTab(3)">
 		<div class="col-md-12">

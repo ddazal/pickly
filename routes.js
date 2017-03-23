@@ -46,7 +46,7 @@ router.get('/forbidden', (req, res) => {
 })
 
 router.get('/check', (req, res)  => {
-	let status = req.isAuthenticated ? req.user : undefined
+	var status = req.isAuthenticated ? req.user : undefined
 	res.send(status)
 })
 
@@ -67,7 +67,7 @@ router.post('/max', justForAdmin, (req, res) => {
 })
 
 router.post('/student', justForAdmin, (req, res) => {
-	let newStudent = new Student()
+	var newStudent = new Student()
 
 	newStudent.id = req.body.id
 	newStudent.username = req.body.username
@@ -82,6 +82,38 @@ router.post('/student', justForAdmin, (req, res) => {
 		if (err)
 			return res.status(500).json(err)
 		res.sendStatus(200)
+	})
+})
+
+router.post('/createProject', (req, res) => {
+	var family = 'p' + req.body.pic.slice(3, 5)
+	var url = '/' + family + '/' + req.body.pic.toLowerCase()
+	newProject = {
+		name: req.body.name,
+		pic: req.body.pic,
+		url: url
+	}
+	Student.findOneAndUpdate({ id: req.body.userId}, { $push: { projects: newProject }}, {new:true}, (err, student) => {
+		if (err)
+			return console.log(err)
+		res.status(200).json({ id: student.id, firstname: student.firstname, lastname: student.lastname, project: newProject, url: url})
+	})
+})
+
+router.post('/saveProject', (req, res) => {
+	Student.findOne({ id: req.body.id }, (err, student) => {
+		if (err)
+			return console.log(err)
+		student.projects.map((obj) => {
+			if (obj.name === req.body.project) {
+				obj.xml = req.body.xml
+				student.save(err => {
+					if (err)
+						return console.log(err)
+					console.log('DONE')
+				})
+			}
+		})
 	})
 })
 

@@ -2,10 +2,12 @@ angular
 	.module('pickly')
 	.controller('DashboardController', DashboardController)
 
-function DashboardController($scope, $http, $location, $window) {
+function DashboardController($scope, $http, $location, $window, $data) {
+	$window.sessionStorage.removeItem('currentProject')
 	$scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
 	$scope.projects = $scope.user.projects;
 	$scope.tab = 1
+	$scope.pics= $data.getPics()
 	$scope.setTab = function(tab) {
 		$scope.tab = tab
 	}
@@ -67,5 +69,21 @@ function DashboardController($scope, $http, $location, $window) {
 				console.log('Wuuuut')
 			})
 		}
+	}
+	$scope.createProject = function(project) {
+		project.userId = $scope.user.id
+		$http({
+			method: 'POST',
+			url: '/createProject',
+			data: project
+		}).then(function(res) {
+			$location.path(res.data.url)
+		}, function (res) {
+			console.log('ERR')
+		})
+	}
+	$scope.persist = function(project) {
+		$window.sessionStorage.setItem('currentProject', angular.toJson(project))
+		$location.path(project.url)
 	}
 }

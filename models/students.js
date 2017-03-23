@@ -25,10 +25,12 @@ var StudentSchema = new Schema({
 	},
 	projects: [{
 		name: String,
+		pic: String,
+		url: String,
 		xml: String,
 		createdAt: {
 			type: Date,
-			default: new Date()
+			default: new Date().toLocaleString()
 		}
 	}],
 	roles: {
