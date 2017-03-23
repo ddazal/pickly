@@ -4,6 +4,7 @@ angular
 	.controller('LoginController', LoginController);
 
 function LoginController($scope, $http, $location, $window) {
+	$window.sessionStorage.removeItem('currentProject')
 	$scope.user;
 	$scope.login = function (user) {
 		$http({

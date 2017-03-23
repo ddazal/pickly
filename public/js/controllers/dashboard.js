@@ -78,7 +78,8 @@ function DashboardController($scope, $http, $location, $window, $data) {
 			url: '/createProject',
 			data: project
 		}).then(function(res) {
-			$location.path(res.data.url)
+			$window.sessionStorage.setItem('currentProject', angular.toJson(project))
+			$location.path(res.data.project.url)
 		}, function (res) {
 			console.log('ERR')
 		})
@@ -87,6 +88,21 @@ function DashboardController($scope, $http, $location, $window, $data) {
 		$window.sessionStorage.setItem('currentProject', angular.toJson(project))
 		$location.path(project.url)
 	}
+	$scope.deleteProject = function(project) {
+		project.userId = $scope.user.id
+		$http({
+			method: 'POST',
+			url: '/deleteProject',
+			data: project
+		}).then(function(res) {
+			console.log('OK')
+			getProjects()
+			console.log($scope.projects)	
+		}, function(res) {
+			console.log('ERR')
+		})
+	}
+	console.log($scope.projects)	
 	function getProjects() {
 		var data = { "id" : $scope.user.id }
 		$http({
@@ -95,6 +111,7 @@ function DashboardController($scope, $http, $location, $window, $data) {
 			data: data
 		}).then(function(res) {
 			$scope.projects = res.data
+			return res.data
 		}, function(res) {
 			console.log('ERR')
 		})

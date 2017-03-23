@@ -48,7 +48,7 @@
 	</div>
 	<div class="panel-body">
 		<p class="text-center" ng-show="!user.projects.length">Aún no tienes proyectos creados :(</p>
-		<table class="table table-condensed text-center" ng-show="user.projects.length">
+		<table class="table table-condensed text-center" ng-show="user.projects.length>0">
 			<thead>
 				<th class="text-center">Nombre</th>
 				<th class="text-center">PIC</th>
@@ -60,7 +60,7 @@
 					<td ng-model="project.name">{{project.name}}</td>
 					<td>{{project.pic}}</td>
 					<td>{{project.createdAt}}</td>
-					<td><a href="" ng-click="persist(project)"><span class="fa-pencil-square-o fa"></span></a> <a href=""><span class="fa fa-trash-o"></span></a></td>
+					<td><a href="" ng-click="persist(project)"><span class="fa-pencil-square-o fa"></span></a> <a href="" ng-click="deleteProject(project)"><span class="fa fa-trash-o"></span></a></td>
 				</tr>
 			</tbody>
 		</table>

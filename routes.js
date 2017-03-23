@@ -92,7 +92,7 @@ router.post('/createProject', (req, res) => {
 	Student.findOneAndUpdate({ id: req.body.userId }, { $push: { projects: newProject }}, { new:true }, (err, student) => {
 		if (err)
 			return res.status(500)
-		res.status(200).json({ id: student.id, firstname: student.firstname, lastname: student.lastname, project: newProject, url: url})
+		res.status(200).json({ id: student.id, firstname: student.firstname, lastname: student.lastname, project: newProject })
 	})
 })
 
@@ -113,6 +113,16 @@ router.post('/saveProject', (req, res) => {
 	})
 })
 
+router.post('/deleteProject', (req, res) => {
+	Student.findOneAndUpdate(
+		{ id: req.body.userId}, 
+		{ $pull: { projects: { _id: req.body._id }}}, (err, doc) => {
+			if (err)
+				res.status(500).end()
+			res.status(200).end()
+		})
+})
+
 router.post('/projects', (req, res) => {
 	Student.findOne({ id: req.body.id }, (err, student) => {
 		if (err)
@@ -120,6 +130,7 @@ router.post('/projects', (req, res) => {
 		res.status(200).json(student.projects)
 	})
 })
+
 
 function justForAdmin(req, res, next) {
 	if (req.isAuthenticated && req.user.roles[0] === 'admin')

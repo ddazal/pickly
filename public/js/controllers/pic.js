@@ -15,26 +15,26 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 	$scope.changeLanguage = changeLanguage;
 	$scope.$on('$routeChangeStart', goBack)
 	$scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
-    $scope.currentProject = JSON.parse($window.sessionStorage.getItem('currentProject'))
+  $scope.currentProject = JSON.parse($window.sessionStorage.getItem('currentProject'))
 
-    $scope.saveXml = function() {
-    	var newXml = Blockly.Xml.workspaceToDom(workspace)
-    	var newXmlText = Blockly.Xml.domToText(newXml)
-    	var sender = {
-    		id: $scope.user.id,
-    		xml: newXmlText,
-    		project: $scope.currentProject.name
-    	}
-    	$http({
-    		method: 'POST',
-    		url: '/saveProject',
-    		data: sender
-    	}).then(function(res) {
-    		console.log('OK')
-    	}, function(res) {
-    		console.log('ERR')
-    	})
-    }
+  $scope.saveXml = function() {
+  	var newXml = Blockly.Xml.workspaceToDom(workspace)
+  	var newXmlText = Blockly.Xml.domToText(newXml)
+  	var sender = {
+  		id: $scope.user.id,
+  		xml: newXmlText,
+  		project: $scope.currentProject.name
+  	}
+  	$http({
+  		method: 'POST',
+  		url: '/saveProject',
+  		data: sender
+  	}).then(function(res) {
+  		console.log('OK')
+  	}, function(res) {
+  		console.log('ERR')
+  	})
+  }
 	
 	function setTab (setTab) {
 		$scope.tab = setTab;

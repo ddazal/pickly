@@ -3,6 +3,7 @@ angular
 	.controller('HomeController', HomeController);
 
 function HomeController($scope, $translate, $data, $window) {
+  $window.sessionStorage.removeItem('currentProject')
   $scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
   $scope.$on('$viewContentLoaded', homeJS)
 	$scope.pics = $data.getPics()
