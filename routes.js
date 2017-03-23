@@ -116,7 +116,8 @@ router.post('/saveProject', (req, res) => {
 router.post('/deleteProject', (req, res) => {
 	Student.findOneAndUpdate(
 		{ id: req.body.userId}, 
-		{ $pull: { projects: { _id: req.body._id }}}, (err, doc) => {
+		{ $pull: { projects: { _id: req.body._id }}},
+		{ new: true}, (err, doc) => {
 			if (err)
 				res.status(500).end()
 			res.status(200).end()

@@ -79,6 +79,7 @@ function DashboardController($scope, $http, $location, $window, $data) {
 			data: project
 		}).then(function(res) {
 			$window.sessionStorage.setItem('currentProject', angular.toJson(project))
+			getProjects()
 			$location.path(res.data.project.url)
 		}, function (res) {
 			console.log('ERR')
@@ -96,13 +97,11 @@ function DashboardController($scope, $http, $location, $window, $data) {
 			data: project
 		}).then(function(res) {
 			console.log('OK')
-			getProjects()
-			console.log($scope.projects)	
+			getProjects()	
 		}, function(res) {
 			console.log('ERR')
 		})
-	}
-	console.log($scope.projects)	
+	}	
 	function getProjects() {
 		var data = { "id" : $scope.user.id }
 		$http({
@@ -111,7 +110,6 @@ function DashboardController($scope, $http, $location, $window, $data) {
 			data: data
 		}).then(function(res) {
 			$scope.projects = res.data
-			return res.data
 		}, function(res) {
 			console.log('ERR')
 		})
