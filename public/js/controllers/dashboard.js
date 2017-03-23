@@ -5,9 +5,10 @@ angular
 function DashboardController($scope, $http, $location, $window, $data) {
 	$window.sessionStorage.removeItem('currentProject')
 	$scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
-	$scope.projects = $scope.user.projects;
 	$scope.tab = 1
 	$scope.pics= $data.getPics()
+	getProjects()
+	$scope.getProjects = getProjects
 	$scope.setTab = function(tab) {
 		$scope.tab = tab
 	}
@@ -85,5 +86,17 @@ function DashboardController($scope, $http, $location, $window, $data) {
 	$scope.persist = function(project) {
 		$window.sessionStorage.setItem('currentProject', angular.toJson(project))
 		$location.path(project.url)
+	}
+	function getProjects() {
+		var data = { "id" : $scope.user.id }
+		$http({
+			method: 'POST',
+			url: '/projects',
+			data: data
+		}).then(function(res) {
+			$scope.projects = res.data
+		}, function(res) {
+			console.log('ERR')
+		})
 	}
 }

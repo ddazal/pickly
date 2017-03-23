@@ -22,14 +22,14 @@
 				<li class="dropdown">
 					<a href="" class="dropdown-toggle" role="button" data-toggle="dropdown">Proyectos <span class="fa fa-caret-down"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="" ng-click="setTab(1)">Mis proyectos</a></li>
-						<li><a href="">Crear nuevo proyecto</a></li>
+						<li><a href="" ng-click="setTab(1);getProjects()">Mis proyectos</a></li>
+						<li><a href="" ng-click="setTab(4)">Crear nuevo proyecto</a></li>
 					</ul>
 				</li>
 				<li class="dropdown" ng-show="admin">
 					<a href="" class="dropdown-toggle" role="button" data-toggle="dropdown">Estudiantes <span class="fa fa-caret-down"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="" ng-show="admin && checkTab(1) || checkTab(3)" ng-click="getStudents();setTab(2)" ng-hide="!admin || students">Ver estudiantes</a></li>
+						<li><a href="" ng-show="admin && checkTab(1) || checkTab(3) || checkTab(4)" ng-click="getStudents();setTab(2)" ng-hide="!admin || students">Ver estudiantes</a></li>
 						<li><a href="" ng-show="students && checkTab(2)" ng-click="dispose();setTab(1)">Ocultar estudiantes</a></li>
 						<li><a href="" ng-show="admin" ng-click="setTab(3)">Crear estudiante</a></li>
 					</ul>
@@ -66,11 +66,9 @@
 		</table>
 	</div>
 </div>
-<!-- Ver estudiantes -->
-	
 
-<!-- Crear estudiantes -->
 <div class="container dashboard-space">
+	<!-- Ver estudiantes -->
 	<div class="table-responsive" ng-show="students && checkTab(2)">
 		<table class="table table-hover text-center">
 			<thead>
@@ -91,8 +89,8 @@
 			</tbody>
 		</table>
 	</div>
-
-	<div class="create project">
+	<!-- Crear proyecto -->
+	<div ng-show="checkTab(4)">
 		<form>
 			<div class="form-group">
 				<label for="projectNew">Nombre</label>
@@ -107,8 +105,8 @@
 			</div>
 			<button class="btn-primary btn" ng-click="createProject(project)">Crear proyecto</button>
 		</form>
-
 	</div>
+	<!-- Crear estudiantes -->
 	<div class="row" ng-show="checkTab(3)">
 		<div class="col-md-12">
 			<form>

@@ -88,14 +88,10 @@ router.post('/student', justForAdmin, (req, res) => {
 router.post('/createProject', (req, res) => {
 	var family = 'p' + req.body.pic.slice(3, 5)
 	var url = '/' + family + '/' + req.body.pic.toLowerCase()
-	newProject = {
-		name: req.body.name,
-		pic: req.body.pic,
-		url: url
-	}
-	Student.findOneAndUpdate({ id: req.body.userId}, { $push: { projects: newProject }}, {new:true}, (err, student) => {
+	newProject = { name: req.body.name, pic: req.body.pic, url: url }
+	Student.findOneAndUpdate({ id: req.body.userId }, { $push: { projects: newProject }}, { new:true }, (err, student) => {
 		if (err)
-			return console.log(err)
+			return res.status(500)
 		res.status(200).json({ id: student.id, firstname: student.firstname, lastname: student.lastname, project: newProject, url: url})
 	})
 })
@@ -114,6 +110,14 @@ router.post('/saveProject', (req, res) => {
 				})
 			}
 		})
+	})
+})
+
+router.post('/projects', (req, res) => {
+	Student.findOne({ id: req.body.id }, (err, student) => {
+		if (err)
+			return res.status(500)
+		res.status(200).json(student.projects)
 	})
 })
 
