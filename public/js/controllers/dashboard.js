@@ -10,6 +10,8 @@ function DashboardController($scope, $http, $location, $window, $data) {
 	getProjects()
 	$scope.getProjects = getProjects
 	$scope.setTab = function(tab) {
+		$scope.changePasswordFail = false
+		$scope.changePasswordSuccess = false
 		$scope.tab = tab
 	}
 	$scope.checkTab = function(tab) {
@@ -100,6 +102,25 @@ function DashboardController($scope, $http, $location, $window, $data) {
 		}, function(res) {
 			console.log('ERR')
 		})
+	}
+	$scope.changePassword = function(data) {
+		if (!(data.new === data.confirm)) {
+			$scope.changePasswordFail = true
+			$scope.changePasswordSuccess = false
+			$scope.pwd = {}
+		} else {
+			$http({
+				method: 'POST',
+				url: '/changePassword',
+				data: { new: data.new, id: $scope.user.id }
+			}).then(function(res) {
+					$scope.changePasswordSuccess = true
+					$scope.changePasswordFail = false
+					$scope.pwd = {}
+			}, function(res) {
+					console.log('ERR')
+			})
+		}
 	}	
 	function getProjects() {
 		var data = { "id" : $scope.user.id }

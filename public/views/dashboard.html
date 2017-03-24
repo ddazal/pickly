@@ -29,12 +29,17 @@
 				<li class="dropdown" ng-show="admin">
 					<a href="" class="dropdown-toggle" role="button" data-toggle="dropdown">Estudiantes <span class="fa fa-caret-down"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="" ng-show="admin && checkTab(1) || checkTab(3) || checkTab(4)" ng-click="getStudents();setTab(2)" ng-hide="!admin || students">Ver estudiantes</a></li>
+						<li><a href="" ng-show="admin && checkTab(1) || checkTab(3) || checkTab(4) || checkTab(5)" ng-click="getStudents();setTab(2)" ng-hide="!admin || students">Ver estudiantes</a></li>
 						<li><a href="" ng-show="students && checkTab(2)" ng-click="dispose();setTab(1)">Ocultar estudiantes</a></li>
 						<li><a href="" ng-show="admin" ng-click="setTab(3)">Crear estudiante</a></li>
 					</ul>
 				</li>
-				<li><a href="">Configuración</a></li>
+				<li class="dropdwon">
+					<a href="" class="dropdown-toggle" role="button" data-toggle="dropdown">Configuración <span class="fa fa-caret-down"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="" ng-click="setTab(5)">Cambiar contraseña</a></li>
+					</ul>
+				</li>
 				<li><a href="" ng-click="logout()">Cerrar sesión</a></li>
 			</ul>
 		</div>
@@ -136,6 +141,24 @@
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary" ng-click="saveStudent(newStudent)">Guardar</button>
 				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Cambiar contraseña -->
+	<div class="row" ng-show="checkTab(5)">
+		<div class="col-md-6 col-md-offset-3 col-xs-12">
+			<form>
+				<div class="form-group">
+					<label for="">Nueva contraseña</label>
+					<input type="password" class="form-control" ng-model="pwd.new">
+				</div>
+				<div class="form-group">
+					<label for="">Confirmar contraseña</label>
+					<input type="password" class="form-control" ng-model="pwd.confirm">
+				</div>
+				<p class="alert-success" ng-show="changePasswordSuccess">Ha cambiado su contraseña</p>
+				<p class="alert-danger" ng-show="changePasswordFail">Los campos no coinciden</p>
+				<button class="btn btn-primary" ng-click="changePassword(pwd)">Cambiar contraseña</button>
 			</form>
 		</div>
 	</div>

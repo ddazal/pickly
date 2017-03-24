@@ -132,6 +132,20 @@ router.post('/projects', (req, res) => {
 	})
 })
 
+router.post('/changePassword', (req, res) => {
+	Student.findOne({ id: req.body.id }, (err, student) => {
+		if (err) 
+			return console.log(err)
+		student.password = req.body.new
+		student.save(err => {
+			if (err)
+				return console.log(err)
+			res.status(200).end()
+		})
+	})	
+})
+
+
 
 function justForAdmin(req, res, next) {
 	if (req.isAuthenticated && req.user.roles[0] === 'admin')
