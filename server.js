@@ -13,7 +13,14 @@ var Student = require('./models/students')
 
 var app = express()
 var server = http.createServer(app)
+var io = require('socket.io')(server)
 var port = process.env.PORT || 3000
+
+io.of('/dashboard').	on('connection', function(socket) {
+	console.log(`Usuario conectado: ${socket.id}`)
+
+	socket.on('disconnect', () => console.log(`Usuario desconectado: ${socket.id}`))
+})
 
 var db = "mongodb://localhost/pickly"
 mongoose.connect(db)
