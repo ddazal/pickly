@@ -28,6 +28,7 @@ function DashboardController($scope, $http, $location, $window, $data) {
 			method: 'GET',
 			url: '/logout'
 		}).then(function(res) {
+			socket.emit('logout')
 			$scope.logoutFailed = ''
 			$window.sessionStorage.clear()
 			$location.path('/')
