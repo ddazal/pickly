@@ -15,7 +15,7 @@
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dashboard"><span class="fa fa-navicon"></span></button>
-			<a href="" class="navbar-brand"><span class="fa fa-user-o"></span> {{user.firstname}} {{user.lastname}}</a>
+			<a href="" class="navbar-brand" ng-click="setTab(1)"><span class="fa fa-user-o"></span> {{user.firstname}} {{user.lastname}}</a>
 		</div>
 		<div class="collapse navbar-collapse" id="dashboard">
 			<ul class="nav navbar-nav navbar-right">
@@ -57,6 +57,7 @@
 			<thead>
 				<th class="text-center">Nombre</th>
 				<th class="text-center">PIC</th>
+				<th class="text-center">Rol</th>
 				<th class="text-center">Creado</th>
 				<th class="text-center">Opciones</th>
 			</thead>
@@ -64,8 +65,12 @@
 				<tr ng-repeat="project in projects">
 					<td ng-model="project.name">{{project.name}}</td>
 					<td>{{project.pic}}</td>
-					<td>{{project.createdAt}}</td>
-					<td><a href="" ng-click="persist(project)"><span class="fa-pencil-square-o fa"></span></a> <a href="" ng-click="deleteProject(project)"><span class="fa fa-trash-o"></span></a></td>
+					<td>{{project.role | uppercase }}</td>
+					<td>{{project.createdAt | date}}</td>
+					<td>
+						<a href="" ng-click="persist(project)"><span class="fa-pencil-square-o fa"></span></a>
+						<a href="" ng-click="setTab(6)"><span class="fa fa-users"></span></a>
+						<a href="" ng-click="deleteProject(project)"><span class="fa fa-trash-o"></span></a></td>
 				</tr>
 			</tbody>
 		</table>

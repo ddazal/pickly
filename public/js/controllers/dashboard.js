@@ -77,6 +77,7 @@ function DashboardController($scope, $http, $location, $window, $data) {
 	}
 	$scope.createProject = function(project) {
 		project.userId = $scope.user.id
+		project.role = 'admin'
 		$http({
 			method: 'POST',
 			url: '/createProject',
@@ -92,6 +93,7 @@ function DashboardController($scope, $http, $location, $window, $data) {
 	$scope.persist = function(project) {
 		$window.sessionStorage.setItem('currentProject', angular.toJson(project))
 		$location.path(project.url)
+		console.log(project._id)
 	}
 	$scope.deleteProject = function(project) {
 		project.userId = $scope.user.id
@@ -123,7 +125,7 @@ function DashboardController($scope, $http, $location, $window, $data) {
 					console.log('ERR')
 			})
 		}
-	}	
+	}
 	function getProjects() {
 		var data = { "id" : $scope.user.id }
 		$http({

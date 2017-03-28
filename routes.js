@@ -88,7 +88,7 @@ router.post('/student', justForAdmin, (req, res) => {
 router.post('/createProject', (req, res) => {
 	var family = 'p' + req.body.pic.slice(3, 5)
 	var url = '/' + family + '/' + req.body.pic.toLowerCase()
-	newProject = { name: req.body.name, pic: req.body.pic, url: url }
+	newProject = { name: req.body.name, pic: req.body.pic, url: url, role: req.body.role }
 	Student.findOneAndUpdate({ id: req.body.userId }, { $push: { projects: newProject }}, { new:true }, (err, student) => {
 		if (err)
 			return res.status(500)
