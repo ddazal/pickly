@@ -173,7 +173,7 @@ router.post('/save-contributor', (req, res) =>	 {
 		/* Agregar proyecto a colaboradores */
 		Student.findOneAndUpdate(
 			{ username: contributor.username },
-			{ $push: { projects: project }},
+			{ $addToSet: { projects: project }},
 			(err, student) => {
 				if (err)
 					return res.status(500).json()
@@ -196,6 +196,7 @@ router.post('/save-contributor', (req, res) =>	 {
 			})
 		})
 	})
+	res.status(200).json()
 })
 
 
