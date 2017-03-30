@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-	if (req.isAuthenticated) 
+	if (req.isAuthenticated()) 
 		res.redirect('/dashboard')
 	else
 		res.sendFile(path.join(__dirname, 'public', 'index.html'))
@@ -28,7 +28,7 @@ router.get('/error', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', protect, (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
@@ -85,18 +85,25 @@ router.post('/student', justForAdmin, (req, res) => {
 	})
 })
 
-router.post('/createProject', (req, res) => {
+router.post('/create-project', (req, res) => {
 	var family = 'p' + req.body.pic.slice(3, 5)
 	var url = '/' + family + '/' + req.body.pic.toLowerCase()
 	newProject = { name: req.body.name, pic: req.body.pic, url: url, role: req.body.role }
 	Student.findOneAndUpdate({ id: req.body.userId }, { $push: { projects: newProject }}, { new:true }, (err, student) => {
 		if (err)
 			return res.status(500)
-		res.status(200).json({ id: student.id, firstname: student.firstname, lastname: student.lastname, project: newProject })
+		var _projects = student.projects.sort((a, b) => {
+			if (a._id > b._id)
+				return -1
+			if (a._id < b._id)
+				return 1
+			return 0
+		})
+		res.status(200).json({ id: student.id, firstname: student.firstname, lastname: student.lastname, project: _projects[0] })
 	})
 })
 
-router.post('/saveProject', (req, res) => {
+router.post('/save-project', (req, res) => {
 	Student.findOne({ id: req.body.id }, (err, student) => {
 		if (err)
 			return console.log(err)
@@ -113,7 +120,7 @@ router.post('/saveProject', (req, res) => {
 	})
 })
 
-router.post('/deleteProject', (req, res) => {
+router.post('/delete-project', (req, res) => {
 	Student.findOneAndUpdate(
 		{ id: req.body.userId}, 
 		{ $pull: { projects: { _id: req.body._id }}},
@@ -132,7 +139,7 @@ router.post('/projects', (req, res) => {
 	})
 })
 
-router.post('/changePassword', (req, res) => {
+router.post('/change-password', (req, res) => {
 	Student.findOne({ id: req.body.id }, (err, student) => {
 		if (err) 
 			return console.log(err)
@@ -145,12 +152,64 @@ router.post('/changePassword', (req, res) => {
 	})	
 })
 
+router.post('/search-contributor', (req, res) => {
+	let contributor = req.body.code
+	if (contributor === req.body.me) {
+		return res.status(409).json()
+	}
+	Student.findOne({ username: contributor }, (err, student) => {
+		if (err || !student)
+			return res.status(500).json()
+		res.status(200).json({ fullname: student.firstname + ' ' + student.lastname, username: student.username})
+	})
+})
+
+router.post('/save-contributor', (req, res) =>	 {
+	let project = req.body.project
+	project.role = 'colaborador'
+	let contributors = req.body.contributors
+	let me = req.body.me
+	contributors.map(contributor => {
+		/* Agregar proyecto a colaboradores */
+		Student.findOneAndUpdate(
+			{ username: contributor.username },
+			{ $push: { projects: project }},
+			(err, student) => {
+				if (err)
+					return res.status(500).json()
+			}
+		)
+		/* Agregar colaboradores a array */
+		Student.findOne({ id: me.id }, (err, student) => {
+			if (err)
+				return res.status(500).json()
+			let temp = student.projects.filter(obj => {
+				if (obj._id == project._id) {
+					obj.contributors.push(contributor)
+				}
+				return true
+			})
+			student.projects = temp
+			student.save(err => {
+				if (err)
+					return res.status(500).json()
+			})
+		})
+	})
+})
+
 
 
 function justForAdmin(req, res, next) {
-	if (req.isAuthenticated && req.user.roles[0] === 'admin')
+	if (req.isAuthenticated() && req.user.roles[0] === 'admin')
 		return next()
 	return res.status(403).redirect('/forbidden')
+}
+
+function protect(req, res, next) {
+	if (req.isAuthenticated())
+		return next()
+	res.redirect('/login')
 }
 
 module.exports = router

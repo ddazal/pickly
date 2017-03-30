@@ -25,9 +25,6 @@ function config($routeProvider, $locationProvider, $translateProvider) {
 		})
 		.when('/dashboard', {
 			templateUrl: 'views/dashboard.html',
-			resolve: {
-				check: checkLog
-			},
 			controller: 'DashboardController',
 		})
 		.when('/forbidden', {
@@ -45,24 +42,3 @@ function config($routeProvider, $locationProvider, $translateProvider) {
 		.preferredLanguage('es')
 		.useSanitizeValueStrategy('escapeParameters');
 };
-
-function checkLog($q, $http, $location, $rootScope) {
-	var deferred = $q.defer()
-
-	$http({
-		method: 'GET',
-		url: '/check'
-	}).then(function(res) {
-		if (!res.data) {
-			deferred.reject()
-			$location.path('/login')
-		} else {
-			$rootScope.currentUser = res.data
-			deferred.resolve()
-		}
-	}, function() {
-		console.log('Error')
-	})
-
-	return deferred.promise;
-}

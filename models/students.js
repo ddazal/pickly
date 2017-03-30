@@ -31,9 +31,9 @@ var StudentSchema = new Schema({
 		xml: String,
 		createdAt: {
 			type: Date,
-			default: new Date().toLocaleString()
+			default: Date.now()
 		},
-		contributors: [String]
+		contributors: [{ fullname: String, username: String}]
 	}],
 	roles: {
 		type: [String],

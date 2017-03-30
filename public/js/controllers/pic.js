@@ -27,7 +27,7 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
   	}
   	$http({
   		method: 'POST',
-  		url: '/saveProject',
+  		url: '/save-project',
   		data: sender
   	}).then(function(res) {
   		console.log('OK')

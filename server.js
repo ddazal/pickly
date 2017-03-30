@@ -16,7 +16,7 @@ var server = http.createServer(app)
 var io = require('socket.io')(server)
 var port = process.env.PORT || 3000
 
-io.of('/dashboard').	on('connection', function(socket) {
+io.of('/dashboard').on('connection', function(socket) {
 	console.log(`Usuario conectado: ${socket.id}`)
   socket.on('logout', () => {
     socket.disconnect()
@@ -30,7 +30,8 @@ mongoose.connect(db)
 mongoose.connection.on('connected', () => console.log(`Connected to ${db}`))
 mongoose.connection.on('error', (err) => console.log(err))
 
-/* var newStudent = new Student({
+/*
+var newStudent = new Student({
 	id: 1,
 	username: "2011203021",
 	password: "2011203021",
@@ -50,7 +51,18 @@ var newStudent2 = new Student({
 })
 
 newStudent2.save()
+
+var newStudent3 = new Student({
+	id: 3,
+	username: "2011203035",
+	password: "2011203035",
+	firstname: "Cristian",
+	lastname: "López"
+})
+
+newStudent3.save()
 */
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())

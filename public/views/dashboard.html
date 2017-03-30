@@ -11,6 +11,7 @@
 	<p class="text-center">No se pudo crear el estudiante <span class="pull-right"><a href="">&times;</a></span></p>
 </div>
 
+<!-- Navbar -->
 <nav class="navbar navbar-default" id="dashboard-nav">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -29,7 +30,7 @@
 				<li class="dropdown" ng-show="admin">
 					<a href="" class="dropdown-toggle" role="button" data-toggle="dropdown">Estudiantes <span class="fa fa-caret-down"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="" ng-show="admin && checkTab(1) || checkTab(3) || checkTab(4) || checkTab(5)" ng-click="getStudents();setTab(2)" ng-hide="!admin || students">Ver estudiantes</a></li>
+						<li><a href="" ng-show="admin && checkTab(1) || checkTab(3) || checkTab(4) || checkTab(5) || checkTab(6)" ng-click="getStudents();setTab(2)" ng-hide="!admin || students">Ver estudiantes</a></li>
 						<li><a href="" ng-show="students && checkTab(2)" ng-click="dispose();setTab(1)">Ocultar estudiantes</a></li>
 						<li><a href="" ng-show="admin" ng-click="setTab(3)">Crear estudiante</a></li>
 					</ul>
@@ -69,7 +70,7 @@
 					<td>{{project.createdAt | date}}</td>
 					<td>
 						<a href="" ng-click="persist(project)"><span class="fa-pencil-square-o fa"></span></a>
-						<a href="" ng-click="setTab(6)"><span class="fa fa-users"></span></a>
+						<a href="" ng-click="setTab(6);persistContrib(project)" ng-show="project.role == 'admin'"><span class="fa fa-users"></span></a>
 						<a href="" ng-click="deleteProject(project)"><span class="fa fa-trash-o"></span></a></td>
 				</tr>
 			</tbody>
@@ -77,94 +78,163 @@
 	</div>
 </div>
 
-<div class="container dashboard-space">
-	<!-- Ver estudiantes -->
-	<div class="table-responsive" ng-show="students && checkTab(2)">
-		<table class="table table-hover text-center">
-			<thead>
-				<th class="text-center">Id</th>
-				<th class="text-center">Nombre</th>
-				<th class="text-center">Código</th>
-				<th class="text-center">Proyectos</th>
-				<th class="text-center">Rol(es)</th>
-			</thead>
-			<tbody>
-				<tr ng-repeat="student in students">
-					<td>{{student.id}}</td>
-					<td>{{student.firstname}} {{student.lastname}}</td>
-					<td>{{student.username}}</td>
-					<td>{{student.projects.length}}</td>
-					<td>{{student.roles.toString()}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<!-- Crear proyecto -->
-	<div ng-show="checkTab(4)">
-		<form>
-			<div class="form-group">
-				<label for="projectNew">Nombre</label>
-				<input required="true" class="form-control" type="text" name="projetNew" id="projetNew" ng-model="project.name">
-			</div>
-			<div class="form-group">
-				<label for="">PIC</label>
-				<select name="option" id="" class="form-control" ng-model="project.pic" required>
-					<option value="">Seleccione una opción...</option>
-					<option ng-repeat="pic in pics" value="{{pic.name}}">{{ pic.name }}</option>
-				</select>
-			</div>
-			<button class="btn-primary btn" ng-click="createProject(project)">Crear proyecto</button>
-		</form>
-	</div>
-	<!-- Crear estudiantes -->
-	<div class="row" ng-show="checkTab(3)">
-		<div class="col-md-12">
-			<form>
-				<div class="form-group">
-					<label for="name">Nombre</label>
-					<input type="text" class="form-control" ng-model="newStudent.firstname" id="name" required/>
+<!-- Crear proyecto -->
+<div ng-show="checkTab(4)">
+	<div class="panel panel-success dashboard-panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">Crear nuevo proyecto</h3>
+		</div>
+		<div class="panel-body">
+				<div class="container">
+					<form>
+						<div class="form-group">
+							<label for="projectNew">Nombre</label>
+							<input required="true" class="form-control" type="text" id="projectNew" ng-model="project.name">
+						</div>
+						<div class="form-group">
+							<label for="">PIC</label>
+							<select name="option" id="" class="form-control" ng-model="project.pic" required>
+								<option value="">Seleccione una opción...</option>
+								<option ng-repeat="pic in pics" value="{{pic.name}}">{{ pic.name }}</option>
+							</select>
+						</div>
+						<button class="btn-success btn" ng-click="createProject(project)">Crear proyecto</button>
+					</form>
 				</div>
-				<div class="form-group">
-					<label for="lastname">Apellido</label>
-					<input type="text" class="form-control" ng-model="newStudent.lastname" id="lastname" required/>
-				</div>
-				<div class="form-group">
-					<label for="username">Código institucional</label>
-					<input type="text" class="form-control" id="username" ng-model="newStudent.username" required/>
-				</div>
-				<div class="form-group">
-					<label for="password">Contraseña</label>
-					<input type="password" class="form-control" id="password" ng-model="newStudent.password" required/>
-				</div>
-				<div class="form-group">
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" ng-model="newStudent.admin"> Administrador
-						</label>
-					</div>
-				</div>
-				<div class="text-center">
-					<button type="submit" class="btn btn-primary" ng-click="saveStudent(newStudent)">Guardar</button>
-				</div>
-			</form>
 		</div>
 	</div>
-	<!-- Cambiar contraseña -->
-	<div class="row" ng-show="checkTab(5)">
-		<div class="col-md-6 col-md-offset-3 col-xs-12">
-			<form>
-				<div class="form-group">
-					<label for="">Nueva contraseña</label>
-					<input type="password" class="form-control" ng-model="pwd.new">
-				</div>
-				<div class="form-group">
-					<label for="">Confirmar contraseña</label>
-					<input type="password" class="form-control" ng-model="pwd.confirm">
-				</div>
-				<p class="alert-success" ng-show="changePasswordSuccess">Ha cambiado su contraseña</p>
-				<p class="alert-danger" ng-show="changePasswordFail">Los campos no coinciden</p>
-				<button class="btn btn-primary" ng-click="changePassword(pwd)">Cambiar contraseña</button>
-			</form>
+</div>
+
+<!-- Cambiar contraseña -->
+<div ng-show="checkTab(5)">
+	<div class="panel panel-success dashboard-panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">Cambiar contraseña</h3>
+		</div>
+		<div class="panel-body">
+			<div class="container">
+				<form>
+					<div class="form-group">
+						<label for="">Nueva contraseña</label>
+						<input type="password" class="form-control" ng-model="pwd.new">
+					</div>
+					<div class="form-group">
+						<label for="">Confirmar contraseña</label>
+						<input type="password" class="form-control" ng-model="pwd.confirm">
+					</div>
+					<p class="alert-success" ng-show="changePasswordSuccess">Ha cambiado su contraseña</p>
+					<p class="alert-danger" ng-show="changePasswordFail">Los campos no coinciden</p>
+					<button class="btn btn-success" ng-click="changePassword(pwd)">Cambiar contraseña</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Ver estudiantes -->
+<div ng-show="students && checkTab(2)">
+	<div class="panel panel-success dashboard-panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">Ver estudiantes</h3>
+		</div>
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table class="table table-hover text-center">
+					<thead>
+						<th class="text-center">Id</th>
+						<th class="text-center">Nombre</th>
+						<th class="text-center">Código</th>
+						<th class="text-center">Proyectos</th>
+						<th class="text-center">Rol(es)</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="student in students">
+							<td>{{student.id}}</td>
+							<td>{{student.firstname}} {{student.lastname}}</td>
+							<td>{{student.username}}</td>
+							<td>{{student.projects.length}}</td>
+							<td>{{student.roles.toString()}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Crear estudiantes -->
+<div ng-show="checkTab(3)">
+	<div class="panel panel-success dashboard-panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">Crear estudiante</h3>
+		</div>
+		<div class="panel-body">
+			<div class="container">
+				<form>
+					<div class="form-group">
+						<label for="name">Nombre</label>
+						<input type="text" class="form-control" ng-model="newStudent.firstname" id="name" required/>
+					</div>
+					<div class="form-group">
+						<label for="lastname">Apellido</label>
+						<input type="text" class="form-control" ng-model="newStudent.lastname" id="lastname" required/>
+					</div>
+					<div class="form-group">
+						<label for="username">Código institucional</label>
+						<input type="text" class="form-control" id="username" ng-model="newStudent.username" required/>
+					</div>
+					<div class="form-group">
+						<label for="password">Contraseña</label>
+						<input type="password" class="form-control" id="password" ng-model="newStudent.password" required/>
+					</div>
+					<div class="form-group">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" ng-model="newStudent.admin"> Administrador
+							</label>
+						</div>
+					</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-success" ng-click="saveStudent(newStudent)">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Agregar colaborador -->
+<div ng-show="checkTab(6)">
+	<div class="panel panel-success dashboard-panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">Agregar colaboradores</h3>
+		</div>
+		<div class="panel-body">
+			<div class="container">
+				<form>
+					<div class="form-group form-inline">
+						<label for="code">Código institucional: </label>
+						<div class="input-group">
+							<input type="text" id="code" class="form-control" ng-model="helper.code" autocomplete="off">
+							<span class="input-group-btn"><button class="btn btn-default" ng-click="search(helper)"><span class="fa fa-search"></span></button></span>
+						</div>
+						<p class="text-danger" ng-show="alreadyAdmin">Ya eres el administrador de este proyecto</p>
+						<p class="text-danger" ng-show="notStudent">Oops! No hay nadie registrado con ese código institucional</p>
+					</div>
+					<div ng-show="contributors">
+						<ul class="list-group">
+							<li class="list-group-item" ng-repeat="contributor in contributors">{{contributor.fullname}} <a href="" class="pull-right" ng-click="removeContributor(contributor)"><span class="fa fa-times"></span></a></li>
+						</ul>
+					</div>
+					<button class="btn btn-success" ng-click="saveContributor()" ng-class="{disabled: !contributors.length}">Aceptar</button>
+					<button class="btn btn-default" ng-click="persist(project)" ng-show="!saveContribSuccess">Saltar y editar proyecto</button>
+					<button class="btn btn-default" ng-click="cancel()">Cancelar</button>
+					<div class="text-center" ng-show="saveContribSuccess">
+						<p class="text-success text-center">Colaboradores agregados exitosamente. <br><a href="" ng-click="persist(project)">Editar proyecto</a></p>
+					</div>
+					<p class="text-danger text-center" ng-show="saveContribFail">Algo salió mal. Inténtalo de nuevo</p>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
