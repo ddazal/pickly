@@ -33,7 +33,7 @@ var StudentSchema = new Schema({
 			type: Date,
 			default: Date.now()
 		},
-		contributors: [{ fullname: String, username: String}]
+		contributors: [{ fullname: String, username: String, role: String}]
 	}],
 	roles: {
 		type: [String],

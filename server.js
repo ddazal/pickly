@@ -61,6 +61,16 @@ var newStudent3 = new Student({
 })
 
 newStudent3.save()
+
+var newStudent4 = new Student({
+  id: 4,
+  username: "2015203015",
+  password: "2015203015",
+  firstname: "Sergio",
+  lastname: "Garzón"
+})
+
+newStudent4.save()
 */
 
 app.use(bodyParser.json())
