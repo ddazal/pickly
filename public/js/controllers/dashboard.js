@@ -3,7 +3,6 @@ angular
   .controller('DashboardController', DashboardController)
 
 function DashboardController($scope, $http, $location, $window, $data) {
-  $scope.test = Date.now()
   var socket = io.connect('/dashboard')
   $window.sessionStorage.removeItem('currentProject')
   $scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
@@ -189,8 +188,7 @@ function DashboardController($scope, $http, $location, $window, $data) {
         role: 'admin'
       }
     }
-    if (project.contributors.length === 0) {
-      $http({
+    $http({
         method: 'POST',
         url: '/save-contributor',
         data: data
@@ -198,23 +196,9 @@ function DashboardController($scope, $http, $location, $window, $data) {
           $scope.contributors = []
           $scope.saveContribSuccess = true
           getProjects()
-          $scope.tab = 1
       }, function (res) {
           $scope.saveContribFail = true 
       })
-    } else {
-      data.old = project.contributors
-      data.projectId = project._id
-      $http({
-        method: 'POST',
-        url: '/add-contributor',
-        data: data
-      }).then(function(res) {
-          console.log('OK')
-      }, function(res) {
-          console.log('ERR')
-      })
-    }
   }
   $scope.cancel = function () {
     $window.sessionStorage.removeItem('currentProject')
@@ -228,6 +212,8 @@ function DashboardController($scope, $http, $location, $window, $data) {
       data: data
     }).then(function (res) {
       $scope.projects = res.data
+      $scope.user.projects = $scope.projects
+      $window.sessionStorage.setItem('currentUser', angular.toJson($scope.user))
     }, function (res) {
       console.log('ERR')
     })

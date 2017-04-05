@@ -169,63 +169,49 @@ router.post('/save-contributor', (req, res) => {
   project.role = 'colaborador'
   var contributors = req.body.contributors
   var me = req.body.me
-  contributors.map(contributor => {
-    /* Nueva lista de colaboradores */
-    var newContributors = contributors.filter(function (obj) {
-      if (obj.username === contributor.username) {
-        return false
-      } else {
-        return true
-      }
-    })
-    newContributors.push(me)
-    project.contributors = newContributors
+  var oldContributors
 
-    /* Agregar proyecto a colaboradores */
-    Student.findOneAndUpdate(
-      { username: contributor.username },
-      { $addToSet: { projects: project }},
-      (err, student) => {
-        if (err)
-          return res.status(500).json()
-      }
-    )
+  Student.findOne({ id: me.id }, { roles: 0, projects: { $elemMatch: { _id: project._id }}}, (err, data) => {
+    handleErr(err)
+    oldContributors = data.projects[0].contributors.slice()
+    contributors.map(contributor => data.projects[0].contributors.push(contributor))
+    data.save(err => handleErr(err))
 
-    /* Agregar colaboradores a array */
-    Student.findOne({ id: me.id }, (err, student) => {
-      if (err)
-        return res.status(500).json()
-      var temp = student.projects.filter(obj => {
-        if (obj._id == project._id) {
-          obj.contributors.push(contributor)
+    if (oldContributors.length) {
+      oldContributors.map(old => {
+        Student.findOne({ username: old.username }, { roles: 0, projects: { $elemMatch: { _id: project._id }}}, (err, data) => {
+          handleErr(err)
+          contributors.map(contributor => data.projects[0].contributors.push(contributor))
+          data.save(err => handleErr(err))
+        })
+      })
+    }
+
+    contributors.map(contributor => {
+      var newContributors = contributors.filter(function (obj) {
+        if (obj.username === contributor.username) {
+          return false
+        } else {
+          return true
         }
-        return true
       })
-      student.projects = temp
-      student.save(err => {
-        if (err)
-          return res.status(500).json()
-      })
+      newContributors.push(me)
+      oldContributors.map(old => newContributors.push(old))
+      project.contributors = newContributors
+
+      Student.findOneAndUpdate(
+        { username: contributor.username },
+        { $addToSet: { projects: project }},
+        (err, student) => {
+          if (err)
+            return res.status(500).json()
+        }
+      )
     })
   })
+
   res.status(200).json()
 })
-
-router.post('/add-contributor', (req, res) => {
-  req.body.old.map(obj => {
-    Student.findOne({ username: obj.username }, (err, student) => {
-      student.projects.map(project => {
-        if(project._id == req.body.projectId) {
-          req.body.contributors.map(contributor => {
-            project.contributors.push(contributor)
-            console.log(project.contributors)
-          })
-        }
-      })
-    })
-  })
-})
-
 
 function justForAdmin (req, res, next) {
   if (req.isAuthenticated() && req.user.roles[0] === 'admin')
@@ -237,6 +223,11 @@ function protect (req, res, next) {
   if (req.isAuthenticated())
     return next()
   res.redirect('/login')
+}
+
+function handleErr(err, doc) {
+  if (err)
+    return res.status(500).json()
 }
 
 module.exports = router

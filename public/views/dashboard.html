@@ -211,7 +211,7 @@
 		</div>
 		<div class="panel-body">
 			<div class="container">
-				<form>
+				<form ng-hide="saveContribSuccess">
 					<div class="form-group form-inline">
 						<label for="code">Código institucional: </label>
 						<div class="input-group">
@@ -229,11 +229,11 @@
 					<button class="btn btn-success" ng-click="saveContributor()" ng-class="{disabled: !contributors.length}">Aceptar</button>
 					<button class="btn btn-default" ng-click="persist(project)" ng-show="!saveContribSuccess">Saltar y editar proyecto</button>
 					<button class="btn btn-default" ng-click="cancel()">Cancelar</button>
-					<div class="text-center" ng-show="saveContribSuccess">
-						<p class="text-success text-center">Colaboradores agregados exitosamente. <a href="" ng-click="persist(project)">Continuar</a></p>
-					</div>
-					<p class="text-danger text-center" ng-show="saveContribFail">Algo salió mal. Inténtalo de nuevo</p>
 				</form>
+				<div class="text-center" ng-show="saveContribSuccess">
+					<p class="text-success text-center">Colaboradores agregados exitosamente. <a href="" ng-click="persist(project)">Continuar</a> <a href="" ng-click="setTab(1)">Cancelar</a></p>
+				</div>
+				<p class="text-danger text-center" ng-show="saveContribFail">Algo salió mal. Inténtalo de nuevo</p>
 			</div>
 		</div>
 	</div>
