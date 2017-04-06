@@ -121,14 +121,48 @@ router.post('/save-project', (req, res) => {
 })
 
 router.post('/delete-project', (req, res) => {
-  Student.findOneAndUpdate(
-    { id: req.body.userId}, 
-    { $pull: { projects: { _id: req.body._id }}},
-    { new: true}, (err, doc) => {
-      if (err)
-        res.status(500).end()
-      res.status(200).end()
+  let contributors = req.body.contributors
+  if (req.body.role === 'admin') {
+    contributors.map(contributor => {
+      Student.findOneAndUpdate(
+        { username: contributor.username}, 
+        { $pull: { projects: { _id: req.body._id }}},
+        { new: true}, 
+        (err, doc) => handleErr(err)
+      )   
     })
+    Student.findOneAndUpdate(
+      { id: req.body.userId}, 
+      { $pull: { projects: { _id: req.body._id }}},
+      { new: true}, (err, doc) => {
+        handleErr(err)
+        res.status(200).end()
+      }
+    )
+  } else {
+    contributors.map(contributor => {
+      let others = contributors.filter(obj => {
+        if(contributor.username == obj.username)
+          return false
+        return true
+      })
+
+      Student.findOne({ username: contributor.username}, { roles: 0, projects: { $elemMatch: { _id: req.body._id }}}, (err, data) => {
+        handleErr(err)
+        data.projects[0].contributors = others
+        data.save(err => handleErr(err))
+      })
+    })
+
+    Student.findOneAndUpdate(
+      { id: req.body.userId}, 
+      { $pull: { projects: { _id: req.body._id }}},
+      { new: true}, (err, doc) => {
+        handleErr(err)
+        res.status(200).end()
+      }
+    )
+  }
 })
 
 router.post('/projects', (req, res) => {
@@ -225,7 +259,7 @@ function protect (req, res, next) {
   res.redirect('/login')
 }
 
-function handleErr(err, doc) {
+function handleErr(err) {
   if (err)
     return res.status(500).json()
 }
