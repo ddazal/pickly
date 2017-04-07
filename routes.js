@@ -87,11 +87,10 @@ router.post('/student', justForAdmin, (req, res) => {
 
 router.post('/create-project', (req, res) => {
   var family = 'p' + req.body.pic.slice(3, 5)
-  var url = '/' + family + '/' + req.body.pic.toLowerCase()
+  var url = '/' + family + '/'
   newProject = { name: req.body.name, pic: req.body.pic, url: url, role: req.body.role }
   Student.findOneAndUpdate({ id: req.body.userId }, { $push: { projects: newProject }}, { new:true }, (err, student) => {
-    if (err)
-      return res.status(500)
+    handleErr(err)
     var _projects = student.projects.sort((a, b) => {
       if (a._id > b._id)
         return -1
@@ -99,7 +98,11 @@ router.post('/create-project', (req, res) => {
         return 1
       return 0
     })
-    res.status(200).json({ id: student.id, firstname: student.firstname, lastname: student.lastname, project: _projects[0] })
+    Student.findOne({ id: req.body.userId }, { projects: { $elemMatch: { _id: _projects[0]._id }}}, (err, data) => {
+      data.projects[0].url = url + _projects[0]._id
+      data.save(err => handleErr(err))
+      res.status(200).json({ id: req.body.userId, project: data.projects[0] })
+    })
   })
 })
 

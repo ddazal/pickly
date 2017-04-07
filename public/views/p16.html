@@ -21,7 +21,8 @@
 				<!-- Mobile Display -->
 				<div class="navbar-header">
 					<a href="#" class="navbar-brand" id="toggle"><span class="fa fa-bars"></span></a>
-					<a ng-href="datasheets/{{datasheet}}.pdf" class="navbar-brand" target="_blank" title="Datasheet">{{ pic | uppercase}}</a>
+					<a ng-hide="user" ng-href="datasheets/{{datasheet}}.pdf" class="navbar-brand" target="_blank" title="Datasheet">{{ pic | uppercase}}</a>
+					<a href="" class="navbar-brand" ng-show="user">{{ currentProject.name | uppercase }}</a>
 				</div>
 				<!-- Nav elements -->
 				<div>

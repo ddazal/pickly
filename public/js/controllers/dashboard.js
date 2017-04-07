@@ -212,6 +212,7 @@ function DashboardController($scope, $http, $location, $window, $data) {
       data: data
     }).then(function (res) {
       $scope.projects = res.data
+      console.log($scope.projects)
       $scope.user.projects = $scope.projects
       $window.sessionStorage.setItem('currentUser', angular.toJson($scope.user))
     }, function (res) {
