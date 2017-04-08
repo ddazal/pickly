@@ -3,7 +3,7 @@ angular
   .controller('DashboardController', DashboardController)
 
 function DashboardController($scope, $http, $location, $window, $data) {
-  var socket = io.connect('/dashboard')
+  socket = io.connect('/dashboard')
   $window.sessionStorage.removeItem('currentProject')
   $scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
   $scope.tab = 1

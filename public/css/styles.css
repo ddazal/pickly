@@ -59,6 +59,7 @@ body {
 /* Header style for mobiles */
 header {
 	position: relative;
+	background-attachment: fixed;
   background-color: #464646;
   background-image: url('../img/bg.jpg');
   background-position: center;

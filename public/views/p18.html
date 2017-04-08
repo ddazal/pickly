@@ -219,6 +219,11 @@
 		$("#blocklyDiv").innerHeight($(window).height() - $(".navbar").height());
 		$(".panel").innerHeight($(window).height() - $(".navbar").height());
 	}
+
+	var room = window.location.pathname.slice(5)
+	
+	if (socket) socket.emit('set room', room)
+
 	function myUpdateFunction (event) {
 		var code = Blockly.JavaScript.workspaceToCode(workspace);
 	  var codeArr = []
@@ -226,9 +231,23 @@
 		codeArr.push(code)
 		blob = new Blob(codeArr, dataType)
 	  // Conversión de bloques a texto
+	  if (event.type == Blockly.Events.UI || event.type == Blockly.Events.CREATE) return
+
 	  xml = Blockly.Xml.workspaceToDom(workspace);
-	  xml_text = Blockly.Xml.domToPrettyText(xml);
+	  xml_text = Blockly.Xml.domToText(xml);
+
+	  if (socket) {
+		  socket.emit('new xml', xml_text)
+			socket.on('rebuild workspace', function (xml) {
+				Blockly.Events.disable()
+				workspace.clear()
+				var xmlData = Blockly.Xml.textToDom(xml)
+				Blockly.Xml.domToWorkspace(xmlData, workspace)
+				Blockly.Events.enable()
+			})
+	  }
 	}
+
 
 	function downloadCode (e) {
 		e.preventDefault()

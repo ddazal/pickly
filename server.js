@@ -16,13 +16,19 @@ var server = http.createServer(app)
 var io = require('socket.io')(server)
 var port = process.env.PORT || 3000
 
-/*io.of('/dashboard').on('connection', function(socket) {
+io.of('/dashboard').on('connection', socket => {
 	console.log(`Usuario conectado: ${socket.id}`)
-  socket.on('logout', () => {
-    socket.disconnect()
-  })
-	socket.on('disconnect', () => console.log(`Usuario desconectado: ${socket.id}`))
-})*/
+
+	socket.on('set room', room => {
+		socket.room = room
+		socket.join(room)
+	})
+	socket.on('logout', () => {
+		socket.disconnect()
+	})
+	socket.on('new xml', xml => socket.broadcast.to(socket.room).emit('rebuild workspace', xml))
+	socket.on('disconnect', () =>  console.log(`Usuario desconectado: ${socket.id}`))
+})
 
 var db = "mongodb://localhost/pickly"
 mongoose.connect(db)
