@@ -107,18 +107,20 @@ router.post('/create-project', (req, res) => {
 })
 
 router.post('/save-project', (req, res) => {
-  Student.findOne({ id: req.body.id }, (err, student) => {
-    if (err)
-      return console.log(err)
-    student.projects.map((obj) => {
-      if (obj.name === req.body.project) {
-        obj.xml = req.body.xml
-        student.save(err => {
-          if (err)
-            return console.log(err)
-          console.log('DONE')
-        })
-      }
+
+  Student.findOne({ id: req.body.id }, { roles: 0, projects: { $elemMatch: { _id: req.body.project._id }}}, (err, data) => {
+    handleErr(err)
+    data.projects[0].contributors.map(contributor => {
+      Student.findOne({ username: contributor.username }, { roles: 0, projects: { $elemMatch: { _id: req.body.project._id }}}, (err, temp) => {
+        handleErr(err)
+        temp.projects[0].xml = req.body.xml
+        temp.save(err => handleErr(err))
+      })
+    })
+    data.projects[0].xml = req.body.xml
+    data.save(err => {
+      handleErr(err)
+      res.status(200).json()
     })
   })
 })

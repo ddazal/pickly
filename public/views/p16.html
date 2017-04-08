@@ -246,7 +246,7 @@
 	});
 
 	var projectComming = JSON.parse(window.sessionStorage.getItem('currentProject'))
-	if (projectComming.xml) {
+	if (projectComming && projectComming.xml) {
 		var xmlFromDb = Blockly.Xml.textToDom(projectComming.xml)
 		Blockly.Xml.domToWorkspace(xmlFromDb, workspace)
 	} else {

@@ -23,7 +23,7 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
   	var sender = {
   		id: $scope.user.id,
   		xml: newXmlText,
-  		project: $scope.currentProject.name
+  		project: { name: $scope.currentProject.name, _id: $scope.currentProject._id }
   	}
   	$http({
   		method: 'POST',
