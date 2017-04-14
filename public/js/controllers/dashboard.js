@@ -193,6 +193,8 @@ function DashboardController($scope, $http, $location, $window, $data) {
         url: '/save-contributor',
         data: data
       }).then(function (res) {
+          $scope.contributors.map(function(obj) { project.contributors.push(obj) })
+          $window.sessionStorage.setItem('currentProject', angular.toJson(project))
           $scope.contributors = []
           $scope.saveContribSuccess = true
           getProjects()

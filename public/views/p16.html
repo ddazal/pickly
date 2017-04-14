@@ -11,10 +11,10 @@
 	</div>
 
 	<div id="main-content-wrapper">
-		<!-- Notificación -->
+		<!-- Notificación
 		<div class="alert alert-info" id="notification">
 			<p class="text-center" translate="pic.notification"></p>
-		</div>
+		</div> -->
 
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
@@ -27,18 +27,36 @@
 				</div>
 				<!-- Nav elements -->
 				<div id="pic_menu">
-					<ul class="nav navbar-nav navbar-right">
-	  				<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.blocks-tab"></a></li>
-	  				<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.code-tab" id="test"></a></li>
-					</ul>
 					<form class="navbar-form navbar-right">
 						<div class="form-group" ng-show="user">
 							<a href="" class="btn btn-default" translate="pic.save" ng-click="saveXml()"></a>
 						</div>
 					</form>
+					<ul class="nav navbar-nav navbar-right">
+	  				<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.blocks-tab"></a></li>
+	  				<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.code-tab" id="test"></a></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
+
+		<div ng-show="user && currentProject.contributors.length">
+			<div id="chat">Open Chat</div>
+			<div id="chat-box">
+			  		<div id="chat-bar">
+			    		<p>Project Name</p>
+			    		<span class="fa fa-close"></span>
+			  		</div>
+			  		<div id="chat-messages">
+			    		<ul id="messages"></ul>
+			  		</div>
+			  		<div id="chat-input">
+			    		<form action="">
+			      		<input type="text" id="message" placeholder="Escribe tu mensaje aquí" />
+			    		</form>
+			  		</div>
+			</div>
+		</div>
 			
 		<div id="blocklyDiv" ng-show="tabIsSelected(1)">
 			<xml id="toolbox">
@@ -171,8 +189,8 @@
 	var blob = new Blob()
 	
 	
-	$('#notification').hide();
-	$("#notification").click(closeIt);
+	/*$('#notification').hide();
+	$("#notification").click(closeIt);*/
 	$(document).ready(whenReady);
 	$('.langBlock').click(changeWorkspaceLanguage)
 	$('#download').click(downloadCode)
@@ -192,14 +210,14 @@
 	/* Generación(real-time) y descarga de código */
 	workspace.addChangeListener(myUpdateFunction);
 
-	function closeIt () {
+	/*function closeIt () {
 		$(this).slideUp(500);
-	}
+	}*/
 
 	/* Despliegue de barra de notificación y cierre total del modal*/
 
 	function whenReady () {
-		$('#notification').delay(500).slideDown(500);
+		//$('#notification').delay(500).slideDown(500);
 		$('body').removeClass('modal-open');
 		$('.modal-backdrop').remove();
 		$('#blocklyDiv').show();
@@ -273,4 +291,23 @@
 		/* Inicialización del bloque void main */
 		Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), workspace);
 	}
+
+	$('#chat-box').hide()
+	$('#chat').click(function() {
+  	$(this).fadeOut(500)
+  	$('#chat-box').fadeIn(500)
+	})
+	$('.fa.fa-close').click(function() {
+  	$('#chat-box').fadeOut(500)
+  	$('#chat').fadeIn(500)
+	})
+	$('form').submit(function(event) {
+  	event.preventDefault()
+  	var msg = $('#message').val()
+  	$('#message').val('')
+  	$('#messages').append($('<li>').html(msg))
+  	$('#chat-messages').animate({
+    	scrollTop: $('#chat-messages').get(0).scrollHeight
+  	}, 1000)
+	})
 </script>

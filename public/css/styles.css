@@ -225,6 +225,81 @@ table {
 	transition: all 0.5s;
 	overflow: hidden;
 }
+#chat {
+  background-color: #00897b;
+  bottom: 0;
+  color: #fff;
+  cursor: pointer;
+  height: 28px;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  width: 160px;
+  z-index: 100;
+}
+#chat-box {
+  border: 1px solid rgba(0,0,0,0.4);
+  bottom: 0;
+  height: 300px;
+  position: absolute;
+  left: 2px;
+  width: 260px;
+  z-index: 100;
+}
+#chat-bar {
+  background: #00897b;
+  color: #fff;
+  height: 35px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+#chat-bar p {
+  line-height: 35px;
+}
+#chat-bar span {
+  cursor: pointer;
+  line-height: 35px;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+#chat-messages {
+  background: #fff;
+  border-bottom: 0.5px solid rgba(0,0,0,0.3);
+  font-size: 12px;
+  height: 230px;
+  left: 0;
+  max-height: 230px;
+  overflow: auto;
+  position: absolute;
+  top: 35px;
+  width: 100%;
+}
+#chat-input {
+  bottom: 0;
+  font-size: 12px;
+  height: 35px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+#chat-input form input {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+#messages {
+  padding: 5px;
+}
+#messages li {
+  border-bottom: 0.1px solid rgba(220,220,220,0.6)
+  display: block;
+  list-style-type:none;
+}
 /* Sidenav style */
 #sidenav-wrapper {
 	background: rgba(0,118,138,0.9);
