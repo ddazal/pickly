@@ -20,21 +20,22 @@
 			<div class="container-fluid">
 				<!-- Mobile Display -->
 				<div class="navbar-header">
+					
 					<a href="#" class="navbar-brand" id="toggle"><span class="fa fa-bars"></span></a>
 					<a ng-hide="user" ng-href="datasheets/{{datasheet}}.pdf" class="navbar-brand" target="_blank" title="Datasheet">{{ pic | uppercase}}</a>
 					<a href="" class="navbar-brand" ng-show="user">{{ currentProject.name | uppercase }}</a>
 				</div>
 				<!-- Nav elements -->
-				<div>
+				<div id="pic_menu">
+					<ul class="nav navbar-nav navbar-right">
+	  				<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.blocks-tab"></a></li>
+	  				<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.code-tab" id="test"></a></li>
+					</ul>
 					<form class="navbar-form navbar-right">
 						<div class="form-group" ng-show="user">
 							<a href="" class="btn btn-default" translate="pic.save" ng-click="saveXml()"></a>
 						</div>
 					</form>
-					<ul class="nav navbar-nav navbar-right">
-	  				<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.blocks-tab"></a></li>
-	  				<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.code-tab" id="test"></a></li>
-					</ul>
 				</div>
 			</div>
 		</nav>

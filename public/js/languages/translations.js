@@ -28,7 +28,8 @@ var translationEN = {
 		"download": "<span class='fa fa-download fa-fw'></span> Download code",
 		"notification": "For more options, make right click in the blocks.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>",
 		"profile": "<span class='fa fa-user'></span> Profile",
-		"save": "Save"
+		"save": "Save",
+		"collapse": "Options"
 	},
 	"evento" : {
 		"advertencia" : "Leave this page? Your work will not be saved."
@@ -87,7 +88,8 @@ var translationES = {
 		"download": "<span class='fa fa-download fa-fw'></span> Descargar código",
 		"notification": "Para más opciones, haz clic derecho sobre los bloques.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>",
 		"profile": "<span class='fa fa-user'></span> Perfil",
-		"save": "Guardar"
+		"save": "Guardar",
+		"collapse": "Opciones"
 	},
 	"evento" : {
 		"advertencia" : "¿Salir de esta página? Su trabajo no será guardado."

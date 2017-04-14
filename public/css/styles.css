@@ -215,6 +215,12 @@ table {
   color: #eb3812;
   font-size: 22px;
 }
+#pic_menu.navbar-collapse.collapse.in {
+	border: none;
+}
+#pic_menu>form {
+	border: none;
+}
 #wrapper {
 	transition: all 0.5s;
 	overflow: hidden;
