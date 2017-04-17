@@ -296,7 +296,7 @@ table {
   padding: 5px;
 }
 #messages li {
-  border-bottom: 0.1px solid rgba(220,220,220,0.6)
+  border-bottom: 0.1px solid rgba(220,220,220,0.6);
   display: block;
   list-style-type:none;
 }

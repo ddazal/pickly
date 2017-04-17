@@ -35,8 +35,12 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
   		console.log('ERR')
   	})
   }
-	
+
 	function setTab (setTab) {
+		if (setTab === 2) {
+			var blockId = workspace.getAllBlocks()[0].id
+			workspace.getBlockById(blockId).moveBy(1,1)
+		}
 		$scope.tab = setTab;
 	}
 	
@@ -49,6 +53,7 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 	}
 
 	function clickDashboard () {
+		socket.emit('leave')
 		$location.path("/dashboard");
 	}
 
@@ -138,5 +143,20 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 		});		
 	});
 
+	$('form').submit(function(event) {
+  	event.preventDefault()
+  	socket.emit('message', { msg: $('#message').val(), user: $scope.user.firstname })
+  	$('#messages').append($('<li>').html('<strong> yo: </strong>' + $('#message').val()))
+  	$('#message').val('')
+	})
+
+	if (socket) {
+		socket.on('render', function(data) {
+			$('#messages').append($('<li>').html('<strong>' + data.user + ': </strong>' + data.msg))
+			$('#chat-messages').animate({
+    		scrollTop: $('#chat-messages').get(0).scrollHeight
+  		}, 1000)
+		})
+	}
 };
 	

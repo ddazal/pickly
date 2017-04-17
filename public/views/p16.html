@@ -41,10 +41,10 @@
 		</nav>
 
 		<div ng-show="user && currentProject.contributors.length">
-			<div id="chat">Open Chat</div>
+			<div id="chat">Chat</div>
 			<div id="chat-box">
 			  		<div id="chat-bar">
-			    		<p>Project Name</p>
+			    		<p>{{ currentProject.name | uppercase }}</p>
 			    		<span class="fa fa-close"></span>
 			  		</div>
 			  		<div id="chat-messages">
@@ -52,7 +52,7 @@
 			  		</div>
 			  		<div id="chat-input">
 			    		<form action="">
-			      		<input type="text" id="message" placeholder="Escribe tu mensaje aquí" />
+			      		<input type="text" id="message" placeholder="Escribe tu mensaje aquí" autocomplete="off" />
 			    		</form>
 			  		</div>
 			</div>
@@ -300,14 +300,5 @@
 	$('.fa.fa-close').click(function() {
   	$('#chat-box').fadeOut(500)
   	$('#chat').fadeIn(500)
-	})
-	$('form').submit(function(event) {
-  	event.preventDefault()
-  	var msg = $('#message').val()
-  	$('#message').val('')
-  	$('#messages').append($('<li>').html(msg))
-  	$('#chat-messages').animate({
-    	scrollTop: $('#chat-messages').get(0).scrollHeight
-  	}, 1000)
 	})
 </script>

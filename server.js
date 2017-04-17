@@ -23,9 +23,10 @@ io.of('/dashboard').on('connection', socket => {
 		socket.room = room
 		socket.join(room)
 	})
-	socket.on('logout', () => {
-		socket.disconnect()
-	})
+	
+	socket.on('leave', () => socket.leave(socket.room))
+	socket.on('message', data => socket.broadcast.to(socket.room).emit('render', data))
+	socket.on('logout', () => socket.disconnect())
 	socket.on('new xml', xml => socket.broadcast.to(socket.room).emit('rebuild workspace', xml))
 	socket.on('disconnect', () =>  console.log(`Usuario desconectado: ${socket.id}`))
 })
