@@ -1,25 +1,18 @@
 goog.require('Blockly.JavaScript');
 
-
 Blockly.JavaScript['adc_done'] = function(block) {
 	var code = 'adc_done()';
-	return [code, Blockly.JavaScript.ORDER_NONE];
+	return [code, Blockly.JavaScript.ORDER_NONE + '\n']
 };
 Blockly.JavaScript['adc_read'] = function(block) {
-	// var option = block.getFieldValue('ADCoptions');
-	// var code = 'read_adc(' + option +');\n';
-	// if(option == 'ADC_START_AND_READ') {
-	// 	code = 'read_adc();\n';
-	// }
-	// if(block.outputConnection) {
-	// 	return [code, Blockly.JavaScript.ORDER_NONE];
-	// } else {
-	// 	return code;
-	// }
-	if(block.outputConnection) {
-		return "I have an output";
+	var option = block.getFieldValue('ADCoptions');
+	var code = 'read_adc(' + option +')';
+	if (block.outputConnection) {
+		if ( option === 'ADC_START_AND_READ')
+			return ['read_adc()'	, Blockly.JavaScript.ORDER_NONE + '\n'];
+		return [code, Blockly.JavaScript.ORDER_NONE + '\n'];
 	} else {
-		return "I don't have an output";
+		return code + ';\n';
 	}
 };
 Blockly.JavaScript['adc_channel'] = function(block) {
