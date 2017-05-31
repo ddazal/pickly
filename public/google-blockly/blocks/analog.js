@@ -72,3 +72,114 @@ Blockly.Blocks['adc_setup'] = {
     this.setColour(0);
   }
 };
+Blockly.Blocks['adc_ports'] = {
+	init: function() {
+		var PROPERTIES = [['0','NO'],
+											['1','ONE'],
+											['2','TWO'],
+											['3','THREE'],
+											['4','FOUR'],
+											['5','FIVE'],
+											['6','SIX'],
+											['7','ALL']];
+		var dropdown = new Blockly.FieldDropdown (PROPERTIES,function(option){
+			var whenOneAnalog = (option == 'ONE');
+      this.sourceBlock_.oneAnalog_(whenOneAnalog);
+      var whenTwoAnalog = (option == 'TWO');
+      this.sourceBlock_.twoAnalog_(whenTwoAnalog);
+      var whenThreeAnalog = (option == 'THREE');
+      this.sourceBlock_.threeAnalog_(whenThreeAnalog);
+      var whenFourAnalog = (option == 'FOUR');
+      this.sourceBlock_.fourAnalog_(whenFourAnalog);
+      var whenFiveAnalog = (option == 'FIVE');
+      this.sourceBlock_.fiveAnalog_(whenFiveAnalog);
+      var whenSixAnalog = (option == 'SIX');
+      this.sourceBlock_.sixAnalog_(whenSixAnalog);
+		});
+		this.appendDummyInput()
+				.appendField(Blockly.Msg.ADC_PORTS_DEFAULT)
+				.appendField(dropdown, 'ADC_PORTS');
+		this.setColour(0);
+		this.setPreviousStatement(true, null);
+		this.setNextStatement(true, null);
+		this.setInputsInline(true);
+	},
+	mutationToDom: function() {
+		var container = document.createElement('mutation');
+		var whenOneAnalog = (this.getFieldValue('ADC_PORTS') == 'ONE');
+		var whenTwoAnalog = (this.getFieldValue('ADC_PORTS') == 'TWO');
+		var whenThreeAnalog = (this.getFieldValue('ADC_PORTS') == 'THREE');
+		var whenFourAnalog = (this.getFieldValue('ADC_PORTS') == 'FOUR');
+		var whenFiveAnalog = (this.getFieldValue('ADC_PORTS') == 'FIVE');
+		var whenSixAnalog = (this.getFieldValue('ADC_PORTS') == 'SIX');
+		container.setAttribute('one-analog', whenOneAnalog);
+		container.setAttribute('two-analog', whenTwoAnalog);
+		container.setAttribute('three-analog', whenThreeAnalog);
+		container.setAttribute('four-analog', whenFourAnalog);
+		container.setAttribute('five-analog', whenFiveAnalog);
+		container.setAttribute('six-analog', whenSixAnalog);
+		return container;
+	},
+	domToMutation: function(xmlElement) {
+		var whenOneAnalog = (xmlElement.getAttribute('one-analog') == 'true');
+		var whenTwoAnalog = (xmlElement.getAttribute('two-analog') == 'true');
+		var whenThreeAnalog = (xmlElement.getAttribute('three-analog') == 'true');
+		var whenFourAnalog = (xmlElement.getAttribute('four-analog') == 'true');
+		var whenFiveAnalog = (xmlElement.getAttribute('five-analog') == 'true');
+		var whenSixAnalog = (xmlElement.getAttribute('six-analog') == 'true');
+		this.oneAnalog_(whenOneAnalog);
+		this.twoAnalog_(whenTwoAnalog);
+		this.threeAnalog_(whenThreeAnalog);
+		this.fourAnalog_(whenFourAnalog);
+		this.fiveAnalog_(whenFiveAnalog);
+		this.sixAnalog_(whenSixAnalog);
+	},
+	oneAnalog_: function(whenOneAnalog) {
+		if (this.getInput('one_analog')) this.removeInput('one_analog');
+		if (whenOneAnalog) {
+			this.appendDummyInput('one_analog')
+					.appendField('¿Vref+ (AN3) Vref- (AN2)?')
+					.appendField(new Blockly.FieldCheckbox('FALSE'), 'ONE_VREF');
+		}
+	},
+	twoAnalog_: function(whenTwoAnalog) {
+		if (this.getInput('two_analog')) this.removeInput('two_analog');
+		if (whenTwoAnalog) {
+			this.appendDummyInput('two_analog')
+					.appendField('Vref+ (AN3) ¿Vref- (AN2)?')
+					.appendField(new Blockly.FieldCheckbox('FALSE'), 'TWO_VREF');
+		}
+	},
+	threeAnalog_: function(whenThreeAnalog) {
+		if (this.getInput('three_analog')) this.removeInput('three_analog');
+		if (whenThreeAnalog) {
+			this.appendDummyInput('three_analog')
+					.appendField('¿Vref+ (AN3) Vref- (AN2)?')
+					.appendField(new Blockly.FieldCheckbox('FALSE'), 'THREE_VREF');
+		}
+	},
+	fourAnalog_: function(whenFourAnalog) {
+		if (this.getInput('four_analog')) this.removeInput('four_analog');
+		if (whenFourAnalog) {
+			this.appendDummyInput('four_analog')
+					.appendField('Vref+ (AN3) ¿Vref- (AN2)?')
+					.appendField(new Blockly.FieldCheckbox('FALSE'), 'FOUR_VREF');
+		}
+	},
+	fiveAnalog_: function(whenFiveAnalog) {
+		if (this.getInput('five_analog')) this.removeInput('five_analog');
+		if (whenFiveAnalog) {
+			this.appendDummyInput('five_analog')
+					.appendField('¿Vref+ (AN3)?')
+					.appendField(new Blockly.FieldCheckbox('FALSE'), 'FIVE_VREF');
+		}
+	},
+	sixAnalog_: function(whenSixAnalog) {
+		if (this.getInput('six_analog')) this.removeInput('six_analog');
+		if (whenSixAnalog) {
+			this.appendDummyInput('six_analog')
+					.appendField('¿Vref+ (AN3) Vref- (AN2)?')
+					.appendField(new Blockly.FieldCheckbox('FALSE'), 'FIVE_VREF');
+		}
+	}
+}

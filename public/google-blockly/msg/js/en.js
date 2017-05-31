@@ -399,6 +399,7 @@ Blockly.Msg.ADC_CHANNEL = "Channel ADC";
 Blockly.Msg.ADC_SETUP_ADC_OFF = "Off";
 Blockly.Msg.ADC_SETUP_ADC_CLOCK_INTERNAL = "Internal";
 Blockly.Msg.ADC_SETUP_F1 = "ADC Clock";
+Blockly.Msg.ADC_PORTS_DEFAULT = "Analog Pins";
 // communication.js
 Blockly.Msg.COMM_SEND = "Send";
 Blockly.Msg.COMM_RECEIVE = "Get and save as";
