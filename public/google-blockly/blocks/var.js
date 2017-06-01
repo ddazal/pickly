@@ -27,5 +27,18 @@ Blockly.Blocks['create_var'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(330);
+  },
+  onchange: function(e) {
+    var name = this.getFieldValue('VAR').split("");
+    if (isLegal(name[0])) {
+        this.setWarningText(null)
+    } else {
+        this.setWarningText('El nombre de la variable no es legal')
+    }
   }
 };
+
+function isLegal(value) {
+  var data = value.toString();
+  return ((data.toLowerCase() != data.toUpperCase()) || data == '_')
+}
