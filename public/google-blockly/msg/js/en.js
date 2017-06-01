@@ -448,3 +448,6 @@ Blockly.Msg.INT_ENABLE_RDA = "Data Available";
 // var.js
 Blockly.Msg.VAR_SET = "Set";
 Blockly.Msg.VAR_TO = "to";
+Blockly.Msg.VAR_CREATE = "Create variable:";
+// other.js
+Blockly.Msg.DELAY = 'Wait for';

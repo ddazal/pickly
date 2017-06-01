@@ -18,3 +18,14 @@ Blockly.Blocks['get_var'] = {
     this.setColour(330);
   }
 };
+Blockly.Blocks['create_var'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.VAR_CREATE)
+        .appendField(new Blockly.FieldDropdown([["int","INT"], ["float","FLOAT"], ["char","CHAR"]]), "VAR_TYPE")
+        .appendField(new Blockly.FieldTextInput("variable"), "VAR");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(330);
+  }
+};
