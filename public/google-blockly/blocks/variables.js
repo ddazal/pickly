@@ -50,11 +50,11 @@ Blockly.Blocks['variables_get'] = {
     this.contextMenuMsg_ = Blockly.Msg.VARIABLES_GET_CREATE_SET;
   },
   contextMenuType_: 'variables_set',
-  /**
+  *
    * Add menu option to create getter/setter block for this setter/getter.
    * @param {!Array} options List of menu options to add to.
    * @this Blockly.Block
-   */
+   
   customContextMenu: function(options) {
     var option = {enabled: true};
     var name = this.getFieldValue('VAR');

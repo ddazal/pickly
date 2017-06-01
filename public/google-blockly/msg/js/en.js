@@ -445,3 +445,6 @@ Blockly.Msg.INT_ENABLE_EXT = "Change on RB0";
 Blockly.Msg.INT_ENABLE_AD = "ADC done";
 Blockly.Msg.INT_ENABLE_TBE = "Transmit Buffer Empty";
 Blockly.Msg.INT_ENABLE_RDA = "Data Available";
+// var.js
+Blockly.Msg.VAR_SET = "Set";
+Blockly.Msg.VAR_TO = "to";
