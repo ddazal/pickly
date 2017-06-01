@@ -24,7 +24,7 @@ Blockly.Blocks['io_tris'] = {
         .appendField(Blockly.Msg.IO_PORTS)
         .appendField(new Blockly.FieldDropdown([["A", "A"], ["B", "B"], ["C", "C"], ["D", "D"], ["E", "E"]]), "PORToptions");
     this.appendValueInput("io_mode")
-        .setCheck("io");
+        .setCheck(["io", "Var"]);
     this.setInputsInline(true);
     this.setColour(65);
     this.setPreviousStatement(true, null);
@@ -50,7 +50,7 @@ Blockly.Blocks['io_set'] = {
     this.appendDummyInput()
         .appendField(Blockly.Msg.IO_SET_F1);
     this.appendValueInput("port_value")
-        .setCheck("Number");
+        .setCheck(["Number","Var"]);
     this.appendDummyInput()
         .appendField(Blockly.Msg.IO_SET_F2)
         .appendField(new Blockly.FieldDropdown([["A", "A"], ["B", "B"], ["C", "C"], ["D", "D"], ["E", "E"]]), "PORTset");

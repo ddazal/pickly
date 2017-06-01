@@ -1,7 +1,7 @@
 Blockly.Blocks['set_var'] = {
   init: function() {
     this.appendValueInput("VAL")
-        .setCheck(["Number", "String", "Var"])
+        .setCheck(["Number", "String", "Var","Boolean"])
         .appendField(Blockly.Msg.VAR_SET)
         .appendField(new Blockly.FieldTextInput("variable"), "VAR")
         .appendField(Blockly.Msg.VAR_TO);
@@ -14,7 +14,7 @@ Blockly.Blocks['get_var'] = {
   init: function() {
     this.appendDummyInput()
         .appendField(new Blockly.FieldTextInput("variable"), "VAR");
-    this.setOutput(true, "Var");
+    this.setOutput(true, ["Var","Boolean","Number","String"]);
     this.setColour(330);
   }
 };
