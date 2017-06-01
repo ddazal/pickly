@@ -17,7 +17,33 @@ Blockly.Blocks['create_arr'] = {
     }
   }
 };
-
+Blockly.Blocks['set_arr'] = {
+  init: function() {
+    this.appendValueInput("INDEX")
+        .setCheck(["Number", "Var"])
+        .appendField("Establecer")
+        .appendField(new Blockly.FieldTextInput("variable"), "VAR");
+    this.appendValueInput("VAL")
+        .setCheck(["Boolean", "Number", "String", "Var"])
+        .appendField("a");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(260);
+  }
+};
+Blockly.Blocks['get_arr'] = {
+  init: function() {
+    this.appendValueInput("VAL")
+        .setCheck(["Number", "Var"])
+        .appendField(new Blockly.FieldTextInput("variable"), "VAR");
+    this.setInputsInline(true);
+    this.setOutput(true, ["Boolean", "Number", "String", "Var"]);
+    this.setColour(260);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
 function isLegal(value) {
   var data = value.toString();
   return ((data.toLowerCase() != data.toUpperCase()) || data == '_')
