@@ -33,7 +33,7 @@ Blockly.Blocks['create_var'] = {
     if (isLegal(name[0])) {
         this.setWarningText(null)
     } else {
-        this.setWarningText('El nombre de la variable no es legal')
+        this.setWarningText(Blockly.Msg.VAR_WARNING)
     }
   }
 };

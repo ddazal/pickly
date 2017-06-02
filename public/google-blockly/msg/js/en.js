@@ -451,3 +451,11 @@ Blockly.Msg.VAR_TO = "to";
 Blockly.Msg.VAR_CREATE = "Create variable:";
 // other.js
 Blockly.Msg.DELAY = 'Wait for';
+// array.js
+Blockly.Msg.ARRAY_CREATE = 'Create array';
+Blockly.Msg.ARRAY_SET = "Set";
+Blockly.Msg.ARRAY_TO = "to";
+Blockly.Msg.ARRAY_OF = "of";
+Blockly.Msg.ARRAY_ELEMENTS = "elements";
+//
+Blockly.Msg.VAR_WARNING = "The variable name is not legal";

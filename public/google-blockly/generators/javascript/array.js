@@ -19,3 +19,10 @@ Blockly.JavaScript['get_arr'] = function(block) {
 	var code = varName + '[' + val + ']';
 	return [code, Blockly.JavaScript.ORDER_NONE + '\n'];
 }
+Blockly.JavaScript['create_arr_size'] = function(block) {
+	var type = block.getFieldValue('ARR_TYPE').toLowerCase();
+	var varName = block.getFieldValue('VAR');
+	var index = block.getFieldValue('INDEX');
+	var code = type + ' ' + varName + '[' + index + '];\n';
+	return code;
+}
