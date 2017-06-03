@@ -184,8 +184,26 @@
   var dataType = { type: 'text/plain;charset=utf-8' }
 	var filename = 'main.c'
 	var blob = new Blob()
-	
-	
+	var header;
+	var devices = ['16F873A', '16F874A', '16F876A', '16F877A'];
+	var device = window.location.pathname.slice(8).toUpperCase();
+	if (devices.indexOf(device) != -1) {
+		header = '// No modifiques esta seccion, a menos que sepas lo que haces\n' + 
+						 '// Do not modify this section at least you know what you are doing\n' +
+						 '#include <' + device + '.h>\n' +
+						 '#device adc=10\n\n' + 							
+						 '#FUSES NOWDT\n' + 
+						 '#FUSES HS\n' +             			       
+						 '#FUSES NOPUT\n' +          			       
+						 '#FUSES NOBROWNOUT\n' +     			        
+			       '#FUSES NOLVP\n' +          			       
+			       '#FUSES NOCPD\n' +          			          
+			       '#FUSES NOWRT\n' +          			        
+			       '#FUSES NODEBUG\n' +        			         
+			       '#FUSES NOPROTECT\n\n' +      			         
+			       '#use delay(clock=20000000)\n' +
+			       '//====================================================================\n';
+	}
 	/*$('#notification').hide();
 	$("#notification").click(closeIt);*/
 	$(document).ready(whenReady);
@@ -244,6 +262,7 @@
 		var code = Blockly.JavaScript.workspaceToCode(workspace);
 	  var codeArr = []
 	  $('#codigo').html(code);
+	  codeArr.push(header)
 		codeArr.push(code)
 		blob = new Blob(codeArr, dataType)
 	  // Conversión de bloques a texto
@@ -267,7 +286,7 @@
 
 	function downloadCode (e) {
 		e.preventDefault()
-		saveAs(blob, filename)
+		saveAs(blob, filename, true)
 	}
 
 	$('#toggle').click(function (e) {
