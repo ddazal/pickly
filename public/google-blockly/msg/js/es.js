@@ -463,3 +463,7 @@ Blockly.Msg.LOOP = "Ciclo infinito";
 Blockly.Msg.FUN = "funcion";
 Blockly.Msg.FUN_NAME = "nombre";
 Blockly.Msg.LCD_INIT = "Iniciar LCD";
+Blockly.Msg.LCD_PRINT = "Imprimir";
+Blockly.Msg.LCD_CLEAR = "Borrar pantalla";
+Blockly.Msg.LCD_WARNING = 'Este bloque debe ir antes que cualquier otro de esta categoría';
+Blockly.Msg.LCD_MOVE_X = "Mover cursor a x: ";

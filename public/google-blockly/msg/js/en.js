@@ -463,3 +463,7 @@ Blockly.Msg.LOOP = "Endless loop";
 Blockly.Msg.FUN = "function";
 Blockly.Msg.FUN_NAME = "name";
 Blockly.Msg.LCD_INIT = "Initialize LCD";
+Blockly.Msg.LCD_PRINT = "Print";
+Blockly.Msg.LCD_CLEAR = "Clear screen";
+Blockly.Msg.LCD_WARNING = 'This block must go before any other in this category';
+Blockly.Msg.LCD_MOVE_X = "Move cursor at x: ";
