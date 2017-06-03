@@ -462,3 +462,4 @@ Blockly.Msg.VAR_WARNING = "The variable name is not legal";
 Blockly.Msg.LOOP = "Endless loop";
 Blockly.Msg.FUN = "function";
 Blockly.Msg.FUN_NAME = "name";
+Blockly.Msg.LCD_INIT = "Initialize LCD";

@@ -9,7 +9,19 @@ Blockly.JavaScript['delay_block'] = function(block) {
 
 Blockly.JavaScript['main_function'] = function(block) {
 	var content = Blockly.JavaScript.statementToCode(block, 'main');
-	var code = 'void main() { \n' + content +'}' ;
+	var currentBlocks = block.workspace.blockDB_;
+	var blockKeys = Object.keys(currentBlocks);
+	var existLcd = blockKeys.filter(function(element) {
+		if (currentBlocks[element].type == 'lcd_init')
+			return true;
+		return false;
+	})
+	if (!existLcd.length) {
+		var code = 'void main() { \n' + content +'}' ;
+	} else {
+		var code = "#include &lt;lcd.c&gt;\n" + "void main() { \n" + content + '}';
+	}
+	
 	return code;
 };
 
