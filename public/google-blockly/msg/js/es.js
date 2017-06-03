@@ -467,3 +467,7 @@ Blockly.Msg.LCD_PRINT = "Imprimir";
 Blockly.Msg.LCD_CLEAR = "Borrar pantalla";
 Blockly.Msg.LCD_WARNING = 'Este bloque debe ir antes que cualquier otro de esta categoría';
 Blockly.Msg.LCD_MOVE_X = "Mover cursor a x: ";
+Blockly.Msg.LOOP_FOR_TITLE = "Contar con";
+Blockly.Msg.LOOP_FOR_FROM = "desde";
+Blockly.Msg.LOOP_FOR_TO = "hasta";
+Blockly.Msg.LOOP_FOR_BY = "de a";

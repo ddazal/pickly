@@ -30,3 +30,17 @@ Blockly.JavaScript['loop'] = function(block) {
 	var code = 'while(true) {\n' + content + '}\n';
 	return code;
 }
+Blockly.JavaScript['loop_for'] = function(block) {
+  var value_var = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_NONE) || 'variable';
+  var value_from = Blockly.JavaScript.valueToCode(block, 'FROM', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+  var value_to = Blockly.JavaScript.valueToCode(block, 'TO', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+  var value_by = parseInt(Blockly.JavaScript.valueToCode(block, 'BY', Blockly.JavaScript.ORDER_ATOMIC));
+  var statements_stack = Blockly.JavaScript.statementToCode(block, 'STACK');
+  if (!value_by) {
+  	var code = 'for (' + value_var + ' = ' + value_from + '; ' + value_var + ' <= ' + value_to + '; ' + value_var + '++) {\n' + statements_stack + '}\n';	
+  } else {
+  	var code = 'for (' + value_var + ' = ' + value_from + '; ' + value_var + ' <= ' + value_to + '; ' + value_var + ' = ' + value_var + ' + (' + value_by + ')) {\n' + statements_stack + '}\n';	
+  }
+  
+  return code;
+};

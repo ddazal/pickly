@@ -467,3 +467,7 @@ Blockly.Msg.LCD_PRINT = "Print";
 Blockly.Msg.LCD_CLEAR = "Clear screen";
 Blockly.Msg.LCD_WARNING = 'This block must go before any other in this category';
 Blockly.Msg.LCD_MOVE_X = "Move cursor at x: ";
+Blockly.Msg.LOOP_FOR_TITLE = "Count with";
+Blockly.Msg.LOOP_FOR_FROM = "from";
+Blockly.Msg.LOOP_FOR_TO = "to";
+Blockly.Msg.LOOP_FOR_BY = "by";
