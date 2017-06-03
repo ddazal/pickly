@@ -8,6 +8,14 @@ Blockly.Blocks['set_var'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(330);
+  },
+  onchange: function(e) {
+    var name = this.getFieldValue('VAR').split("");
+    if (isLegal(name[0])) {
+        this.setWarningText(null)
+    } else {
+        this.setWarningText(Blockly.Msg.VAR_WARNING)
+    }
   }
 };
 Blockly.Blocks['get_var'] = {

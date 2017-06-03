@@ -459,3 +459,6 @@ Blockly.Msg.ARRAY_OF = "de";
 Blockly.Msg.ARRAY_ELEMENTS = "elementos";
 //
 Blockly.Msg.VAR_WARNING = "El nombre de la variable no es legal";
+Blockly.Msg.LOOP = "Ciclo infinito";
+Blockly.Msg.FUN = "funcion";
+Blockly.Msg.FUN_NAME = "nombre";

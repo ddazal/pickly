@@ -4,7 +4,7 @@ Blockly.Blocks['main_function'] = {
         .appendField("void main");
     this.appendStatementInput("main")
         .setCheck(null);
-    this.setColour(290);
+    this.setColour(295);
     this.setTooltip('TODO code');
     this.setDeletable(false);
     this.setPreviousStatement(true, null);
@@ -20,5 +20,16 @@ Blockly.Blocks['delay_block'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(120);
+  }
+};
+Blockly.Blocks['loop'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.LOOP);
+    this.appendStatementInput("loop")
+        .setCheck(null);
+    this.setColour(120);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };

@@ -12,3 +12,9 @@ Blockly.JavaScript['main_function'] = function(block) {
 	var code = 'void main() { \n' + content +'}' ;
 	return code;
 };
+
+Blockly.JavaScript['loop'] = function(block) {
+	var content = Blockly.JavaScript.statementToCode(block, 'loop');
+	var code = 'while(true) {\n' + content + '}\n';
+	return code;
+}
