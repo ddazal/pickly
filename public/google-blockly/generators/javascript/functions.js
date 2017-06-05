@@ -17,3 +17,8 @@ Blockly.JavaScript['fun_get'] = function(block) {
 	var code = funName + '()';	
 	return [code, Blockly.JavaScript.ORDER_ATOMIC + '\n'];
 }
+Blockly.JavaScript['fun_return'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'RETURN', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'return(' + value_name + ');\n';
+  return code;
+};

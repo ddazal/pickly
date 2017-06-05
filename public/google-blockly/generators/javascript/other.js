@@ -19,7 +19,14 @@ Blockly.JavaScript['main_function'] = function(block) {
 	if (!existLcd.length) {
 		var code = 'void main() { \n' + content +'}' ;
 	} else {
-		var code = "#include &lt;lcd.c&gt;\n" + "void main() { \n" + content + '}';
+		var code = "#define LCD_ENABLE_PIN  PIN_E0\n" + 
+							 "#define LCD_RS_PIN PIN_E1\n" +
+							 "#define LCD_RW_PIN PIN_E2\n" +          
+							 "#define LCD_DATA4 PIN_D4\n" + 
+							 "#define LCD_DATA5 PIN_D5\n" + 
+							 "#define LCD_DATA6 PIN_D6\n" +
+							 "#define LCD_DATA7 PIN_D7\n\n" +
+							 "#include &lt;lcd.c&gt;\n\n" + "void main() { \n" + content + '}';
 	}
 	
 	return code;

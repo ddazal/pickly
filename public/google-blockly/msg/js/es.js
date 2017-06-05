@@ -471,3 +471,4 @@ Blockly.Msg.LOOP_FOR_TITLE = "Contar con";
 Blockly.Msg.LOOP_FOR_FROM = "desde";
 Blockly.Msg.LOOP_FOR_TO = "hasta";
 Blockly.Msg.LOOP_FOR_BY = "de a";
+Blockly.Msg.FUN_RETURN = "retornar";

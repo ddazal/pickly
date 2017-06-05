@@ -30,3 +30,13 @@ Blockly.Blocks['fun_get'] = {
     this.setColour(290);
   }
 }
+Blockly.Blocks['fun_return'] = {
+  init: function() {
+    this.appendValueInput("RETURN")
+        .setCheck(null)
+        .appendField(Blockly.Msg.FUN_RETURN);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(290);
+  }
+};

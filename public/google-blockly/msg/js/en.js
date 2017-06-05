@@ -471,3 +471,4 @@ Blockly.Msg.LOOP_FOR_TITLE = "Count with";
 Blockly.Msg.LOOP_FOR_FROM = "from";
 Blockly.Msg.LOOP_FOR_TO = "to";
 Blockly.Msg.LOOP_FOR_BY = "by";
+Blockly.Msg.FUN_RETURN = "return";

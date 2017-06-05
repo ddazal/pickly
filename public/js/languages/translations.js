@@ -16,7 +16,8 @@ var translationEN = {
 		"lang": "Language",
 		"code": "Institutional Code",
 		"password": "Password",
-		"profile": "Profile"
+		"profile": "Profile",
+		"profile-btn": "Go to profile"
 	},
 	"pic" : {
 		"home": "<span class='fa fa-home fa-fw'></span> Home",
@@ -29,7 +30,8 @@ var translationEN = {
 		"notification": "For more options, make right click in the blocks.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>",
 		"profile": "<span class='fa fa-user'></span> Profile",
 		"save": "Save",
-		"collapse": "Options"
+		"collapse": "Options",
+		"logout": "<span class='fa fa-sign-out fa-fw'></span> Logout"
 	},
 	"evento" : {
 		"advertencia" : "Leave this page? Your work will not be saved."
@@ -76,7 +78,8 @@ var translationES = {
 		"lang": "Idioma",
 		"code": "Código Institucional",
 		"password": "Contraseña",
-		"profile": "Perfil"
+		"profile": "Perfil",
+		"profile-btn": "Visitar perfil"
 	},
 	"pic" : {
 		"home": "<span class='fa fa-home fa-fw'></span> Inicio",
@@ -89,7 +92,8 @@ var translationES = {
 		"notification": "Para más opciones, haz clic derecho sobre los bloques.<span class='fa fa-fw fa-info-circle'></span><span role='button' class='pull-right fa fa-fw fa-close'></span>",
 		"profile": "<span class='fa fa-user'></span> Perfil",
 		"save": "Guardar",
-		"collapse": "Opciones"
+		"collapse": "Opciones",
+		"logout": "<span class='fa fa-sign-out fa-fw'></span> Cerrar sesión"
 	},
 	"evento" : {
 		"advertencia" : "¿Salir de esta página? Su trabajo no será guardado."

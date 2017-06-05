@@ -46,35 +46,34 @@
 				<div class="col-lg-3 col-md-6 text-center">
 					<i class="fa fa-microchip fa-4x icon"></i>
 					<h4 translate="home.section-one"></h4>
-					<!-- <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p> -->
 				</div>
 			</div>
 			<div>
 				<div class="col-lg-3 col-md-6 text-center">
 					<i class="fa fa-mouse-pointer fa-4x icon"></i>
 					<h4 translate="home.section-two"></h4>
-					<!-- <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p> -->
 				</div>
 			</div>
 			<div>
 				<div class="col-lg-3 col-md-6 text-center">
 					<i class="fa fa-puzzle-piece fa-4x icon"></i>
 					<h4 translate="home.section-three"></h4>
-					<!-- <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p> -->
 				</div>
 			</div>
 			<div>
 				<div class="col-lg-3 col-md-6 text-center">
 					<i class="fa fa-download fa-4x icon"></i>
 					<h4 translate="home.section-four"></h4>
-					<!-- <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing.</p> -->
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="container options">
-		<div class="text-center">
+		<div class="text-center" ng-hide="user">
 			<a type="button" data-toggle="modal" data-target="#modal_pic" class="btn btn-default dropdown-toggle btn-lg sr-button" translate="home.main-btn"></a>
+		</div>
+		<div class="text-center" ng-show="user">
+			<a type="button" class="btn btn-default dropdown-toggle btn-lg sr-button" href="/dashboard" translate="home.profile-btn"></a>
 		</div>
 		<div class="modal fade" tabindex="-1" role="dialog" id="modal_pic">
 			<div class="modal-dialog" role="document">

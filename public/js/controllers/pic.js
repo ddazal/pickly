@@ -17,6 +17,20 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 	$scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
   $scope.currentProject = JSON.parse($window.sessionStorage.getItem('currentProject'))
 
+  $scope.logout = function() {
+    $http({
+      method: 'GET',
+      url: '/logout'
+    }).then(function(res) {
+      socket.emit('logout')
+      $scope.logoutFailed = ''
+      $window.sessionStorage.clear()
+      $location.path('/')
+    }, function(res) {
+      $scope.logoutFailed = true
+    })
+  }
+
   $scope.saveXml = function() {
   	var newXml = Blockly.Xml.workspaceToDom(workspace)
   	var newXmlText = Blockly.Xml.domToText(newXml)

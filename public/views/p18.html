@@ -6,7 +6,12 @@
 			<li ng-show="user"><a role="button" href="" ng-click="clickDashboard()" translate="pic.profile"></a></li>
 			<li><a role="button" ng-href="datasheets/{{datasheet}}.pdf" target="blank" translate="pic.datasheet"></a></li>
 			<li><a role="button" id="download" href="" translate="pic.download"></a></li>
-			<li ng-repeat="option in remaining"><a role="button" href="{{option.url}}"><span class="fa fa-microchip fa-fw"></span> {{option.name}}</a></li>
+			<div ng-hide="user">
+				<li ng-repeat="option in remaining"><a role="button" href="{{option.url}}"><span class="fa fa-microchip fa-fw"></span> {{option.name}}</a></li>
+			</div>
+			<div ng-show="user">
+				<li><a role="button" href="" ng-click="logout()" translate="pic.logout"></a></li>
+			</div>
 		</ul>
 	</div>
 
@@ -98,6 +103,7 @@
 					<block type="fun_create"></block>
 					<block type="fun_exec"></block>
 					<block type="fun_get"></block>
+					<block type="fun_return"></block>
 				</category>
 				<sep></sep>
 				<!-- Bloques propios del microcontrolador -->
