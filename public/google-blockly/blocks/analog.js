@@ -62,6 +62,16 @@ Blockly.Blocks['adc_channel'] = {
     this.setColour(0);
   }
 };
+Blockly.Blocks['adc_channel_18'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.ADC_CHANNEL)
+        .appendField(new Blockly.FieldNumber(0, 0, 12), "channel");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+  }
+};
 Blockly.Blocks['adc_setup'] = {
   init: function() {
     this.appendDummyInput()
@@ -181,5 +191,31 @@ Blockly.Blocks['adc_ports'] = {
 					.appendField('¿Vref+ (AN3) Vref- (AN2)?')
 					.appendField(new Blockly.FieldCheckbox('FALSE'), 'FIVE_VREF');
 		}
+	}
+}
+Blockly.Blocks['adc_ports_18'] = {
+	init: function() {
+		var PROPERTIES = [['0','NO_ANALOGS'],
+											['1','AN0'],
+											['2','AN0_TO_AN1'],
+											['3','AN0_TO_AN2'],
+											['4','AN0_TO_AN3'],
+											['5','AN0_TO_AN4'],
+											['6','AN0_TO_AN5'],
+											['7','AN0_TO_AN6'],
+											['8','AN0_TO_AN7'],
+											['9','AN0_TO_AN8'],
+											['10','AN0_TO_AN9'],
+											['11','AN0_TO_AN10'],
+											['12','AN0_TO_AN11'],
+											['13','ALL_ANALOG']];
+		var dropdown = new Blockly.FieldDropdown (PROPERTIES);
+		this.appendDummyInput()
+				.appendField(Blockly.Msg.ADC_PORTS_DEFAULT)
+				.appendField(dropdown, 'ADC_PORTS');
+		this.setColour(0);
+		this.setPreviousStatement(true, null);
+		this.setNextStatement(true, null);
+		this.setInputsInline(true);
 	}
 }

@@ -20,6 +20,11 @@ Blockly.JavaScript['adc_channel'] = function(block) {
 	var code = 'set_adc_channel(' + channel +');\n';
 	return code;
 };
+Blockly.JavaScript['adc_channel_18'] = function(block) {
+	var channel = block.getFieldValue('channel');
+	var code = 'set_adc_channel(' + channel +');\n';
+	return code;
+};
 Blockly.JavaScript['adc_setup'] = function(block) {
 	var option = block.getFieldValue('CLOCKoptions');
 	var code = 'setup_adc(' + option +');\n';
@@ -72,5 +77,10 @@ Blockly.JavaScript['adc_ports'] = function(block) {
 				option = 'ALL_ANALOG';
 	}
 	var code = 'setup_adc_ports(' + option + ');\n';
+	return code;
+}
+Blockly.JavaScript['adc_ports_18'] = function(block) {
+	var ports = block.getFieldValue('ADC_PORTS')
+	var code = 'setup_adc_ports(' + ports + ');\n';
 	return code;
 }
