@@ -418,6 +418,7 @@ Blockly.Msg.IO_PIN_SET_LOW = "bajo";
 /* timers.js */
 // timer0
 Blockly.Msg.TMR0_GET = "Obtener Timer0";
+Blockly.Msg.TMR0_SET = "Cargar Timer0";
 Blockly.Msg.TMR0_SETUP_F1 = "Configurar Timer0";
 Blockly.Msg.TMR0_SETUP_F2 = "Reloj";
 Blockly.Msg.TMR0_SETUP_T0_INTERNAL = "Interno";
@@ -427,6 +428,7 @@ Blockly.Msg.TMR0_SETUP_RISE_EDGE = "Subida";
 Blockly.Msg.TMR0_SETUP_FALL_EDGE = "Bajada";
 // timer1
 Blockly.Msg.TMR1_GET = "Obtener Timer1";
+Blockly.Msg.TMR1_SET = "Cargar Timer1";
 Blockly.Msg.TMR1_SETUP_F1 = "Habilitar Timer1";
 Blockly.Msg.TMR1_SETUP_F2 = Blockly.Msg.TMR0_SETUP_F2;
 Blockly.Msg.TMR1_SETUP_T1_INTERNAL = Blockly.Msg.TMR0_SETUP_T0_INTERNAL;
@@ -436,8 +438,13 @@ Blockly.Msg.TMR1_SETUP_RISE_EDGE = Blockly.Msg.TMR0_SETUP_RISE_EDGE;
 Blockly.Msg.TMR1_SETUP_FALL_EDGE = Blockly.Msg.TMR0_SETUP_FALL_EDGE;
 // timer2
 Blockly.Msg.TMR2_GET = "Obtener Timer2";
+Blockly.Msg.TMR2_SET = "Cargar Timer2";
 Blockly.Msg.TMR2_SETUP_F1 = "Habilitar Timer2";
 Blockly.Msg.TMR2_SETUP_F2 = "Período";
+// timer3
+Blockly.Msg.TMR3_GET = "Obtener Timer3";
+Blockly.Msg.TMR3_SET = "Cargar Timer3";
+Blockly.Msg.TMR3_SETUP_F1 = "Habilitar Timer3";
 // interrupts.js
 Blockly.Msg.INT_ENABLE = "Habilitar interrupción";
 Blockly.Msg.INT_ENABLE_RB = "Cambio en RB4-RB7";

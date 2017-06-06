@@ -106,3 +106,30 @@ Blockly.JavaScript['tmr_tmr2_setup'] = function(block) {
 	}
 	return code;
 };
+/* Timer 3 */
+Blockly.JavaScript['tmr_tmr3_get'] = function(block) {
+	var code = 'get_timer3()';
+	return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['tmr_tmr3_set'] = function(block) {
+	var value = block.getFieldValue('tmr3_value');
+	var code = 'set_timer3(' + value + ');\n';
+	return code
+};
+Blockly.JavaScript['tmr_tmr3_setup'] = function(block) {
+	var enable = block.getFieldValue('ENABLEtmr3');
+	var clk = block.getFieldValue('CLKoptions');
+	var prescaler = block.getFieldValue('PSAoptions');
+	var code;
+	
+	if(enable == 'TRUE') {
+		if(clk == 'T3_INTERNAL') {
+			code = 'setup_timer_3('+ clk +'|'+ prescaler +');\n';
+		} else {
+			code = 'setup_timer_3('+ clk +'|'+ prescaler +');\n';
+		}
+	} else {
+		code = 'setup_timer_3(T3_DISABLED|T3_DIV_BY_1);\n';
+	}
+	return code;
+};

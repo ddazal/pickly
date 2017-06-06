@@ -24,7 +24,7 @@ Blockly.Blocks['tmr_tmr0_get'] = {
 Blockly.Blocks['tmr_tmr0_set'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Set Timer0")
+        .appendField(Blockly.Msg.TMR0_SET)
         .appendField(new Blockly.FieldNumber(0, 0, 255), "tmr0_value");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -76,7 +76,7 @@ Blockly.Blocks['tmr_tmr0_setup'] = {
 Blockly.Blocks['tmr_tmr0_set_18'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Set Timer0")
+        .appendField(Blockly.Msg.TMR0_SET)
         .appendField(new Blockly.FieldNumber(0, 0, 65535), "tmr0_value");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -132,7 +132,7 @@ Blockly.Blocks['tmr_tmr0_setup_18'] = {
 Blockly.Blocks['tmr_tmr1_get'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Obtener Timer1");
+        .appendField(Blockly.Msg.TMR1_GET);
     this.setOutput(true, null);
     this.setColour(180);
   }
@@ -140,7 +140,7 @@ Blockly.Blocks['tmr_tmr1_get'] = {
 Blockly.Blocks['tmr_tmr1_set'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Set Timer1")
+        .appendField(Blockly.Msg.TMR1_SET)
         .appendField(new Blockly.FieldNumber(0, 0, 65535), "tmr1_value");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -196,7 +196,7 @@ Blockly.Blocks['tmr_tmr2_get'] = {
 Blockly.Blocks['tmr_tmr2_set'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Set Timer2")
+        .appendField(Blockly.Msg.TMR2_SET)
         .appendField(new Blockly.FieldNumber(0, 0, 255), "tmr2_value");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -242,4 +242,60 @@ Blockly.Blocks['tmr_tmr2_setup'] = {
       this.removeInput("TMR2mutator");
     }
   }
+};
+// TIMER 3
+Blockly.Blocks['tmr_tmr3_get'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.TMR3_GET);
+    this.setOutput(true, null);
+    this.setColour(180);
+  }
+};
+Blockly.Blocks['tmr_tmr3_set'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.TMR3_SET)
+        .appendField(new Blockly.FieldNumber(0, 0, 65535), "tmr3_value");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(180);
+  }
+};
+Blockly.Blocks['tmr_tmr3_setup'] = {
+  init: function(){
+    var dropdown = new Blockly.FieldDropdown([[Blockly.Msg.TMR1_SETUP_T1_INTERNAL,"T3_INTERNAL"],[Blockly.Msg.TMR1_SETUP_T1_EXTERNAL,"T3_EXTERNAL"]])
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.TMR3_SETUP_F1)
+        .appendField(new Blockly.FieldCheckbox("FALSE",function(whenCheck) {
+          this.sourceBlock_.updateShape_(whenCheck);
+        }),"ENABLEtmr3")
+        .appendField(Blockly.Msg.TMR1_SETUP_F2)
+        .appendField(dropdown,"CLKoptions");
+    this.setInputsInline(null);
+    this.setColour(180);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  },
+  mutationToDom: function(){
+    var container = document.createElement("mutation");
+    var whenCheck = (this.getFieldValue("ENABLEtmr3") == 'TRUE');
+    container.setAttribute('when_check', whenCheck);
+    return container;
+  },
+  domToMutation: function(xmlElement){
+    var whenCheck = (xmlElement.getAttribute('when_check') == 'TRUE');
+    this.updateShape_(whenCheck)
+  },
+  updateShape_: function(whenCheck){
+    if (this.getInput("TMR3FirstMutator")) {
+      this.removeInput("TMR3FirstMutator");
+    }
+    if (whenCheck) {
+      this.appendDummyInput("TMR3FirstMutator")
+          .appendField("Prescaler")
+          .appendField(new Blockly.FieldDropdown([["1","T1_DIV_BY_1"],["2","T1_DIV_BY_2"],["4","T1_DIV_BY_4"],["8","T1_DIV_BY_8"]]),"PSAoptions");
+    }
+  },
 };
