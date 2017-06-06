@@ -37,49 +37,6 @@ mongoose.connect(db)
 mongoose.connection.on('connected', () => console.log(`Connected to ${db}`))
 mongoose.connection.on('error', (err) => console.log(err))
 
-/*
-var newStudent = new Student({
-	id: 1,
-	username: "2011203021",
-	password: "2011203021",
-	firstname: "David",
-	lastname: "Daza",
-	roles: ['admin', 'student']
-})
-
-newStudent.save()
-
-var newStudent2 = new Student({
-	id: 2,
-	username: "2010103030",
-	password: "2010103030",
-	firstname: "Edinson",
-	lastname: "Gómez"
-})
-
-newStudent2.save()
-
-var newStudent3 = new Student({
-	id: 3,
-	username: "2011203035",
-	password: "2011203035",
-	firstname: "Cristian",
-	lastname: "López"
-})
-
-newStudent3.save()
-
-var newStudent4 = new Student({
-  id: 4,
-  username: "2015203015",
-  password: "2015203015",
-  firstname: "Sergio",
-  lastname: "Garzón"
-})
-
-newStudent4.save()
-*/
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())

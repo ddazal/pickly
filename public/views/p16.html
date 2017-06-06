@@ -194,9 +194,15 @@
 	var devices = ['16F873A', '16F874A', '16F876A', '16F877A'];
 	var device = window.location.pathname.slice(8).toUpperCase();
 	if (devices.indexOf(device) != -1) {
-		header = '// No modifiques esta seccion, a menos que sepas lo que haces\n' + 
+		header = setHeader(device)
+	} else {
+		device = JSON.parse(window.sessionStorage.getItem('currentProject')).pic.slice(3)
+		header = setHeader(device)
+	}
+	function setHeader(pic) {
+		return   '// No modifiques esta seccion, a menos que sepas lo que haces\n' + 
 						 '// Do not modify this section at least you know what you are doing\n' +
-						 '#include <' + device + '.h>\n' +
+						 '#include <' + pic + '.h>\n' +
 						 '#device adc=10\n\n' + 							
 						 '#FUSES NOWDT\n' + 
 						 '#FUSES HS\n' +             			       
