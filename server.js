@@ -31,7 +31,7 @@ io.of('/dashboard').on('connection', socket => {
 	socket.on('disconnect', () =>  console.log(`Usuario desconectado: ${socket.id}`))
 })
 
-var db = process.env.MONGOLAB_URI || "mongodb://localhost/pickly"
+var db = process.env.MONGODB_URI || "mongodb://localhost/pickly"
 mongoose.connect(db)
 
 mongoose.connection.on('connected', () => console.log(`Connected to ${db}`))
