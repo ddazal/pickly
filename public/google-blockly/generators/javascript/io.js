@@ -47,3 +47,21 @@ Blockly.JavaScript['io_pin_get'] = function(block) {
 	var code = 'input(pin_'+ port + pinNumber+')';
 	return [code, Blockly.JavaScript.ORDER_NONE];
 };
+Blockly.JavaScript['io_pin_set_18'] = function(block) {
+	var state = block.getFieldValue('PINstate');
+	var port = block.getFieldValue('PORToptions').toLowerCase();
+	var pinNumber = block.getFieldValue('PINnumber');
+	var code;
+	if(state == 'HIGH') {
+		code = 'output_high(pin_'+ port + pinNumber + ');\n';
+	} else {
+		code = 'output_low(pin_'+ port + pinNumber + ');\n';
+	}
+	return code;
+};
+Blockly.JavaScript['io_pin_get_18'] = function(block) {
+	var port = block.getFieldValue("PORToptions").toLowerCase();
+	var pinNumber = block.getFieldValue("PINnumber");
+	var code = 'input(pin_'+ port + pinNumber+')';
+	return [code, Blockly.JavaScript.ORDER_NONE];
+};
