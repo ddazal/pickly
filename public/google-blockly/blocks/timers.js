@@ -73,6 +73,61 @@ Blockly.Blocks['tmr_tmr0_setup'] = {
     }
   }
 };
+Blockly.Blocks['tmr_tmr0_set_18'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Set Timer0")
+        .appendField(new Blockly.FieldNumber(0, 0, 65535), "tmr0_value");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(180);
+  }
+};
+Blockly.Blocks['tmr_tmr0_setup_18'] = {
+  init: function() {
+    var PROPERTIES = [[Blockly.Msg.TMR0_SETUP_T0_INTERNAL, "T0_INTERNAL"], [Blockly.Msg.TMR0_SETUP_T0_EXTERNAL, "T0_EXTERNAL"]];
+    var dropdown = new Blockly.FieldDropdown(PROPERTIES, function(option){
+      var whenExternalSelect = (option == "T0_EXTERNAL");
+      this.sourceBlock_.updateShape_(whenExternalSelect);
+    })
+    var checkbox = new Blockly.FieldCheckbox("FALSE");
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.TMR0_SETUP_F1);
+    this.appendDummyInput("Setup")
+        .appendField("Prescaler")
+        .appendField(new Blockly.FieldDropdown([["1", "T0_DIV_1"], ["2", "T0_DIV_2"], ["4", "T0_DIV_4"], ["8", "T0_DIV_8"], ["16", "T0_DIV_16"], ["32", "T0_DIV_32"], ["64", "T0_DIV_64"], ["128", "T0_DIV_128"], ["256", "T0_DIV_256"]]), "PSAoptions")
+        .appendField(Blockly.Msg.TMR0_SETUP_F2)
+        .appendField(dropdown, "CLKoptions")
+        .appendField('8 bits')
+        .appendField(checkbox, "8BITMODE");
+    this.setColour(180);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  },
+  mutationToDom: function(){
+    var container = document.createElement("mutation");
+    var whenExternalSelect = (this.getFieldValue("CLKoptions") == "T0_EXTERNAL");
+    container.setAttribute("when_external_select", whenExternalSelect);
+    return container;
+  },
+  domToMutation: function(xmlElement){
+    var whenExternalSelect = (xmlElement.getAttribute("when_external_select") == "true");
+    this.updateShape_(whenExternalSelect);
+  },
+  updateShape_: function(whenExternalSelect){
+    var fieldExists = this.getInput("TMR0Mutator");
+    if (whenExternalSelect) {
+      if (!fieldExists) {
+        this.appendDummyInput("TMR0Mutator")
+            .appendField(Blockly.Msg.TMR0_SETUP_SIGNAL_EDGE)
+            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TMR0_SETUP_RISE_EDGE,'LOW2HIGH'],[Blockly.Msg.TMR0_SETUP_FALL_EDGE,'HIGH2LOW']]),'EDGEoptions');
+      }
+    } else if (fieldExists) {
+      this.removeInput("TMR0Mutator");
+    }
+  }
+};
 // TIMER 1
 Blockly.Blocks['tmr_tmr1_get'] = {
   init: function() {

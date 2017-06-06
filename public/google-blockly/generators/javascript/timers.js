@@ -28,6 +28,33 @@ Blockly.JavaScript['tmr_tmr0_setup'] = function(block) {
 	}
 	return code + ';\n';
 };
+Blockly.JavaScript['tmr_tmr0_set_18'] = function(block) {
+	var value = block.getFieldValue('tmr0_value');
+	var code = 'set_timer0(' + value + ');\n';
+	return code
+};
+Blockly.JavaScript['tmr_tmr0_setup_18'] = function(block) {
+	var prescaler = block.getFieldValue('PSAoptions');
+	var edge = block.getFieldValue('EDGEoptions');
+	var clk = block.getFieldValue('CLKoptions');
+	var mode = block.getFieldValue('8BITMODE');
+	var code;
+
+	if(clk == 'T0_INTERNAL') {
+		code = 'setup_timer_0('+ clk +'|' + prescaler;
+	} else if(clk == 'T0_EXTERNAL') {
+		if(edge == 'LOW2HIGH') {
+			code = 'setup_timer_0(T0_EXT_L_TO_H|'+ prescaler;
+		} else {
+			code = 'setup_timer_0(T0_EXT_H_TO_L|'+ prescaler;
+		}
+	}
+
+	if(mode == 'TRUE') {
+		code = code + '|T0_8_BIT';
+	}
+	return code + ');\n';
+};
 /* Timer 1 */
 Blockly.JavaScript['tmr_tmr1_get'] = function(block) {
 	var code = 'get_timer1()';
