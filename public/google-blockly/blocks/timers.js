@@ -150,13 +150,14 @@ Blockly.Blocks['tmr_tmr1_set'] = {
 };
 Blockly.Blocks['tmr_tmr1_setup'] = {
   init: function(){
+    var dropdown = new Blockly.FieldDropdown([[Blockly.Msg.TMR1_SETUP_T1_INTERNAL,"T1_INTERNAL"],[Blockly.Msg.TMR1_SETUP_T1_EXTERNAL,"T1_EXTERNAL"]])
     this.appendDummyInput()
         .appendField(Blockly.Msg.TMR1_SETUP_F1)
         .appendField(new Blockly.FieldCheckbox("FALSE",function(whenCheck) {
           this.sourceBlock_.updateShape_(whenCheck);
         }),"ENABLEtmr1")
         .appendField(Blockly.Msg.TMR1_SETUP_F2)
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TMR1_SETUP_T1_INTERNAL,"T1_INTERNAL"],[Blockly.Msg.TMR1_SETUP_T1_EXTERNAL,"T1_EXTERNAL"]]),"CLKoptions");
+        .appendField(dropdown,"CLKoptions");
     this.setInputsInline(null);
     this.setColour(180);
     this.setPreviousStatement(true, null);
@@ -170,18 +171,16 @@ Blockly.Blocks['tmr_tmr1_setup'] = {
   },
   domToMutation: function(xmlElement){
     var whenCheck = (xmlElement.getAttribute('when_check') == 'TRUE');
-    this.updateShape_(whenCheck);
+    this.updateShape_(whenCheck)
   },
   updateShape_: function(whenCheck){
-    var fieldExists = this.getInput("TMR1FirstMutator");
-    if (whenCheck) {
-      if (!fieldExists) {
-        this.appendDummyInput("TMR1FirstMutator")
-            .appendField("Prescaler")
-            .appendField(new Blockly.FieldDropdown([["1","T1_DIV_BY_1"],["2","T1_DIV_BY_2"],["4","T1_DIV_BY_4"],["8","T1_DIV_BY_8"]]),"PSAoptions");
-      }
-    } else if (fieldExists) {
+    if (this.getInput("TMR1FirstMutator")) {
       this.removeInput("TMR1FirstMutator");
+    }
+    if (whenCheck) {
+      this.appendDummyInput("TMR1FirstMutator")
+          .appendField("Prescaler")
+          .appendField(new Blockly.FieldDropdown([["1","T1_DIV_BY_1"],["2","T1_DIV_BY_2"],["4","T1_DIV_BY_4"],["8","T1_DIV_BY_8"]]),"PSAoptions");
     }
   },
 };

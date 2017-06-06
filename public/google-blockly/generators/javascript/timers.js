@@ -75,7 +75,7 @@ Blockly.JavaScript['tmr_tmr1_setup'] = function(block) {
 		if(clk == 'T1_INTERNAL') {
 			code = 'setup_timer_1('+ clk +'|'+ prescaler +');\n';
 		} else {
-			code = 'setup_timer_1('+ clk +'|'+ prescaler + ');\n';
+			code = 'setup_timer_1('+ clk +'|'+ 'T1_DIV_BY_1);\n';
 		}
 	} else {
 		code = 'setup_timer_1(T1_DISABLED);\n';
