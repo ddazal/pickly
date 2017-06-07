@@ -34,9 +34,10 @@
 				<div id="pic_menu">
 					<form class="navbar-form navbar-right">
 						<div class="form-group" ng-show="user">
-							<a href="" class="btn btn-default" translate="pic.save" ng-click="saveXml()"></a>
+							<a href="" class="btn btn-default" id="save" translate="pic.save" ng-click="saveXml()"></a>
 						</div>
 					</form>
+					<p class="navbar-text text-center" style="position: absolute;left:40%;transition: all 0.5s ease-out;" ng-hide="!saveXmlSuccess">Se han guardado los cambios</p>
 					<ul class="nav navbar-nav navbar-right">
 	  				<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.blocks-tab"></a></li>
 	  				<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.code-tab" id="test"></a></li>
@@ -199,6 +200,7 @@
 		device = JSON.parse(window.sessionStorage.getItem('currentProject')).pic.slice(3)
 		header = setHeader(device)
 	}
+
 	function setHeader(pic) {
 		return   '// No modifiques esta seccion, a menos que sepas lo que haces\n' + 
 						 '// Do not modify this section at least you know what you are doing\n' +
@@ -216,8 +218,16 @@
 			       '#use delay(clock=20000000)\n' +
 			       '//====================================================================\n';
 	}
+
 	/*$('#notification').hide();
 	$("#notification").click(closeIt);*/
+
+	if (window.sessionStorage.length) {
+		setInterval(function(){
+			$('#save').click();
+		}, 10000)
+	}
+
 	$(document).ready(whenReady);
 	$('.langBlock').click(changeWorkspaceLanguage)
 	$('#download').click(downloadCode)

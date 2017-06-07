@@ -2,7 +2,7 @@ angular
 	.module('pickly')
 	.controller('PicPageController', PicPageController);
 
-function PicPageController($scope, $route, $location, $translate, $rootScope, $routeParams, $data, $window, $http){
+function PicPageController($scope, $route, $location, $translate, $rootScope, $routeParams, $data, $window, $http, $timeout){
 	
 	$scope.pic = $routeParams.id;
 	$scope.datasheet = $location.path().slice(1, 4);
@@ -14,6 +14,7 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
 	$scope.clickDashboard = clickDashboard;
 	$scope.changeLanguage = changeLanguage;
 	$scope.$on('$routeChangeStart', goBack)
+	$scope.saveXmlSuccess = false;
 	$scope.user = JSON.parse($window.sessionStorage.getItem('currentUser'))
   $scope.currentProject = JSON.parse($window.sessionStorage.getItem('currentProject'))
 
@@ -44,7 +45,12 @@ function PicPageController($scope, $route, $location, $translate, $rootScope, $r
   		url: '/save-project',
   		data: sender
   	}).then(function(res) {
-  		console.log('OK')
+  		$scope.saveXmlSuccess = true;
+  		setTimeout(function() {
+  			$scope.$apply(function() {
+  				$scope.saveXmlSuccess = false;
+  			})
+  		}, 3000)
   	}, function(res) {
   		console.log('ERR')
   	})
