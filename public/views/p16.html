@@ -202,21 +202,21 @@
 	}
 
 	function setHeader(pic) {
-		return   '// No modifiques esta seccion, a menos que sepas lo que haces\n' + 
-						 '// Do not modify this section at least you know what you are doing\n' +
-						 '#include <' + pic + '.h>\n' +
-						 '#device adc=10\n\n' + 							
-						 '#FUSES NOWDT\n' + 
-						 '#FUSES HS\n' +             			       
-						 '#FUSES NOPUT\n' +          			       
-						 '#FUSES NOBROWNOUT\n' +     			        
-			       '#FUSES NOLVP\n' +          			       
-			       '#FUSES NOCPD\n' +          			          
-			       '#FUSES NOWRT\n' +          			        
-			       '#FUSES NODEBUG\n' +        			         
-			       '#FUSES NOPROTECT\n\n' +      			         
-			       '#use delay(clock=20000000)\n' +
-			       '//====================================================================\n';
+		return '// No modifiques esta seccion, a menos que sepas lo que haces\n' + 
+					 '// Do not modify this section at least you know what you are doing\n' +
+					 '#include <' + pic + '.h>\n' +
+					 '#device adc=10\n\n' + 							
+			 	   '#FUSES NOWDT\n' + 
+					 '#FUSES HS\n' +             			       
+					 '#FUSES NOPUT\n' +          			       
+					 '#FUSES NOBROWNOUT\n' +     			        
+			     '#FUSES NOLVP\n' +          			       
+			     '#FUSES NOCPD\n' +          			          
+			     '#FUSES NOWRT\n' +          			        
+			     '#FUSES NODEBUG\n' +        			         
+			     '#FUSES NOPROTECT\n\n' +      			         
+			     '#use delay(clock=20000000)\n' +
+			     '//====================================================================\n';
 	}
 
 	/*$('#notification').hide();

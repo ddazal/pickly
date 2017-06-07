@@ -195,7 +195,51 @@
   var dataType = { type: 'text/plain;charset=utf-8' }
 	var filename = 'main.c'
 	var blob = new Blob()
-	
+	var header;
+	var devices = ['18F2455', '18F2550', '18F4455', '18F4550', '18LF2455', '18LF2550', '18LF4455', '18LF4550'];
+	var device = window.location.pathname.slice(8).toUpperCase();
+	if (devices.indexOf(device) != -1) {
+		header = setHeader(device)
+	} else {
+		device = JSON.parse(window.sessionStorage.getItem('currentProject')).pic.slice(3)
+		header = setHeader(device)
+	}
+
+	function setHeader(pic) {
+		return "// No modifiques esta seccion, a menos que sepas lo que haces\n" + 
+					 "// Do not modify this section at least you know what you are doing\n" +
+					 "#include <" + pic + ".h>\n\n" + 
+					 "#FUSES NOWDT\n" + 
+					 "#FUSES WDT128\n" +
+					 "#FUSES PLL12\n" +
+					 "#FUSES CPUDIV4\n" +
+					 "#FUSES USBDIV\n" +
+					 "#FUSES XT\n" +
+					 "#FUSES FCMEN\n" +
+					 "#FUSES IESO\n" +
+					 "#FUSES NOPUT\n" +
+           "#FUSES NOBROWNOUT\n" +
+					 "#FUSES BORV20\n" +
+					 "#FUSES VREGEN\n" +
+					 "#FUSES PBADEN\n" + 
+					 "#FUSES LPT1OSC\n" + 
+					 "#FUSES MCLR\n" +
+					 "#FUSES STVREN\n" +
+					 "#FUSES NOLVP\n" +
+					 "#FUSES NOXINST\n" +
+					 "#FUSES NODEBUG\n" +
+					 "#FUSES NOPROTECT\n" +
+					 "#FUSES NOCPB\n" +
+			     "#FUSES NOCPD\n" +
+					 "#FUSES NOWRT\n" +
+					 "#FUSES NOWRTC\n" +
+					 "#FUSES NOWRTB\n" +
+					 "#FUSES NOWRTD\n" +
+					 "#FUSES NOEBTR\n" +                   
+					 "#FUSES NOEBTRB\n\n" +                  
+					 "#use delay(crystal=20000000,  clock=5000000)\n" + 
+					 '//====================================================================\n';
+	}
 	
 	/*$('#notification').hide();
 	$("#notification").click(closeIt);*/
@@ -255,6 +299,7 @@
 		var code = Blockly.JavaScript.workspaceToCode(workspace);
 	  var codeArr = []
 	  $('#codigo').html(code);
+	  codeArr.push(header)
 		codeArr.push(code)
 		blob = new Blob(codeArr, dataType)
 	  // Conversión de bloques a texto
@@ -278,7 +323,7 @@
 
 	function downloadCode (e) {
 		e.preventDefault()
-		saveAs(blob, filename)
+		saveAs(blob, filename, true)
 	}
 
 	$('#toggle').click(function (e) {
