@@ -84,3 +84,15 @@ Blockly.JavaScript['adc_ports_18'] = function(block) {
 	var code = 'setup_adc_ports(' + ports + ');\n';
 	return code;
 }
+Blockly.JavaScript['duty_pwm'] = function(block) {
+  var dropdown_pwm = block.getFieldValue('pwm');
+  var value_pwm = Blockly.JavaScript.valueToCode(block, 'pwm', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+  var code = 'set_pwm' + dropdown_pwm + '_duty(' + value_pwm +');\n';
+  return code;
+};
+Blockly.JavaScript['ccp'] = function(block) {
+  var dropdown_channel = block.getFieldValue('channel');
+  var dropdown_option = block.getFieldValue('option');
+  var code = 'setup_ccp' + dropdown_channel + '(' + dropdown_option + ');\n';
+  return code;
+};

@@ -219,3 +219,28 @@ Blockly.Blocks['adc_ports_18'] = {
 		this.setInputsInline(true);
 	}
 }
+Blockly.Blocks['duty_pwm'] = {
+  init: function() {
+    this.appendValueInput("pwm")
+        .setCheck(["Number", "Var"])
+        .appendField("Ciclo util PWM")
+        .appendField(new Blockly.FieldDropdown([["RC1","2"], ["RC2","1"]]), "pwm");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+  }
+}
+Blockly.Blocks['ccp'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Configurar CCP")
+        .appendField(new Blockly.FieldDropdown([["RC1","2"], ["RC2","1"]]), "channel")
+        .appendField("Modo")
+        .appendField(new Blockly.FieldDropdown([["Apagado","CCP_OFF"], ["Flanco de Bajada","CCP_CAPTURE_FE"], ["Flanco de Subida","CCP_CAPTURE_RE"], ["PWM","CCP_PWM"]]), "option");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+  }
+};

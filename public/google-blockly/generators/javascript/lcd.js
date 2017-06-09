@@ -6,7 +6,7 @@ Blockly.JavaScript['lcd_init'] = function(block) {
 }
 Blockly.JavaScript['lcd_print'] = function(block) {
 	var val = Blockly.JavaScript.valueToCode(block, 'LCD_PRINT', Blockly.JavaScript.ORDER_NONE);
-	var code = 'lcd_putc(' + val + ');\n';
+	var code = 'lcd_putc(' + "'" + val + "'" + ');\n';
 	return code;
 }
 Blockly.JavaScript['lcd_clear'] = function(block) {

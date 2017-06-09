@@ -26,7 +26,7 @@ Blockly.JavaScript['main_function'] = function(block) {
 							 "#define LCD_DATA5 PIN_D5\n" + 
 							 "#define LCD_DATA6 PIN_D6\n" +
 							 "#define LCD_DATA7 PIN_D7\n\n" +
-							 "#include &lt;lcd.c&gt;\n\n" + "void main() { \n" + content + '}';
+							 "#include <" + "lcd.c" + ">\n\n" + "void main() { \n" + content + '}';
 	}
 	
 	return code;

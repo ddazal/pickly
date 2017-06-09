@@ -27,7 +27,7 @@
 				<div class="navbar-header">
 					
 					<a href="#" class="navbar-brand" id="toggle"><span class="fa fa-bars"></span></a>
-					<a ng-hide="user" ng-href="datasheets/{{datasheet}}.pdf" class="navbar-brand" target="_blank" title="Datasheet">{{ pic | uppercase}}</a>
+					<a ng-hide="user" href="" class="navbar-brand" target="_blank" title="Datasheet">{{ pic | uppercase}}</a>
 					<a href="" class="navbar-brand" ng-show="user">{{ currentProject.name | uppercase }}</a>
 				</div>
 				<!-- Nav elements -->
@@ -114,6 +114,8 @@
 					<block type="adc_channel"></block>
 					<block type="adc_setup"></block>
 					<block type="adc_ports"></block>
+					<block type="duty_pwm"></block>
+					<block type="ccp"></block>
 				</category>
 				<category name="{{ categoria9 }}" colour="20">
 					<block type="comm_send"></block>
@@ -188,7 +190,7 @@
 	}
 	var xml = '';
 	var xml_text = '';
-  var dataType = { type: 'text/plain;charset=utf-8' }
+  var dataType = { type: 'text/plain' }
 	var filename = 'main.c'
 	var blob = new Blob()
 	var header;
@@ -286,6 +288,7 @@
 	  $('#codigo').html(code);
 	  codeArr.push(header)
 		codeArr.push(code)
+		console.log(codeArr)
 		blob = new Blob(codeArr, dataType)
 	  // Conversión de bloques a texto
 	  if (event.type == Blockly.Events.UI || event.type == Blockly.Events.CREATE) return

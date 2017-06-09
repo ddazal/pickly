@@ -27,7 +27,7 @@
 				<div class="navbar-header">
 					
 					<a href="#" class="navbar-brand" id="toggle"><span class="fa fa-bars"></span></a>
-					<a ng-hide="user" ng-href="datasheets/{{datasheet}}.pdf" class="navbar-brand" target="_blank" title="Datasheet">{{ pic | uppercase}}</a>
+					<a ng-hide="user" href="" class="navbar-brand" target="_blank" title="Datasheet">{{ pic | uppercase}}</a>
 					<a href="" class="navbar-brand" ng-show="user">{{ currentProject.name | uppercase }}</a>
 				</div>
 				<!-- Nav elements -->
@@ -37,6 +37,7 @@
 							<a href="" class="btn btn-default" translate="pic.save" ng-click="saveXml()"></a>
 						</div>
 					</form>
+					<p class="navbar-text text-center" style="position: absolute;left:40%;transition: all 0.5s ease-out;" ng-hide="!saveXmlSuccess">Se han guardado los cambios</p>
 					<ul class="nav navbar-nav navbar-right">
 	  				<li role="presentation" ng-class="{active:tabIsSelected(1)}"><a href ng-click="selectTab(1)" translate="pic.blocks-tab"></a></li>
 	  				<li role="presentation" ng-class="{active:tabIsSelected(2)}"><a href ng-click="selectTab(2)" translate="pic.code-tab" id="test"></a></li>
@@ -113,6 +114,8 @@
 					<block type="adc_channel_18"></block>
 					<block type="adc_setup"></block>
 					<block type="adc_ports_18"></block>
+					<block type="duty_pwm"></block>
+					<block type="ccp"></block>
 				</category>
 				<category name="{{ categoria9 }}" colour="20">
 					<block type="comm_send"></block>
@@ -192,7 +195,7 @@
 	}
 	var xml = '';
 	var xml_text = '';
-  var dataType = { type: 'text/plain;charset=utf-8' }
+  var dataType = { type: 'text/plain' }
 	var filename = 'main.c'
 	var blob = new Blob()
 	var header;
@@ -301,6 +304,7 @@
 	  $('#codigo').html(code);
 	  codeArr.push(header)
 		codeArr.push(code)
+		console.log(codeArr)
 		blob = new Blob(codeArr, dataType)
 	  // Conversión de bloques a texto
 	  if (event.type == Blockly.Events.UI || event.type == Blockly.Events.CREATE) return
