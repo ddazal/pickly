@@ -1,12 +1,12 @@
 const db = require('./lib/db')
-const Pic = require('./models/Pic')
+const PicModel = require('./models/Pic')
 const setupPic = require('./lib/pic')
 
-module.exports = () => {
+module.exports = function setupDatabase () {
   db.connect()
-  const pic = setupPic(Pic)
-  // Handle error
+  const Pic = setupPic(PicModel)
+
   return {
-    pic
+    Pic
   }
 }

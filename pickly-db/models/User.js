@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
-const Project = require('./Project')
+const uniqueValidator = require('mongoose-unique-validator')
+const ProjectModel = require('./Project')
 const Schema = mongoose.Schema
 
-const StudentSchema = new Schema({
+const UserSchema = new Schema({
   admin: {
     type: Boolean
   },
@@ -31,14 +32,16 @@ const StudentSchema = new Schema({
   projects: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Project'
+      ref: 'ProjectModel'
     }
   ]
 })
+
+UserSchema.plugin(uniqueValidator)
 
 UserSchema.virtual('fullname').get(function () {
   const fullname = `${this.firstname} ${this.lastname}`
   return fullname
 })
 
-module.exports = mongoose.model('Student', StudentSchema)
+module.exports = mongoose.model('UserModel', UserSchema)

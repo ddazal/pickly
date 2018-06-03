@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const uniqueValidator = require('mongoose-unique-validator')
 const Schema = mongoose.Schema
 
 const PicSchema = new Schema({
@@ -14,4 +15,6 @@ const PicSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model('Pic', PicSchema)
+PicSchema.plugin(uniqueValidator)
+
+module.exports = mongoose.model('PicModel', PicSchema)

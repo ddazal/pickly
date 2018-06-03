@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Pic = require('./Pic')
+const PicModel = require('./Pic')
 const Schema = mongoose.Schema
 
 const ProjectSchema = new Schema({
@@ -18,8 +18,8 @@ const ProjectSchema = new Schema({
   },
   pic: {
     type: Schema.Types.ObjectId,
-    ref: 'Pic'
+    ref: 'PicModel'
   }
 })
 
-module.exports = mongoose.model('Project', ProjectSchema)
+module.exports = mongoose.model('ProjectModel', ProjectSchema)
