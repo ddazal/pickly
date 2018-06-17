@@ -11,8 +11,8 @@ module.exports = function setupPic (UserModel) {
   }
 
   async function getProjectsByUser (id) {
-    const projects = await UserModel.findById(id).populate('projects')
-    return projects
+    const user = await UserModel.findById(id).populate('projects')
+    return user
   }
 
   return {

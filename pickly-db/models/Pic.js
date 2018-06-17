@@ -17,4 +17,4 @@ const PicSchema = new Schema({
 
 PicSchema.plugin(uniqueValidator)
 
-module.exports = mongoose.model('PicModel', PicSchema)
+module.exports = mongoose.model('Pic', PicSchema)
