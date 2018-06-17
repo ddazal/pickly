@@ -1,0 +1,21 @@
+{
+  "name": "pickly-api",
+  "version": "1.0.0",
+  "description": "Pickly - API module",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "express": "^4.16.3",
+    "pickly-db": "file:../pickly-db"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "standard": "^11.0.1"
+  }
+}
