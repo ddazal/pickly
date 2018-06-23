@@ -1,13 +1,24 @@
-const http = require('http')
-const express = require('express')
+const bodyParser = require('body-parser')
 const chalk = require('chalk')
-const router = require('./routes')
-const namespace = '[pickly:api]'
+const express = require('express')
+const http = require('http')
+const schema = require('./schemas/schema')
+const setupDatabase = require('pickly-db')
+const { Pic } = setupDatabase()
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 
+const namespace = '[pickly:api]'
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use('/api', router)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
+
+app.use('/graphql', bodyParser.json(), graphqlExpress({ schema, context: { Pic } }))
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
 
 app.use((err, req, res, next) => {
   console.error(`${chalk.red(namespace)} ${err.message}`)
