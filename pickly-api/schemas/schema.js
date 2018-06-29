@@ -2,7 +2,12 @@ const { makeExecutableSchema } = require('graphql-tools')
 
 const typeDefs = `
   type Query { pics: [Pic] }
-  type Pic { id: ID, name: String, family: String }
+
+  type Pic {
+    id: ID
+    name: String
+    family: String
+  }
 `
 
 const resolvers = {

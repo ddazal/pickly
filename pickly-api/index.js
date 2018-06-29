@@ -6,16 +6,14 @@ const schema = require('./schemas/schema')
 const setupDatabase = require('pickly-db')
 const { Pic } = setupDatabase()
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
+const cors = require('cors');
 
 const namespace = '[pickly:api]'
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
-})
+
+app.use(cors())
 
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema, context: { Pic } }))
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
