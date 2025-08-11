@@ -5,9 +5,9 @@ var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
 var passport = require('passport')
+var morgan = require('morgan')
 var mongoose = require('mongoose')
 var LocalStrategy = require('passport-local').Strategy
-var bcrypt = require('bcryptjs')
 var router = require('./routes')
 var Student = require('./models/students')
 
@@ -37,6 +37,7 @@ mongoose.connect(db)
 mongoose.connection.on('connected', () => console.log(`Connected to ${db}`))
 mongoose.connection.on('error', (err) => console.log(err))
 
+app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -53,6 +54,10 @@ app.use('/', router)
 
 passport.use(new LocalStrategy((username, password, done) => {
 	Student.findOne({ username: username}, (err, student) => {
+
+		if (!student) {
+			return done(null, false, { message: 'Usuario o contraseña incorrectos / Invalid username or password.' })
+		}
 		
 		student.comparePassword(password, (err, match) => {
 			if (match) {

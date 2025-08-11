@@ -1,15 +1,22 @@
 var express = require('express')
-var router = express.Router()
 var path = require('path')
-var bodyParser = require('body-parser')
 var passport = require('passport')
 var Student = require('./models/students')
+
+var router = express.Router()
 
 router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 router.get('/login', (req, res) => {
+  if (req.isAuthenticated()) 
+    res.redirect('/dashboard')
+  else
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
+
+router.get('/signup', (req, res) => {
   if (req.isAuthenticated()) 
     res.redirect('/dashboard')
   else
@@ -40,6 +47,34 @@ router.get('/logout', (req, res) => {
 router.post('/login', passport.authenticate('local'), (req, res)  => {
   res.status(200).json(req.user)
 })
+
+router.post('/signup', (req, res) => {
+  if (!req.body.username || !req.body.password || !req.body.firstname || !req.body.lastname) {
+    return res.status(400).json({ message: 'Todos los campos son obligatorios / All fields are required.' });
+  }
+  
+  var id = parseInt(req.body.username, 10);
+  
+  var newStudent = new Student({
+    id: id,
+    username: req.body.username,
+    password: req.body.password,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    roles: req.body.admin ? ['admin', 'student'] : ['student']
+  });
+
+  newStudent.save(err => {
+    if (err) {
+      // Check for duplicate key error (e.g., duplicate username)
+      if (err.code === 11000) {
+        return res.status(409).json({ message: 'Username already exists.' });
+      }
+      return res.status(500).json(err);
+    }
+    res.status(201).json({ message: 'Signup successful. Please log in.' });
+  });
+});
 
 router.get('/forbidden', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))

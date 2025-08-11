@@ -1,0 +1,40 @@
+<div id="login-wrapper">
+    <a href="/"><span class="fa fa-arrow-left fa-4x login-icon"></span></a>
+    <div class="container login-content">
+        <div class="login-box">
+            <h2 class="text-center" translate="signup.title"></h2>
+            <form>
+                <div class="form-group">
+                    <label for="username" translate="signup.username"></label>
+                    <div class="input-group">
+                        <input ng-model="newUser.username" class="form-control" type="text" name="username" id="username" required/>
+                        <div class="input-group-addon"><span class="fa fa-user fa-fw"></span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" translate="signup.password"></label>
+                    <div class="input-group">
+                        <input ng-model="newUser.password" class="form-control" type="password" name="password" id="password" required/>
+                        <div class="input-group-addon"><span class="fa fa-key fa-fw"></span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" translate="signup.firstname"></label>
+                    <div class="input-group">
+                        <input ng-model="newUser.firstname" class="form-control" type="text" name="firstname" id="firstname" required/>
+                        <div class="input-group-addon"><span class="fa fa-user fa-fw"></span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" translate="signup.lastname"></label>
+                    <div class="input-group">
+                        <input ng-model="newUser.lastname" class="form-control" type="text" name="lastname" id="lastname" required/>
+                        <div class="input-group-addon"><span class="fa fa-user fa-fw"></span></div>
+                    </div>
+                </div>
+                <p class="text-center signup-error" ng-show="error">{{ errorMessage }}</p>
+                <button class="btn btn-success" translate="signup.create-account" ng-click="signup(newUser)"></button>
+            </form>
+        </div>
+    </div>
+</div>

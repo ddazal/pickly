@@ -23,6 +23,10 @@ function config($routeProvider, $locationProvider, $translateProvider) {
 			templateUrl: 'views/login.html',
 			controller: 'LoginController'
 		})
+		.when('/signup', {
+            templateUrl: 'views/signup.html',
+            controller: 'SignupController'
+        })
 		.when('/dashboard', {
 			templateUrl: 'views/dashboard.html',
 			controller: 'DashboardController',

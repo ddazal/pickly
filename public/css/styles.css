@@ -404,16 +404,15 @@ table {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	max-width: 500px;
-	height: 300px;
+	min-height: 300px;
 	border-radius: 5px;
 	box-shadow: 0 5px 10px;
 }
 .login-box {
 	max-width: 400px;
 	position: relative;
-	top: 50%;
 	margin: 0 auto;
-	transform: translateY(-50%);
+	padding: 16px;
 }
 .login-box .btn {
 	box-shadow: 0 3px #286090;

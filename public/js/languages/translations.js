@@ -57,6 +57,14 @@ var translationEN = {
 		"code": "Institutional Code",
 		"password": "Password",
 		"sign-in": "Sign in"
+	},
+	"signup": {
+		"title": "Create an account",
+		"username": "Institutional Code",
+		"firstname": "Name",
+		"lastname": "Last Name",
+		"password": "Password",
+		"create-account": "Create account",
 	}
 };
 
@@ -119,5 +127,13 @@ var translationES = {
 		"code": "Código Institucional",
 		"password": "Contraseña",
 		"sign-in": "Ingresar"
+	},
+	"signup": {
+		"title": "Crear una cuenta",
+		"username": "Código Institucional",
+		"firstname": "Nombre",
+		"lastname": "Apellido",
+		"password": "Contraseña",
+		"create-account": "Crear cuenta",
 	}
 };
