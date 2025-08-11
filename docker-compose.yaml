@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  mongodb:
+    image: mongo:3.4
+    container_name: pickly_db
+    volumes:
+      - mongodb_data:/data/db
+
+  node_app:
+    image: node:6-alpine
+    container_name: pickly
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/pickly
+    command: sh -c "npm install && node server.js"
+    ports:
+      - "3000:3000"
+
+volumes:
+  mongodb_data:
