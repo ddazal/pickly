@@ -4,22 +4,42 @@ services:
   mongodb:
     image: mongo:3.4
     container_name: pickly_db
+    restart: unless-stopped
     volumes:
       - mongodb_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--quiet", "--eval", "db.runCommand({ ping: 1 }).ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
 
   node_app:
-    image: node:6-alpine
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: pickly
     container_name: pickly
+    restart: unless-stopped
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/pickly
-    command: sh -c "npm install && node server.js"
+      - NODE_ENV=production
+      - PORT=3000
     ports:
       - "3000:3000"
+
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
 
 volumes:
   mongodb_data:
