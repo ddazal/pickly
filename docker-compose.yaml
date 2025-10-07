@@ -23,9 +23,6 @@ services:
     depends_on:
       mongodb:
         condition: service_healthy
-    volumes:
-      - .:/usr/src/app
-    working_dir: /usr/src/app
     environment:
       MONGODB_URI: mongodb://mongodb:27017/pickly
       NODE_ENV: production
@@ -35,6 +32,7 @@ services:
 
     security_opt:
       - no-new-privileges:true
+    read_only: true
     tmpfs:
       - /tmp
     cap_drop:
