@@ -1,5 +1,8 @@
 FROM node:6-alpine
 
+RUN apk add --no-cache git ca-certificates \
+ && update-ca-certificates
+
 RUN addgroup -S app && adduser -S -G app app
 
 WORKDIR /usr/src/app
