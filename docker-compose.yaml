@@ -29,6 +29,12 @@ services:
       PORT: 3000
     ports:
       - "127.0.0.1:3000:3000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
 
     security_opt:
       - no-new-privileges:true

@@ -93,3 +93,39 @@ server.listen(port, (err) => {
 		res.send(err)
 	console.log(`http://localhost:${port}/`)
 })
+
+server.on('error', (err) => {
+  if (err && err.syscall === 'listen' && (err.code === 'EACCES' || err.code === 'EADDRINUSE')) {
+    console.error('Fatal listen error:', err.message);
+    process.exit(1);
+  }
+  console.error('Server error (fatal):', err);
+  process.exit(1);
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught exception:', err && err.stack || err);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, p) => {
+  console.error('Unhandled rejection:', reason, 'at', p);
+  process.exit(1);
+});
+
+function shutdown() {
+  console.log('Shutting down gracefully...');
+  server.close(() => {
+    // If you use Mongoose or similar, close it here:
+    try {
+      if (mongoose.connection && mongoose.connection.readyState !== 0) {
+        return mongoose.connection.close(false, () => process.exit(0));
+      }
+    } catch (_) {}
+    process.exit(0);
+  });
+  // Force-exit if it hangs
+  setTimeout(() => process.exit(1), 10000).unref();
+}
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);
