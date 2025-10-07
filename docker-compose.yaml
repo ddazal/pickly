@@ -27,9 +27,9 @@ services:
       - .:/usr/src/app
     working_dir: /usr/src/app
     environment:
-      - MONGODB_URI=mongodb://mongodb:27017/pickly
-      - NODE_ENV=production
-      - PORT=3000
+      - MONGODB_URI: mongodb://mongodb:27017/pickly
+      - NODE_ENV: production
+      - PORT: 3000
     ports:
       - "127.0.0.1:3000:3000"
 
