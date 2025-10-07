@@ -5,7 +5,7 @@ RUN addgroup -S app && adduser -S -G app app
 WORKDIR /usr/src/app
 
 COPY package.json package-lock.json bower.json .bowerrc ./
-RUN npm install --only=production
+RUN npm install
 
 COPY . .
 
